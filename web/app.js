@@ -1,4 +1,8 @@
-// SKIL Lifestyle E-Commerce Store State & Logic Engine
+// SKIL Lifestyle E-Commerce Store State & Logic Engine (Cloudinary Integrated)
+
+const CLOUDINARY_CLOUD_NAME = 'aiz2tooi';
+const CLOUDINARY_PRESET = 'skilonline';
+const CLOUDINARY_API_KEY = '981773849764185';
 
 const PRODUCTS = [
     { id: 'prod-1', name: 'SKIL Memphis Oversized Hoodie', category: 'apparel', price: 89, rating: '★★★★★ (48)', icon: '🧥', badge: 'HOT DROP' },
@@ -16,7 +20,7 @@ let activeCategory = 'all';
 let searchQuery = '';
 
 // Toast Notification Engine (Rule 05 Compliant)
-function showToast(message, type = 'lime', duration = 3500) {
+function showToast(message, type = 'lime', duration = 4000) {
     const container = document.getElementById('toastContainer');
     const toast = document.createElement('div');
     toast.className = `memphis-toast ${type}`;
@@ -38,6 +42,62 @@ function showToast(message, type = 'lime', duration = 3500) {
             setTimeout(() => toast.remove(), 250);
         }
     }, duration);
+}
+
+// ☁️ Cloudinary Upload Engine
+async function handleCloudinaryUpload(file) {
+    if (!file) return;
+
+    showToast(`Uploading "${file.name}" to Cloudinary...`, 'cyan', 3000);
+
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', CLOUDINARY_PRESET);
+    formData.append('api_key', CLOUDINARY_API_KEY);
+
+    const resourceType = file.type.startsWith('video/') ? 'video' : 'image';
+
+    try {
+        const response = await fetch(
+            `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/${resourceType}/upload`,
+            {
+                method: 'POST',
+                body: formData
+            }
+        );
+
+        const data = await response.json();
+
+        if (data.secure_url) {
+            const optimizedUrl = getOptimizedCloudinaryUrl(data.secure_url);
+            
+            // Create a new product item dynamically from the uploaded Cloudinary asset!
+            const newProd = {
+                id: `cloudinary-${Date.now()}`,
+                name: file.name.split('.')[0].toUpperCase(),
+                category: 'apparel',
+                price: 99,
+                rating: '★★★★★ (NEW)',
+                imageUrl: optimizedUrl,
+                icon: file.type.startsWith('video/') ? '🎬' : '📸',
+                badge: 'CLOUDINARY DROP'
+            };
+
+            PRODUCTS.unshift(newProd);
+            renderProducts();
+            showToast(`Success! "${file.name}" uploaded live to Cloudinary CDN!`, 'lime', 5000);
+        } else {
+            showToast(`Upload Failed: ${data.error?.message || 'Unknown error'}`, 'pink', 5000);
+        }
+    } catch (err) {
+        showToast(`Cloudinary Error: ${err.message}`, 'pink', 5000);
+    }
+}
+
+// ⚡ Cloudinary 120Hz CDN URL Optimizer
+function getOptimizedCloudinaryUrl(url, width = 600) {
+    if (!url || !url.includes('cloudinary.com')) return url;
+    return url.replace('/upload/', `/upload/f_auto,q_auto,w_${width}/`);
 }
 
 // Render Products Grid
@@ -64,9 +124,14 @@ function renderProducts() {
     filtered.forEach(product => {
         const card = document.createElement('div');
         card.className = 'product-card';
+
+        const mediaDisplay = product.imageUrl 
+            ? `<img src="${product.imageUrl}" alt="${product.name}" style="width:100%; height:180px; object-fit:cover; border-bottom: 2.5px solid #000;">`
+            : `<div class="product-img-box">${product.icon}</div>`;
+
         card.innerHTML = `
             <span class="product-badge">${product.badge}</span>
-            <div class="product-img-box">${product.icon}</div>
+            ${mediaDisplay}
             <div class="product-info">
                 <span class="product-cat">${product.category}</span>
                 <h3 class="product-name">${product.name}</h3>
@@ -135,7 +200,7 @@ function updateCartUI() {
         const itemEl = document.createElement('div');
         itemEl.className = 'cart-item';
         itemEl.innerHTML = `
-            <div class="cart-item-icon">${item.icon}</div>
+            <div class="cart-item-icon">${item.icon || '📦'}</div>
             <div class="cart-item-info">
                 <div class="cart-item-title">${item.name}</div>
                 <div class="cart-item-price">$${item.price} each</div>
@@ -162,7 +227,7 @@ function toggleCartDrawer() {
 // Category & Search Filters
 function setCategory(category, pillBtn) {
     activeCategory = category;
-    document.querySelectorAll('.cat-pill').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.nav-cat-pill').forEach(btn => btn.classList.remove('active'));
     pillBtn.classList.add('active');
     renderProducts();
 }
