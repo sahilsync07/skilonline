@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKIL Super Agent Activity Journal</title>
+    <style>
+        :root {
+            --bg-canvas: #f4f5f8;
+            --card-bg: #ffffff;
+            --accent-lime: #e2fc52;
+            --accent-pink: #ff65a3;
+            --accent-cyan: #00f0ff;
+            --accent-purple: #9b51e0;
+            --accent-orange: #ff9f43;
+            --text-main: #0d0e12;
+            --text-muted: #5a6072;
+            --border-thick: 3px solid #000000;
+            --shadow-brutal: 5px 5px 0px #000000;
+            --shadow-lime: 5px 5px 0px var(--accent-lime);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-canvas);
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+            background-size: 28px 28px;
+            color: var(--text-main);
+            padding: 24px;
+            min-height: 100vh;
+        }
+
+        /* Top Banner & Header */
+        header {
+            background: var(--card-bg);
+            border: var(--border-thick);
+            box-shadow: var(--shadow-brutal);
+            border-radius: 14px;
+            padding: 24px;
+            margin-bottom: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--accent-lime), var(--accent-cyan));
+            clip-path: polygon(100% 0, 0 0, 100% 100%);
+            z-index: 1;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            z-index: 2;
+        }
+
+        .logo-box {
+            background: #ffffff;
+            padding: 10px 18px;
+            border-radius: 10px;
+            border: var(--border-thick);
+            box-shadow: 3px 3px 0px var(--accent-lime);
+        }
+
+        .logo-box img {
+            height: 46px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .header-title h1 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tag-badge {
+            background: var(--accent-lime);
+            color: #000;
+            font-size: 0.75rem;
+            font-weight: 900;
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 2px solid #000;
+            box-shadow: 2px 2px 0px #000;
+            text-transform: uppercase;
+        }
+
+        .header-title p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        .header-meta {
+            display: flex;
+            gap: 12px;
+            z-index: 2;
+            flex-wrap: wrap;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: var(--border-thick);
+            border-radius: 10px;
+            padding: 18px 20px;
+            box-shadow: var(--shadow-brutal);
+            position: relative;
+            transition: transform 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translate(-2px, -2px);
+        }
+
+        .stat-card.lime { background: #f7ffb8; }
+        .stat-card.cyan { background: #d9faff; }
+        .stat-card.pink { background: #ffe0ee; }
+        .stat-card.purple { background: #f0e0ff; }
+
+        .stat-label {
+            font-size: 0.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+
+        .stat-value {
+            font-size: 1.9rem;
+            font-weight: 900;
+            color: var(--text-main);
+        }
+
+        /* Controls / Filter Bar */
+        .controls-bar {
+            background: var(--card-bg);
+            border: var(--border-thick);
+            box-shadow: var(--shadow-brutal);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .search-group {
+            display: flex;
+            gap: 12px;
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .input-neo {
+            width: 100%;
+            background: #ffffff;
+            border: 2px solid #000;
+            color: var(--text-main);
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            outline: none;
+            box-shadow: 2px 2px 0px #000;
+        }
+
+        .input-neo:focus {
+            border-color: var(--accent-purple);
+            background: #fffdf0;
+        }
+
+        .btn-neo {
+            background: var(--accent-lime);
+            color: #000;
+            font-weight: 900;
+            border: 2px solid #000;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 3px 3px 0px #000;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            transition: all 0.15s ease;
+        }
+
+        .btn-neo:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0px #000;
+        }
+
+        .btn-neo:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px #000;
+        }
+
+        .btn-neo.pink { background: var(--accent-pink); color: #000; }
+        .btn-neo.cyan { background: var(--accent-cyan); color: #000; }
+
+        /* Table Design */
+        .table-container {
+            background: var(--card-bg);
+            border: var(--border-thick);
+            box-shadow: var(--shadow-brutal);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        thead {
+            background: #eef0f6;
+            border-bottom: var(--border-thick);
+        }
+
+        th {
+            padding: 16px;
+            font-size: 0.85rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-main);
+            border-right: 2px solid #000;
+        }
+
+        th:last-child { border-right: none; }
+
+        tbody tr {
+            border-bottom: 2px solid #e0e3ed;
+            transition: background 0.2s ease;
+        }
+
+        tbody tr:hover {
+            background: #f7ffb8;
+        }
+
+        td {
+            padding: 16px;
+            font-size: 0.9rem;
+            vertical-align: top;
+            border-right: 2px solid #e0e3ed;
+        }
+
+        td:last-child { border-right: none; }
+
+        .log-id {
+            font-family: monospace;
+            font-weight: 900;
+            color: #000;
+            background: var(--accent-lime);
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1.5px solid #000;
+            box-shadow: 2px 2px 0px #000;
+            display: inline-block;
+        }
+
+        .log-time {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .cat-tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 900;
+            border: 1.5px solid #000;
+            box-shadow: 2px 2px 0px #000;
+            text-transform: uppercase;
+        }
+
+        .cat-tag.init { background: var(--accent-lime); color: #000; }
+        .cat-tag.rules { background: var(--accent-pink); color: #000; }
+        .cat-tag.arch { background: var(--accent-cyan); color: #000; }
+        .cat-tag.asset { background: var(--accent-purple); color: #fff; }
+
+        .file-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .file-chip {
+            background: #f0f2f8;
+            color: #000;
+            font-family: monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid #000;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 900;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            border: 1.5px solid #000;
+            box-shadow: 2px 2px 0px #000;
+        }
+
+        .status-badge.completed {
+            background: #10b981;
+            color: #ffffff;
+        }
+
+        .details-box {
+            margin-top: 10px;
+            background: #f8fafc;
+            border: 2px solid #000;
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #1e293b;
+            box-shadow: 2px 2px 0px #000;
+        }
+
+        .details-box ul {
+            padding-left: 20px;
+            margin-top: 6px;
+        }
+
+        .details-box li {
+            margin-bottom: 4px;
+        }
+
+        /* Custom Theme Toast Notification Container */
+        #toastContainer {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 380px;
+        }
+
+        .memphis-toast {
+            background: #ffffff;
+            border: 3px solid #000000;
+            box-shadow: 5px 5px 0px #000000;
+            border-radius: 8px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: #000000;
+            animation: slideIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .memphis-toast.lime { background: var(--accent-lime); }
+        .memphis-toast.pink { background: var(--accent-pink); }
+        .memphis-toast.cyan { background: var(--accent-cyan); }
+
+        .toast-close-btn {
+            background: #ffffff;
+            color: #000;
+            border: 2px solid #000;
+            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: 2px 2px 0px #000;
+            flex-shrink: 0;
+            transition: transform 0.1s ease;
+        }
+
+        .toast-close-btn:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: var(--text-muted);
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 16px;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 12px; }
+            header { flex-direction: column; align-items: flex-start; gap: 16px; }
+            .table-container { overflow-x: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Toast Notification Overlay -->
+    <div id="toastContainer"></div>
+
+    <!-- Header Section -->
+    <header>
+        <div class="header-brand">
+            <div class="logo-box">
+                <img src="assets/logo/SKIL_Lifestyle_Black_Transparent_BG_Logo.png" alt="SKIL Logo" id="headerLogo">
+            </div>
+            <div class="header-title">
+                <h1>SKIL Journal <span class="tag-badge">Light Memphis</span></h1>
+                <p>Real-Time Agentic Modification & Chat Logging System</p>
+            </div>
+        </div>
+        <div class="header-meta">
+            <button class="btn-neo cyan" onclick="exportJournal()">Export Log JSON</button>
+            <button class="btn-neo pink" onclick="toggleLogoTheme()">Toggle Logo</button>
+        </div>
+    </header>
+
+    <!-- Metrics Grid -->
+    <div class="stats-grid">
+        <div class="stat-card lime">
+            <div class="stat-label">Total Log Entries</div>
+            <div class="stat-value" id="statEntries">6</div>
+        </div>
+        <div class="stat-card cyan">
+            <div class="stat-label">Files Touched</div>
+            <div class="stat-value" id="statFiles">28</div>
+        </div>
+        <div class="stat-card pink">
+            <div class="stat-label">Target SDK</div>
+            <div class="stat-value">Android 16 (API 36)</div>
+        </div>
+        <div class="stat-card purple">
+            <div class="stat-label">Play Compliance</div>
+            <div class="stat-value">Rule 06 Active</div>
+        </div>
+    </div>
+
+    <!-- Filter & Controls -->
+    <div class="controls-bar">
+        <div class="search-group">
+            <input type="text" id="searchInput" class="input-neo" placeholder="Search logs by keyword, file, or category..." onkeyup="filterLogs()">
+            <select id="categoryFilter" class="input-neo" style="width: 180px;" onchange="filterLogs()">
+                <option value="ALL">All Categories</option>
+                <option value="SETUP">System Setup</option>
+                <option value="RULES">Rules & Protocols</option>
+                <option value="ARCH">Architecture</option>
+                <option value="ASSETS">Assets</option>
+            </select>
+        </div>
+        <div>
+            <button class="btn-neo" onclick="resetFilters()">Reset Filters</button>
+        </div>
+    </div>
+
+    <!-- Main Activity Table -->
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 110px;">ID</th>
+                    <th style="width: 170px;">Timestamp</th>
+                    <th style="width: 130px;">Category</th>
+                    <th>Changes Summary & Details</th>
+                    <th style="width: 250px;">Files Touched</th>
+                    <th style="width: 120px;">Status</th>
+                </tr>
+            </thead>
+            <tbody id="journalTableBody">
+
+                <!-- Log Entry 6 -->
+                <tr data-category="RULES" data-keywords="play store compliance target sdk 36 android 16 min sdk 21 privacy policy aab bundle closed test 12 testers rule 06">
+                    <td><span class="log-id">LOG-006</span></td>
+                    <td>
+                        <div class="log-time">2026-07-22 14:00 IST</div>
+                        <div style="font-size: 0.75rem; color: #8b5cf6; font-weight: 800; margin-top: 4px;">Agent: Antigravity</div>
+                    </td>
+                    <td><span class="cat-tag rules">RULES</span></td>
+                    <td>
+                        <strong style="color: #000000; font-size: 1rem;">Rule 06: Google Play Store Submission Compliance & Privacy Policy Page Creation</strong>
+                        <div class="details-box">
+                            <strong>Detailed Action Report:</strong>
+                            <ul>
+                                <li>Researched 2026 Google Play Store submission mandates (Target SDK 36 / Android 16, Min SDK 21, Android App Bundle <code>.aab</code> requirement, 12-Tester 14-day closed test rule).</li>
+                                <li>Created <code>rules/PLAY_STORE_RULES.md</code> for Google Play Store upload compliance.</li>
+                                <li>Created standalone Light Mode Memphis styled <code>privacy-policy.html</code>.</li>
+                                <li>Updated <code>SUPER_ADMIN_RULES.md</code> and <code>.agents/AGENTS.md</code> with mandatory Rule 06.</li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="file-list">
+                            <span class="file-chip">rules/PLAY_STORE_RULES.md</span>
+                            <span class="file-chip">privacy-policy.html</span>
+                            <span class="file-chip">SUPER_ADMIN_RULES.md</span>
+                            <span class="file-chip">.agents/AGENTS.md</span>
+                            <span class="file-chip">journal.html</span>
+                            <span class="file-chip">appended-context-window.html</span>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="status-badge completed">✓ COMPLETED</span>
+                    </td>
+                </tr>
+
+                <!-- Log Entry 5 -->
+                <tr data-category="ARCH" data-keywords="cheap phone optimization budget low end sdk 21 android 5 laptop preview preview.html LowEndDeviceAdapter">
+                    <td><span class="log-id">LOG-005</span></td>
+                    <td>
+                        <div class="log-time">2026-07-22 13:58 IST</div>
+                        <div style="font-size: 0.75rem; color: #8b5cf6; font-weight: 800; margin-top: 4px;">Agent: Antigravity</div>
+                    </td>
+                    <td><span class="cat-tag arch">ARCH</span></td>
+                    <td>
+                        <strong style="color: #000000; font-size: 1rem;">Budget / Cheap Phone Compatibility Mandates & Laptop Live Preview Engine</strong>
+                    </td>
+                    <td>
+                        <div class="file-list">
+                            <span class="file-chip">rules/SUPER_FLUID_ARCHITECTURE.md</span>
+                            <span class="file-chip">preview.html</span>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="status-badge completed">✓ COMPLETED</span>
+                    </td>
+                </tr>
+
+                <!-- Log Entry 4 -->
+                <tr data-category="ARCH" data-keywords="compose multiplatform 120hz code initialization app memphis button toast card stateflow viewmodel">
+                    <td><span class="log-id">LOG-004</span></td>
+                    <td>
+                        <div class="log-time">2026-07-22 13:56 IST</div>
+                        <div style="font-size: 0.75rem; color: #8b5cf6; font-weight: 800; margin-top: 4px;">Agent: Antigravity</div>
+                    </td>
+                    <td><span class="cat-tag arch">ARCH</span></td>
+                    <td>
+                        <strong style="color: #000000; font-size: 1rem;">120Hz Super Fluid Compose Multiplatform Codebase Initialization</strong>
+                    </td>
+                    <td>
+                        <div class="file-list">
+                            <span class="file-chip">MemphisColors.kt</span>
+                            <span class="file-chip">HomeScreen.kt</span>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="status-badge completed">✓ COMPLETED</span>
+                    </td>
+                </tr>
+
+                <!-- Log Entry 3 -->
+                <tr data-category="RULES" data-keywords="toast notifications browser alert ban rule 05 memphis brutal popup timeout cross button">
+                    <td><span class="log-id">LOG-003</span></td>
+                    <td>
+                        <div class="log-time">2026-07-22 13:52 IST</div>
+                        <div style="font-size: 0.75rem; color: #8b5cf6; font-weight: 800; margin-top: 4px;">Agent: Antigravity</div>
+                    </td>
+                    <td><span class="cat-tag rules">RULES</span></td>
+                    <td>
+                        <strong style="color: #000000; font-size: 1rem;">Rule 05: Strict Ban on Browser Alerts & Custom Memphis Toast Engine Implementation</strong>
+                    </td>
+                    <td>
+                        <div class="file-list">
+                            <span class="file-chip">rules/TOAST_NOTIFICATION_RULES.md</span>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="status-badge completed">✓ COMPLETED</span>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        SKIL Lifestyle Super Fluid App Project &bull; Journaling Engine v1.0 &bull; Auto-Maintained by Agentic AI
+    </footer>
+
+    <!-- Inline JavaScript -->
+    <script>
+        function showToast(message, type = 'lime', duration = 4000) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `memphis-toast ${type}`;
+            
+            toast.innerHTML = `
+                <span>${message}</span>
+                <button class="toast-close-btn" onclick="this.parentElement.remove()">×</button>
+            `;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                if (toast.parentElement) {
+                    toast.style.transition = 'all 0.25s ease';
+                    toast.style.opacity = '0';
+                    toast.style.transform = 'translateY(-10px)';
+                    setTimeout(() => toast.remove(), 250);
+                }
+            }, duration);
+        }
+
+        function filterLogs() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const category = document.getElementById('categoryFilter').value;
+            const rows = document.querySelectorAll('#journalTableBody tr');
+
+            let visibleCount = 0;
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                const cat = row.getAttribute('data-category');
+                
+                const matchesQuery = text.includes(query);
+                const matchesCat = (category === 'ALL' || cat === category);
+
+                if (matchesQuery && matchesCat) {
+                    row.style.display = '';
+                    visibleCount++;
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+
+            document.getElementById('statEntries').innerText = visibleCount;
+        }
+
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('categoryFilter').value = 'ALL';
+            filterLogs();
+            showToast('Filters reset to default view!', 'lime');
+        }
+
+        function toggleLogoTheme() {
+            const logoImg = document.getElementById('headerLogo');
+            if (logoImg.src.includes('Black')) {
+                logoImg.src = 'assets/logo/SKIL_Lifestyle_White_Transparent_BG_Logo.png';
+                logoImg.parentElement.style.background = '#181a24';
+                showToast('Switched to Dark Logo Theme', 'pink');
+            } else {
+                logoImg.src = 'assets/logo/SKIL_Lifestyle_Black_Transparent_BG_Logo.png';
+                logoImg.parentElement.style.background = '#ffffff';
+                showToast('Switched to Light Logo Theme', 'lime');
+            }
+        }
+
+        function exportJournal() {
+            const data = [
+                {
+                    id: "LOG-006",
+                    timestamp: "2026-07-22 14:00 IST",
+                    agent: "Antigravity",
+                    category: "RULES",
+                    summary: "Rule 06: Google Play Store Submission Compliance & Privacy Policy Page Creation",
+                    files: ["rules/PLAY_STORE_RULES.md", "privacy-policy.html", "SUPER_ADMIN_RULES.md", ".agents/AGENTS.md", "journal.html", "appended-context-window.html"],
+                    status: "COMPLETED"
+                }
+            ];
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'skil_journal_logs.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast('Exported journal logs as JSON!', 'cyan');
+        }
+    </script>
+</body>
+</html>
