@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SKIL Lifestyle - Memphis Brutalist E-Commerce</title>
+    <title>SKIL Lifestyle - Dual Navbar E-Commerce</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,20 +16,38 @@
         ⚡ SUMMER DROP '26 IS LIVE &bull; FREE SHIPPING ON ORDERS OVER $100 &bull; USE CODE "SKIL26"
     </div>
 
-    <!-- Navigation Bar -->
-    <nav class="navbar">
+    <!-- Dual Navbar 1: Top Brand & Partner Logo Bar -->
+    <header class="logo-navbar">
         <a href="#" class="nav-brand">
-            <img src="assets/logo/SKIL_Lifestyle_Black_Transparent_BG_Logo.png" alt="SKIL Lifestyle Logo" class="brand-logo">
+            <img src="assets/logo/SKIL_Lifestyle_Black_Transparent_BG_Logo.png" alt="SKIL Lifestyle Logo" class="brand-logo-main">
         </a>
 
-        <div class="nav-controls">
+        <!-- Top Right Partner Logos Container -->
+        <div class="partner-logos-container">
+            <img src="assets/logo/Ajanta_Transparent_Logo.png" alt="Ajanta Logo" class="partner-logo-item" title="Ajanta Official Partner">
+            <div class="partner-divider"></div>
+            <img src="assets/logo/Xpania_Transparent_Logo.png" alt="Xpania Logo" class="partner-logo-item" title="Xpania Official Partner">
+        </div>
+    </header>
+
+    <!-- Dual Navbar 2: Navigation Controls & Cart (Sticky) -->
+    <nav class="controls-navbar">
+        <div class="controls-left">
             <input type="text" class="search-input" placeholder="Search products, kicks, tech..." onkeyup="handleSearch(this.value)">
             
-            <button class="btn-cart" onclick="toggleCartDrawer()">
-                <span>🛒 Cart</span>
-                <span class="cart-badge" id="cartBadge">0</span>
-            </button>
+            <div class="nav-cat-row">
+                <button class="nav-cat-pill active" onclick="setCategory('all', this)">🔥 All Drops</button>
+                <button class="nav-cat-pill" onclick="setCategory('apparel', this)">🧥 Apparel</button>
+                <button class="nav-cat-pill" onclick="setCategory('footwear', this)">👟 Footwear</button>
+                <button class="nav-cat-pill" onclick="setCategory('tech', this)">⌨️ Tech</button>
+                <button class="nav-cat-pill" onclick="setCategory('accessories', this)">🎒 Accessories</button>
+            </div>
         </div>
+
+        <button class="btn-cart" onclick="toggleCartDrawer()">
+            <span>🛒 Cart</span>
+            <span class="cart-badge" id="cartBadge">0</span>
+        </button>
     </nav>
 
     <!-- Hero Showcase Section -->
@@ -42,15 +60,6 @@
                 <button class="btn-hero" onclick="showToast('Browsing Summer 2026 Collection!', 'lime')">Shop Collection</button>
             </div>
         </div>
-    </div>
-
-    <!-- Category Filters -->
-    <div class="category-section">
-        <button class="cat-pill active" onclick="setCategory('all', this)">🔥 All Drops</button>
-        <button class="cat-pill" onclick="setCategory('apparel', this)">🧥 Apparel</button>
-        <button class="cat-pill" onclick="setCategory('footwear', this)">👟 Footwear</button>
-        <button class="cat-pill" onclick="setCategory('tech', this)">⌨️ Tech Gear</button>
-        <button class="cat-pill" onclick="setCategory('accessories', this)">🎒 Accessories</button>
     </div>
 
     <!-- Main Products Grid -->
