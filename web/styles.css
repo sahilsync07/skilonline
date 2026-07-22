@@ -167,29 +167,35 @@ body {
 /* Category Quick Links inside Navbar 2 */
 .nav-cat-row {
     display: flex;
-    gap: 8px;
+    gap: 10px;
     overflow-x: auto;
-    padding-bottom: 4px;
+    padding: 6px 8px 8px 6px;
+    scrollbar-width: none; /* Hide scrollbar Firefox */
+}
+
+.nav-cat-row::-webkit-scrollbar {
+    display: none; /* Hide scrollbar Chrome/Safari */
 }
 
 .nav-cat-pill {
     background: #ffffff;
-    border: 2px solid #000;
-    box-shadow: 2px 2px 0px #000;
-    padding: 6px 14px;
-    border-radius: 16px;
-    font-weight: 800;
-    font-size: 0.8rem;
+    border: 2.5px solid #000;
+    box-shadow: 3px 3px 0px #000;
+    padding: 7px 16px;
+    border-radius: 20px;
+    font-weight: 900;
+    font-size: 0.82rem;
     cursor: pointer;
     text-transform: uppercase;
     white-space: nowrap;
     transition: all 0.15s ease;
+    flex-shrink: 0;
 }
 
 .nav-cat-pill:hover, .nav-cat-pill.active {
     background: var(--accent-lime);
     transform: translate(-1px, -1px);
-    box-shadow: 3px 3px 0px #000;
+    box-shadow: 4px 4px 0px #000;
 }
 
 /* Memphis Cart Button */
@@ -696,7 +702,7 @@ body {
     .nav-cat-row {
         width: 100%;
         overflow-x: auto;
-        padding-bottom: 6px;
+        padding: 6px 8px 8px 6px;
     }
 
     .btn-cart {
