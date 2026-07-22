@@ -13,24 +13,31 @@
     --shadow-small: 3px 3px 0px #000000;
 }
 
-/* Custom Sleek Thin Neon Lime Scrollbar System */
+/* Custom Sleek Thin Neon Lime Scrollbar System (Whole Page & All Containers) */
+html, body, * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-lime) var(--bg-canvas);
+}
+
 ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f4f5f8;
+    background: var(--bg-canvas);
+    border-left: 1.5px solid #000000;
 }
 
 ::-webkit-scrollbar-thumb {
     background: var(--accent-lime);
-    border: 1px solid #000000;
+    border: 1.5px solid #000000;
     border-radius: 10px;
+    box-shadow: 1px 1px 0px #000000;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #cbf530;
+    background: var(--accent-pink);
 }
 
 ::-webkit-scrollbar-corner {
@@ -42,6 +49,10 @@
     margin: 0;
     padding: 0;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
