@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKIL Lifestyle Store - Memphis Brutalist E-Commerce</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Toast Notification Overlay (Rule 05 Compliant) -->
+    <div id="toastContainer"></div>
+
+    <!-- Announcement Bar -->
+    <div class="top-bar">
+        ⚡ SUMMER DROP '26 IS LIVE &bull; FREE SHIPPING ON ORDERS OVER $100 &bull; USE CODE "SKIL26"
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="#" class="nav-brand">
+            <img src="../ai/assets/logo/SKIL_Lifestyle_Black_Transparent_BG_Logo.png" alt="SKIL Logo" class="brand-logo">
+            <span class="brand-title">SKIL STORE</span>
+        </a>
+
+        <div class="nav-controls">
+            <input type="text" class="search-input" placeholder="Search products, kicks, tech..." onkeyup="handleSearch(this.value)">
+            
+            <button class="btn-cart" onclick="toggleCartDrawer()">
+                <span>🛒 Cart</span>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Showcase Section -->
+    <div class="hero-container">
+        <div class="hero-banner">
+            <div class="hero-text">
+                <span class="hero-tag">🔥 EXCLUSIVE DROP</span>
+                <h1>SUPER FLUID STREETWEAR & TECH GEAR</h1>
+                <p>Engineered for maximum 120Hz performance, bold aesthetics, and high-impact everyday style.</p>
+                <button class="btn-hero" onclick="showToast('Browsing Summer 2026 Collection!', 'lime')">Shop Collection</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category Filters -->
+    <div class="category-section">
+        <button class="cat-pill active" onclick="setCategory('all', this)">🔥 All Drops</button>
+        <button class="cat-pill" onclick="setCategory('apparel', this)">🧥 Apparel</button>
+        <button class="cat-pill" onclick="setCategory('footwear', this)">👟 Footwear</button>
+        <button class="cat-pill" onclick="setCategory('tech', this)">⌨️ Tech Gear</button>
+        <button class="cat-pill" onclick="setCategory('accessories', this)">🎒 Accessories</button>
+    </div>
+
+    <!-- Main Products Grid -->
+    <div class="products-section">
+        <div class="section-title">
+            <span>📦 Featured Products</span>
+        </div>
+        <div class="products-grid" id="productsContainer">
+            <!-- Dynamically Rendered by app.js -->
+        </div>
+    </div>
+
+    <!-- Cart Slide-Over Drawer -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCartDrawer()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="drawer-header">
+            <div class="drawer-title">YOUR SHOPPING CART</div>
+            <button class="btn-close-drawer" onclick="toggleCartDrawer()">×</button>
+        </div>
+
+        <div class="drawer-body" id="drawerBody">
+            <!-- Dynamically Rendered Cart Items -->
+        </div>
+
+        <div class="drawer-footer">
+            <div class="cart-total-row">
+                <span>SUBTOTAL:</span>
+                <span id="cartTotalVal">$0</span>
+            </div>
+            <button class="btn-checkout" onclick="checkout()">Proceed To Checkout →</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
