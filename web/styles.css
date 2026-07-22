@@ -82,7 +82,7 @@ body {
 .logo-navbar {
     background: #ffffff;
     border-bottom: 2px solid #000000;
-    padding: 12px 32px;
+    padding: 8px 32px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -101,19 +101,20 @@ body {
     transform: scale(1.03);
 }
 
+/* Enlarged Partner Logos Container & Logos (Navbar Height Preserved) */
 .partner-logos-container {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 16px;
     background: #f8fafc;
-    border: 2px solid #000;
-    border-radius: 10px;
-    padding: 6px 14px;
-    box-shadow: 3px 3px 0px #000;
+    border: 2.5px solid #000;
+    border-radius: 12px;
+    padding: 6px 18px;
+    box-shadow: 3.5px 3.5px 0px #000;
 }
 
 .partner-logo-item {
-    height: 34px;
+    height: 48px;
     object-fit: contain;
     filter: drop-shadow(1px 1px 0px rgba(0,0,0,0.15));
     transition: transform 0.15s ease;
@@ -125,52 +126,101 @@ body {
 
 .partner-divider {
     width: 2px;
-    height: 24px;
+    height: 34px;
     background: #000;
 }
 
-/* Dual Navbar 2: Search, Categories & Cart Controls (Sticky) */
+/* Dual Navbar 2: Search Bar + Cart (Beside Search) & Category Quick Links (Sticky) */
 .controls-navbar {
     background: #ffffff;
     border-bottom: var(--border-thick);
     padding: 12px 32px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    gap: 10px;
     position: sticky;
     top: 0;
     z-index: 100;
     box-shadow: 0 4px 0px rgba(0,0,0,0.05);
-    gap: 16px;
-    flex-wrap: wrap;
 }
 
-.controls-left {
+.controls-top-row {
     display: flex;
     align-items: center;
-    gap: 16px;
-    flex-grow: 1;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 14px;
+    width: 100%;
 }
 
-/* Neo Input */
+.search-input-wrapper {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon-inside {
+    position: absolute;
+    left: 14px;
+    color: #000;
+    pointer-events: none;
+}
+
 .search-input {
     background: #ffffff;
     border: 2.5px solid #000;
     box-shadow: 3px 3px 0px #000;
     border-radius: 8px;
-    padding: 10px 16px;
+    padding: 10px 16px 10px 42px;
     font-size: 0.9rem;
     font-weight: 700;
     outline: none;
-    width: 320px;
+    width: 100%;
     transition: all 0.15s ease;
 }
 
 .search-input:focus {
     border-color: var(--accent-purple);
     background: #fffdf0;
-    width: 360px;
+}
+
+/* Memphis Cart Button (Positioned Beside Search Input) */
+.btn-cart {
+    background: var(--accent-cyan);
+    color: #000;
+    border: 2.5px solid #000;
+    box-shadow: 3.5px 3.5px 0px #000;
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-weight: 900;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.1s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.btn-cart:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px #000;
+}
+
+.cart-badge {
+    background: var(--accent-pink);
+    color: #000;
+    border: 1.5px solid #000;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 900;
 }
 
 /* Category Quick Links inside Navbar 2 */
@@ -178,7 +228,7 @@ body {
     display: flex;
     gap: 10px;
     overflow-x: auto;
-    padding: 6px 8px 8px 6px;
+    padding: 4px 6px 6px 4px;
 }
 
 .nav-cat-pill {
@@ -200,44 +250,6 @@ body {
     background: var(--accent-lime);
     transform: translate(-1px, -1px);
     box-shadow: 4px 4px 0px #000;
-}
-
-/* Memphis Cart Button */
-.btn-cart {
-    background: var(--accent-cyan);
-    color: #000;
-    border: 2.5px solid #000;
-    box-shadow: 3.5px 3.5px 0px #000;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-weight: 900;
-    font-size: 0.95rem;
-    cursor: pointer;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: transform 0.1s ease;
-    white-space: nowrap;
-}
-
-.btn-cart:active {
-    transform: translate(2px, 2px);
-    box-shadow: 1px 1px 0px #000;
-}
-
-.cart-badge {
-    background: var(--accent-pink);
-    color: #000;
-    border: 1.5px solid #000;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
-    font-weight: 900;
 }
 
 /* Hero Showcase Section */
@@ -389,7 +401,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3.5rem;
+    color: var(--text-main);
     user-select: none;
 }
 
@@ -449,7 +461,14 @@ body {
     font-size: 0.8rem;
     cursor: pointer;
     text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
     transition: transform 0.1s ease;
+}
+
+.btn-add-cart-icon {
+    display: none;
 }
 
 .btn-add-cart:active {
@@ -544,7 +563,9 @@ body {
 }
 
 .cart-item-icon {
-    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .cart-item-info {
@@ -677,42 +698,41 @@ body {
     }
 
     .partner-logo-item {
-        height: 26px;
+        height: 32px;
     }
 
     .partner-divider {
-        height: 20px;
+        height: 22px;
     }
 
     .controls-navbar {
         padding: 10px 16px;
-        flex-direction: column;
-        align-items: stretch;
         gap: 10px;
     }
 
-    .controls-left {
-        width: 100%;
-        flex-direction: column;
-        align-items: stretch;
+    .controls-top-row {
         gap: 10px;
+    }
+
+    /* In Phone View: Hide "CART" text on button, show ONLY cart vector icon + badge! */
+    .btn-cart-text {
+        display: none;
+    }
+
+    .btn-cart {
+        padding: 8px 12px;
+        gap: 6px;
     }
 
     .search-input {
-        width: 100% !important;
         font-size: 0.85rem;
+        padding-left: 38px;
     }
 
     .nav-cat-row {
         width: 100%;
         overflow-x: auto;
-        padding: 6px 8px 8px 6px;
-    }
-
-    .btn-cart {
-        width: 100%;
-        justify-content: center;
-        padding: 10px;
+        padding: 4px;
     }
 
     .hero-banner {
@@ -728,21 +748,41 @@ body {
     }
 
     .products-grid {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-        gap: 14px;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 12px;
     }
 
     .product-img-box {
-        height: 140px;
-        font-size: 2.8rem;
+        height: 130px;
     }
 
     .product-info {
-        padding: 12px;
+        padding: 10px;
     }
 
     .product-name {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+    }
+
+    .product-price {
+        font-size: 1.05rem;
+        padding: 2px 6px;
+    }
+
+    /* In Phone View: Hide "ADD TO CART" text, show ONLY vector plus icon button! */
+    .btn-add-cart-text {
+        display: none;
+    }
+
+    .btn-add-cart-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn-add-cart {
+        padding: 6px 10px;
+        border-radius: 6px;
     }
 
     .cart-drawer {
