@@ -473,7 +473,7 @@
     <div class="stats-grid">
         <div class="stat-card lime">
             <div class="stat-label">Total Log Entries</div>
-            <div class="stat-value" id="statEntries">12</div>
+            <div class="stat-value" id="statEntries">13</div>
         </div>
         <div class="stat-card cyan">
             <div class="stat-label">Dev Server</div>
@@ -481,7 +481,7 @@
         </div>
         <div class="stat-card pink">
             <div class="stat-label">Logo Display</div>
-            <div class="stat-value">Enlarged Hero Logo</div>
+            <div class="stat-value">Borderless 76px</div>
         </div>
         <div class="stat-card purple">
             <div class="stat-label">Play Release</div>
@@ -521,6 +521,35 @@
             </thead>
             <tbody id="journalTableBody">
 
+                <!-- Log Entry 13 -->
+                <tr data-category="ASSETS" data-keywords="borderless logo transparent background enlarged logo web styles css height 76px">
+                    <td><span class="log-id">LOG-013</span></td>
+                    <td>
+                        <div class="log-time">2026-07-22 14:41 IST</div>
+                        <div style="font-size: 0.75rem; color: #8b5cf6; font-weight: 800; margin-top: 4px;">Agent: Antigravity</div>
+                    </td>
+                    <td><span class="cat-tag asset">ASSETS</span></td>
+                    <td>
+                        <strong style="color: #000000; font-size: 1rem;">Borderless Clean Logo & Increased Size (76px Height)</strong>
+                        <div class="details-box">
+                            <strong>Detailed Action Report:</strong>
+                            <ul>
+                                <li>Removed border, background box, and shadow from <code>.brand-logo</code> in <code>web/styles.css</code>.</li>
+                                <li>Enlarged transparent logo height to 76px for maximum prominence.</li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="file-list">
+                            <span class="file-chip">web/styles.css</span>
+                            <span class="file-chip">ai/journal.html</span>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="status-badge completed">✓ COMPLETED</span>
+                    </td>
+                </tr>
+
                 <!-- Log Entry 12 -->
                 <tr data-category="ASSETS" data-keywords="logo header layout brand text removal enlarged logo web index html styles css">
                     <td><span class="log-id">LOG-012</span></td>
@@ -531,42 +560,11 @@
                     <td><span class="cat-tag asset">ASSETS</span></td>
                     <td>
                         <strong style="color: #000000; font-size: 1rem;">Navbar Logo Enlargement & Brand Text Removal</strong>
-                        <div class="details-box">
-                            <strong>Detailed Action Report:</strong>
-                            <ul>
-                                <li>Removed redundant brand text next to navbar logo in <code>web/index.html</code>.</li>
-                                <li>Enlarged brand logo image container in <code>web/styles.css</code> (height: 58px, 3px solid black border, 3.5px brutal shadow).</li>
-                            </ul>
-                        </div>
                     </td>
                     <td>
                         <div class="file-list">
                             <span class="file-chip">web/index.html</span>
                             <span class="file-chip">web/styles.css</span>
-                            <span class="file-chip">ai/journal.html</span>
-                        </div>
-                    </td>
-                    <td>
-                        <span class="status-badge completed">✓ COMPLETED</span>
-                    </td>
-                </tr>
-
-                <!-- Log Entry 11 -->
-                <tr data-category="ASSETS" data-keywords="branding logo SKIL Lifestyle brand name update web index html ECommerceScreen logo path">
-                    <td><span class="log-id">LOG-011</span></td>
-                    <td>
-                        <div class="log-time">2026-07-22 14:38 IST</div>
-                        <div style="font-size: 0.75rem; color: #8b5cf6; font-weight: 800; margin-top: 4px;">Agent: Antigravity</div>
-                    </td>
-                    <td><span class="cat-tag asset">ASSETS</span></td>
-                    <td>
-                        <strong style="color: #000000; font-size: 1rem;">Brand Update: SKIL Lifestyle Branding & Transparent Logo Integration</strong>
-                    </td>
-                    <td>
-                        <div class="file-list">
-                            <span class="file-chip">web/index.html</span>
-                            <span class="file-chip">web/assets/logo/</span>
-                            <span class="file-chip">ECommerceScreen.kt</span>
                         </div>
                     </td>
                     <td>
@@ -586,8 +584,7 @@
     <script>
         function showToast(message, type = 'lime', duration = 4000) {
             const container = document.getElementById('toastContainer');
-            const toast = document.createElement('div');
-            toast.className = `memphis-toast ${type}`;
+            const toast.className = `memphis-toast ${type}`;
             
             toast.innerHTML = `
                 <span>${message}</span>
@@ -652,8 +649,8 @@
 
         function exportJournal() {
             const data = [
-                { id: "LOG-012", timestamp: "2026-07-22 14:40 IST", category: "ASSETS", summary: "Navbar Logo Enlargement & Brand Text Removal" },
-                { id: "LOG-011", timestamp: "2026-07-22 14:38 IST", category: "ASSETS", summary: "Brand Update: SKIL Lifestyle Branding & Transparent Logo Integration" }
+                { id: "LOG-013", timestamp: "2026-07-22 14:41 IST", category: "ASSETS", summary: "Borderless Clean Logo & Increased Size (76px Height)" },
+                { id: "LOG-012", timestamp: "2026-07-22 14:40 IST", category: "ASSETS", summary: "Navbar Logo Enlargement & Brand Text Removal" }
             ];
             const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
             const url = URL.createObjectURL(blob);
