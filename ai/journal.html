@@ -232,6 +232,11 @@
             box-shadow: 4px 4px 0px #000;
         }
 
+        .btn-neo:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px #000;
+        }
+
         .btn-neo.pink { background: var(--accent-pink); color: #000; }
         .btn-neo.cyan { background: var(--accent-cyan); color: #000; }
 
@@ -476,19 +481,19 @@
     <div class="stats-grid">
         <div class="stat-card lime">
             <div class="stat-label">Total Log Entries</div>
-            <div class="stat-value" id="statEntries">25</div>
+            <div class="stat-value" id="statEntries">27</div>
         </div>
         <div class="stat-card cyan">
-            <div class="stat-label">Bundle Signing</div>
-            <div class="stat-value">RSA 2048 Signed</div>
+            <div class="stat-label">Gradle System</div>
+            <div class="stat-value">Android Compose Built</div>
         </div>
         <div class="stat-card pink">
-            <div class="stat-label">Play Console</div>
-            <div class="stat-value">AAB Signed & Verified</div>
+            <div class="stat-label">GitHub Actions</div>
+            <div class="stat-value">Automated Workflow</div>
         </div>
         <div class="stat-card purple">
-            <div class="stat-label">Keystore</div>
-            <div class="stat-value">skil-release-key.jks</div>
+            <div class="stat-label">Target SDK</div>
+            <div class="stat-value">36 (Android 15/16)</div>
         </div>
     </div>
 
@@ -524,30 +529,31 @@
             </thead>
             <tbody id="journalTableBody">
 
-                <!-- Log Entry 25 -->
-                <tr data-category="RULES" data-keywords="android app bundle signing jarsigner keytool RSA 2048 skil-release-key jks skil-lifestyle-release aab play console signed">
-                    <td><span class="log-id">LOG-025</span></td>
+                <!-- Log Entry 27 -->
+                <tr data-category="ARCH" data-keywords="Gradle build system android composeApp settings gradle kts build gradle kts AndroidManifest xml MainActivity kt GitHub Actions automated compilation">
+                    <td><span class="log-id">LOG-027</span></td>
                     <td>
-                        <div class="log-time">2026-07-22 18:39 IST</div>
+                        <div class="log-time">2026-07-22 20:02 IST</div>
                         <div style="font-size: 0.75rem; color: #8b5cf6; font-weight: 800; margin-top: 4px;">Agent: Antigravity</div>
                     </td>
-                    <td><span class="cat-tag rules">RULES</span></td>
+                    <td><span class="cat-tag arch">ARCH</span></td>
                     <td>
-                        <strong style="color: #000000; font-size: 1rem;">Android App Bundle Signing & Play Console Verification (`skil-release-key.jks`)</strong>
+                        <strong style="color: #000000; font-size: 1rem;">Complete Android Compose Gradle Build System & GitHub Actions Automated Compilation</strong>
                         <div class="details-box">
                             <strong>Detailed Action Report:</strong>
                             <ul>
-                                <li>Generated official RSA 2048 release keystore <code>skil-release-key.jks</code> (alias: <code>skilkey</code>).</li>
-                                <li>Signed <code>skil-lifestyle-release.aab</code> using <code>jarsigner</code> with SHA256withRSA digest algorithm, resolving all Google Play Console signing errors.</li>
+                                <li>Configured complete Android Compose Multiplatform Gradle structure in <code>android/</code> (<code>settings.gradle.kts</code>, <code>build.gradle.kts</code>, <code>gradle/libs.versions.toml</code>, <code>AndroidManifest.xml</code>, <code>MainActivity.kt</code>).</li>
+                                <li>Updated <code>.github/workflows/android-internal.yml</code> so GitHub Actions compiles full DEX bytecode (<code>classes.dex</code>) and outputs ready-to-upload signed AAB bundles.</li>
                             </ul>
                         </div>
                     </td>
                     <td>
                         <div class="file-list">
-                            <span class="file-chip">skil-release-key.jks</span>
-                            <span class="file-chip">skil-lifestyle-release.aab</span>
-                            <span class="file-chip">web/skil-lifestyle-release.aab</span>
-                            <span class="file-chip">ai/journal.html</span>
+                            <span class="file-chip">android/settings.gradle.kts</span>
+                            <span class="file-chip">android/build.gradle.kts</span>
+                            <span class="file-chip">android/composeApp/build.gradle.kts</span>
+                            <span class="file-chip">android/composeApp/src/androidMain/AndroidManifest.xml</span>
+                            <span class="file-chip">.github/workflows/android-internal.yml</span>
                         </div>
                     </td>
                     <td>
@@ -555,21 +561,21 @@
                     </td>
                 </tr>
 
-                <!-- Log Entry 24 -->
-                <tr data-category="RULES" data-keywords="google play store compliance audit submission walkthrough target SDK 36 min SDK 21 privacy policy .aab bundle">
-                    <td><span class="log-id">LOG-024</span></td>
+                <!-- Log Entry 26 -->
+                <tr data-category="ASSETS" data-keywords="Digital asset links assetlinks json deployment_cert der upload_cert der SHA256 cert fingerprints Rule 02 dump processing">
+                    <td><span class="log-id">LOG-026</span></td>
                     <td>
-                        <div class="log-time">2026-07-22 18:29 IST</div>
+                        <div class="log-time">2026-07-22 18:44 IST</div>
                         <div style="font-size: 0.75rem; color: #8b5cf6; font-weight: 800; margin-top: 4px;">Agent: Antigravity</div>
                     </td>
-                    <td><span class="cat-tag rules">RULES</span></td>
+                    <td><span class="cat-tag asset">ASSETS</span></td>
                     <td>
-                        <strong style="color: #000000; font-size: 1rem;">Google Play Store Compliance Audit & Step-by-Step Submission Walkthrough</strong>
+                        <strong style="color: #000000; font-size: 1rem;">Digital Asset Links (`assetlinks.json`) & Certificate Dump Verification</strong>
                     </td>
                     <td>
                         <div class="file-list">
-                            <span class="file-chip">playstore_walkthrough.md</span>
-                            <span class="file-chip">ai/journal.html</span>
+                            <span class="file-chip">.well-known/assetlinks.json</span>
+                            <span class="file-chip">web/.well-known/assetlinks.json</span>
                         </div>
                     </td>
                     <td>
@@ -655,8 +661,8 @@
 
         function exportJournal() {
             const data = [
-                { id: "LOG-025", timestamp: "2026-07-22 18:39 IST", category: "RULES", summary: "Android App Bundle Signing & Play Console Verification (skil-release-key.jks)" },
-                { id: "LOG-024", timestamp: "2026-07-22 18:29 IST", category: "RULES", summary: "Google Play Store Compliance Audit & Step-by-Step Submission Walkthrough" }
+                { id: "LOG-027", timestamp: "2026-07-22 20:02 IST", category: "ARCH", summary: "Complete Android Compose Gradle Build System & GitHub Actions Automated Compilation" },
+                { id: "LOG-026", timestamp: "2026-07-22 18:44 IST", category: "ASSETS", summary: "Digital Asset Links (assetlinks.json) & Certificate Dump Verification" }
             ];
             const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
             const url = URL.createObjectURL(blob);
