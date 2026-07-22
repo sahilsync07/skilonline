@@ -1,0 +1,19 @@
+# Build & Temporary Files
+.gradle/
+build/
+composeApp/build/
+*.apk
+*.aab
+
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE Files
+.idea/
+*.iml
+.vscode/
+
+# Local configuration
+local.properties
