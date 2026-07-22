@@ -13,26 +13,24 @@
     --shadow-small: 3px 3px 0px #000000;
 }
 
-/* Custom Light-Mode Memphis Brutalist Scrollbar System (Rule 04 & Aesthetics) */
+/* Custom Sleek Thin Neon Lime Scrollbar System */
 ::-webkit-scrollbar {
-    width: 12px;
-    height: 12px;
+    width: 6px;
+    height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--bg-canvas);
-    border-left: 2px solid #000000;
+    background: #f4f5f8;
 }
 
 ::-webkit-scrollbar-thumb {
     background: var(--accent-lime);
-    border: 2px solid #000000;
-    border-radius: 6px;
-    box-shadow: 2px 2px 0px #000000;
+    border: 1px solid #000000;
+    border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--accent-pink);
+    background: #cbf530;
 }
 
 ::-webkit-scrollbar-corner {
@@ -170,11 +168,6 @@ body {
     gap: 10px;
     overflow-x: auto;
     padding: 6px 8px 8px 6px;
-    scrollbar-width: none; /* Hide scrollbar Firefox */
-}
-
-.nav-cat-row::-webkit-scrollbar {
-    display: none; /* Hide scrollbar Chrome/Safari */
 }
 
 .nav-cat-pill {
