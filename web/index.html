@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SKIL Lifestyle - Cloudinary Integrated E-Commerce</title>
+    <title>SKIL Lifestyle - Dual Navbar E-Commerce</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -22,19 +22,11 @@
             <img src="https://res.cloudinary.com/aiz2tooi/image/upload/f_auto,q_auto/v1784722804/SKIL_Lifestyle_Black_Transparent_BG_Logo.png" alt="SKIL Lifestyle Logo" class="brand-logo-main">
         </a>
 
-        <!-- Top Right Partner Logos & Cloudinary Upload Action -->
-        <div style="display: flex; align-items: center; gap: 14px;">
-            <input type="file" id="cloudinaryFileInput" accept="image/*,video/*" style="display: none;" onchange="handleCloudinaryUpload(this.files[0])">
-            
-            <button class="nav-cat-pill" style="background: var(--accent-lime); font-weight: 900;" onclick="document.getElementById('cloudinaryFileInput').click()">
-                ☁️ Upload Asset
-            </button>
-
-            <div class="partner-logos-container">
-                <img src="https://res.cloudinary.com/aiz2tooi/image/upload/f_auto,q_auto/v1784722809/Ajanta_Transparent_Logo.png" alt="Ajanta Logo" class="partner-logo-item" title="Ajanta Official Partner">
-                <div class="partner-divider"></div>
-                <img src="https://res.cloudinary.com/aiz2tooi/image/upload/f_auto,q_auto/v1784722811/Xpania_Transparent_Logo.png" alt="Xpania Logo" class="partner-logo-item" title="Xpania Official Partner">
-            </div>
+        <!-- Top Right Partner Logos Container -->
+        <div class="partner-logos-container">
+            <img src="https://res.cloudinary.com/aiz2tooi/image/upload/f_auto,q_auto/v1784722809/Ajanta_Transparent_Logo.png" alt="Ajanta Logo" class="partner-logo-item" title="Ajanta Official Partner">
+            <div class="partner-divider"></div>
+            <img src="https://res.cloudinary.com/aiz2tooi/image/upload/f_auto,q_auto/v1784722811/Xpania_Transparent_Logo.png" alt="Xpania Logo" class="partner-logo-item" title="Xpania Official Partner">
         </div>
     </header>
 

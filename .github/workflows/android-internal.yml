@@ -1,9 +1,7 @@
 name: Build and Release Android App (Internal Track)
 
 on:
-  push:
-    branches: [main]
-  workflow_dispatch:
+  workflow_dispatch: # Manual trigger only (automatic git push trigger disabled until ready for deployment)
 
 concurrency:
   group: google-play-deploy-skil
