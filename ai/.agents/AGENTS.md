@@ -5,7 +5,7 @@
 All AI agents working on this workspace MUST inspect and follow the master directives in [SUPER_ADMIN_RULES.md](file:///c:/Projects/skilonline/SUPER_ADMIN_RULES.md).
 
 ## Mandatory Protocols for ALL AI Agents:
-> **NOTE**: Whether the user tags `@SUPER_ADMIN_RULES.md` or not, these 6 protocols are MANDATORY.
+> **NOTE**: Whether the user tags `@SUPER_ADMIN_RULES.md` or not, these 7 protocols are MANDATORY.
 
 1. **Step 1 (Read Context First)**: Read [ai/appended-context-window.html](file:///c:/Projects/skilonline/ai/appended-context-window.html) BEFORE taking action on any task.
 2. **Rule 1 (Journaling)**: Log all changes in [ai/journal.html](file:///c:/Projects/skilonline/ai/journal.html) after every edit/chat session using Light Mode Memphis styling.
@@ -14,5 +14,6 @@ All AI agents working on this workspace MUST inspect and follow the master direc
 5. **Rule 4 (Super Fluidity)**: Maintain cross-platform 120Hz high-performance UI standards (`android/` and `web/`).
 6. **Rule 5 (Toast Notifications)**: NEVER use native `window.alert()`. Always use custom theme-based Memphis toast popups with auto-timeout and manual `×` cross buttons.
 7. **Rule 6 (Play Store Submission)**: Maintain Target SDK 36, Min SDK 21, `.aab` bundle format, and active privacy policy ([ai/privacy-policy.html](file:///c:/Projects/skilonline/ai/privacy-policy.html)).
+8. **Rule 7 (No Emojis Standard)**: NEVER use native OS emojis anywhere in UI/web/android code. Always use inline SVG vector icons.
 
 Refer to [SUPER_ADMIN_RULES.md](file:///c:/Projects/skilonline/SUPER_ADMIN_RULES.md) for complete details.
