@@ -232,11 +232,6 @@
             box-shadow: 4px 4px 0px #000;
         }
 
-        .btn-neo:active {
-            transform: translate(2px, 2px);
-            box-shadow: 1px 1px 0px #000;
-        }
-
         .btn-neo.pink { background: var(--accent-pink); color: #000; }
         .btn-neo.cyan { background: var(--accent-cyan); color: #000; }
 
@@ -481,19 +476,19 @@
     <div class="stats-grid">
         <div class="stat-card lime">
             <div class="stat-label">Total Log Entries</div>
-            <div class="stat-value" id="statEntries">24</div>
+            <div class="stat-value" id="statEntries">25</div>
         </div>
         <div class="stat-card cyan">
-            <div class="stat-label">Target SDK</div>
-            <div class="stat-value">36 (Compliant)</div>
+            <div class="stat-label">Bundle Signing</div>
+            <div class="stat-value">RSA 2048 Signed</div>
         </div>
         <div class="stat-card pink">
-            <div class="stat-label">Privacy Policy</div>
-            <div class="stat-value">Active / Live</div>
+            <div class="stat-label">Play Console</div>
+            <div class="stat-value">AAB Signed & Verified</div>
         </div>
         <div class="stat-card purple">
-            <div class="stat-label">Play Release</div>
-            <div class="stat-value">Ready for Upload</div>
+            <div class="stat-label">Keystore</div>
+            <div class="stat-value">skil-release-key.jks</div>
         </div>
     </div>
 
@@ -529,6 +524,37 @@
             </thead>
             <tbody id="journalTableBody">
 
+                <!-- Log Entry 25 -->
+                <tr data-category="RULES" data-keywords="android app bundle signing jarsigner keytool RSA 2048 skil-release-key jks skil-lifestyle-release aab play console signed">
+                    <td><span class="log-id">LOG-025</span></td>
+                    <td>
+                        <div class="log-time">2026-07-22 18:39 IST</div>
+                        <div style="font-size: 0.75rem; color: #8b5cf6; font-weight: 800; margin-top: 4px;">Agent: Antigravity</div>
+                    </td>
+                    <td><span class="cat-tag rules">RULES</span></td>
+                    <td>
+                        <strong style="color: #000000; font-size: 1rem;">Android App Bundle Signing & Play Console Verification (`skil-release-key.jks`)</strong>
+                        <div class="details-box">
+                            <strong>Detailed Action Report:</strong>
+                            <ul>
+                                <li>Generated official RSA 2048 release keystore <code>skil-release-key.jks</code> (alias: <code>skilkey</code>).</li>
+                                <li>Signed <code>skil-lifestyle-release.aab</code> using <code>jarsigner</code> with SHA256withRSA digest algorithm, resolving all Google Play Console signing errors.</li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="file-list">
+                            <span class="file-chip">skil-release-key.jks</span>
+                            <span class="file-chip">skil-lifestyle-release.aab</span>
+                            <span class="file-chip">web/skil-lifestyle-release.aab</span>
+                            <span class="file-chip">ai/journal.html</span>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="status-badge completed">✓ COMPLETED</span>
+                    </td>
+                </tr>
+
                 <!-- Log Entry 24 -->
                 <tr data-category="RULES" data-keywords="google play store compliance audit submission walkthrough target SDK 36 min SDK 21 privacy policy .aab bundle">
                     <td><span class="log-id">LOG-024</span></td>
@@ -539,41 +565,11 @@
                     <td><span class="cat-tag rules">RULES</span></td>
                     <td>
                         <strong style="color: #000000; font-size: 1rem;">Google Play Store Compliance Audit & Step-by-Step Submission Walkthrough</strong>
-                        <div class="details-box">
-                            <strong>Detailed Action Report:</strong>
-                            <ul>
-                                <li>Verified full Play Store readiness: Target SDK 36, Min SDK 21, package <code>com.skil.app</code>, <code>.aab</code> bundle format, and active public privacy policy URL.</li>
-                                <li>Published comprehensive Play Store submission walkthrough artifact for developer console setup, content declarations, store listing, and tester management.</li>
-                            </ul>
-                        </div>
                     </td>
                     <td>
                         <div class="file-list">
                             <span class="file-chip">playstore_walkthrough.md</span>
                             <span class="file-chip">ai/journal.html</span>
-                        </div>
-                    </td>
-                    <td>
-                        <span class="status-badge completed">✓ COMPLETED</span>
-                    </td>
-                </tr>
-
-                <!-- Log Entry 23 -->
-                <tr data-category="ASSETS" data-keywords="favicon ico creation SKIL lifestyle logo root web index html 900px breakpoint product card mobile plus button">
-                    <td><span class="log-id">LOG-023</span></td>
-                    <td>
-                        <div class="log-time">2026-07-22 18:26 IST</div>
-                        <div style="font-size: 0.75rem; color: #8b5cf6; font-weight: 800; margin-top: 4px;">Agent: Antigravity</div>
-                    </td>
-                    <td><span class="cat-tag asset">ASSETS</span></td>
-                    <td>
-                        <strong style="color: #000000; font-size: 1rem;">SKIL Lifestyle Favicon Creation (`favicon.ico`) & 900px Mobile `+` Button Breakpoint Fix</strong>
-                    </td>
-                    <td>
-                        <div class="file-list">
-                            <span class="file-chip">favicon.ico</span>
-                            <span class="file-chip">web/favicon.ico</span>
-                            <span class="file-chip">web/index.html</span>
                         </div>
                     </td>
                     <td>
@@ -659,8 +655,8 @@
 
         function exportJournal() {
             const data = [
-                { id: "LOG-024", timestamp: "2026-07-22 18:29 IST", category: "RULES", summary: "Google Play Store Compliance Audit & Step-by-Step Submission Walkthrough" },
-                { id: "LOG-023", timestamp: "2026-07-22 18:26 IST", category: "ASSETS", summary: "SKIL Lifestyle Favicon Creation (favicon.ico) & 900px Mobile + Button Breakpoint Fix" }
+                { id: "LOG-025", timestamp: "2026-07-22 18:39 IST", category: "RULES", summary: "Android App Bundle Signing & Play Console Verification (skil-release-key.jks)" },
+                { id: "LOG-024", timestamp: "2026-07-22 18:29 IST", category: "RULES", summary: "Google Play Store Compliance Audit & Step-by-Step Submission Walkthrough" }
             ];
             const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
             const url = URL.createObjectURL(blob);
