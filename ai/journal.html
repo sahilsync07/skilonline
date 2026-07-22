@@ -473,15 +473,15 @@
     <div class="stats-grid">
         <div class="stat-card lime">
             <div class="stat-label">Total Log Entries</div>
-            <div class="stat-value" id="statEntries">11</div>
+            <div class="stat-value" id="statEntries">12</div>
         </div>
         <div class="stat-card cyan">
             <div class="stat-label">Dev Server</div>
             <div class="stat-value">localhost:8080</div>
         </div>
         <div class="stat-card pink">
-            <div class="stat-label">Brand Name</div>
-            <div class="stat-value">SKIL Lifestyle</div>
+            <div class="stat-label">Logo Display</div>
+            <div class="stat-value">Enlarged Hero Logo</div>
         </div>
         <div class="stat-card purple">
             <div class="stat-label">Play Release</div>
@@ -521,6 +521,36 @@
             </thead>
             <tbody id="journalTableBody">
 
+                <!-- Log Entry 12 -->
+                <tr data-category="ASSETS" data-keywords="logo header layout brand text removal enlarged logo web index html styles css">
+                    <td><span class="log-id">LOG-012</span></td>
+                    <td>
+                        <div class="log-time">2026-07-22 14:40 IST</div>
+                        <div style="font-size: 0.75rem; color: #8b5cf6; font-weight: 800; margin-top: 4px;">Agent: Antigravity</div>
+                    </td>
+                    <td><span class="cat-tag asset">ASSETS</span></td>
+                    <td>
+                        <strong style="color: #000000; font-size: 1rem;">Navbar Logo Enlargement & Brand Text Removal</strong>
+                        <div class="details-box">
+                            <strong>Detailed Action Report:</strong>
+                            <ul>
+                                <li>Removed redundant brand text next to navbar logo in <code>web/index.html</code>.</li>
+                                <li>Enlarged brand logo image container in <code>web/styles.css</code> (height: 58px, 3px solid black border, 3.5px brutal shadow).</li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="file-list">
+                            <span class="file-chip">web/index.html</span>
+                            <span class="file-chip">web/styles.css</span>
+                            <span class="file-chip">ai/journal.html</span>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="status-badge completed">✓ COMPLETED</span>
+                    </td>
+                </tr>
+
                 <!-- Log Entry 11 -->
                 <tr data-category="ASSETS" data-keywords="branding logo SKIL Lifestyle brand name update web index html ECommerceScreen logo path">
                     <td><span class="log-id">LOG-011</span></td>
@@ -531,44 +561,11 @@
                     <td><span class="cat-tag asset">ASSETS</span></td>
                     <td>
                         <strong style="color: #000000; font-size: 1rem;">Brand Update: SKIL Lifestyle Branding & Transparent Logo Integration</strong>
-                        <div class="details-box">
-                            <strong>Detailed Action Report:</strong>
-                            <ul>
-                                <li>Updated store title to <strong>SKIL LIFESTYLE</strong> across Web (<code>web/index.html</code>) and Android Compose UI (<code>ECommerceScreen.kt</code>).</li>
-                                <li>Copied transparent brand logos into <code>web/assets/logo/</code> and set correct relative image path (<code>assets/logo/SKIL_Lifestyle_Black_Transparent_BG_Logo.png</code>).</li>
-                            </ul>
-                        </div>
                     </td>
                     <td>
                         <div class="file-list">
                             <span class="file-chip">web/index.html</span>
                             <span class="file-chip">web/assets/logo/</span>
-                            <span class="file-chip">ECommerceScreen.kt</span>
-                            <span class="file-chip">ai/journal.html</span>
-                        </div>
-                    </td>
-                    <td>
-                        <span class="status-badge completed">✓ COMPLETED</span>
-                    </td>
-                </tr>
-
-                <!-- Log Entry 10 -->
-                <tr data-category="ARCH" data-keywords="ecommerce store web app android app dev server memphis brutal product card cart drawer checkout rule 05">
-                    <td><span class="log-id">LOG-010</span></td>
-                    <td>
-                        <div class="log-time">2026-07-22 14:34 IST</div>
-                        <div style="font-size: 0.75rem; color: #8b5cf6; font-weight: 800; margin-top: 4px;">Agent: Antigravity</div>
-                    </td>
-                    <td><span class="cat-tag arch">ARCH</span></td>
-                    <td>
-                        <strong style="color: #000000; font-size: 1rem;">SKIL Lifestyle E-Commerce Store Release (Web & Android Targets + Dev Server)</strong>
-                    </td>
-                    <td>
-                        <div class="file-list">
-                            <span class="file-chip">web/index.html</span>
-                            <span class="file-chip">web/styles.css</span>
-                            <span class="file-chip">web/app.js</span>
-                            <span class="file-chip">Product.kt</span>
                             <span class="file-chip">ECommerceScreen.kt</span>
                         </div>
                     </td>
@@ -655,8 +652,8 @@
 
         function exportJournal() {
             const data = [
-                { id: "LOG-011", timestamp: "2026-07-22 14:38 IST", category: "ASSETS", summary: "Brand Update: SKIL Lifestyle Branding & Transparent Logo Integration" },
-                { id: "LOG-010", timestamp: "2026-07-22 14:34 IST", category: "ARCH", summary: "SKIL Lifestyle E-Commerce Store Release (Web & Android Targets + Dev Server)" }
+                { id: "LOG-012", timestamp: "2026-07-22 14:40 IST", category: "ASSETS", summary: "Navbar Logo Enlargement & Brand Text Removal" },
+                { id: "LOG-011", timestamp: "2026-07-22 14:38 IST", category: "ASSETS", summary: "Brand Update: SKIL Lifestyle Branding & Transparent Logo Integration" }
             ];
             const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
             const url = URL.createObjectURL(blob);
