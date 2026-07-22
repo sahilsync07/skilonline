@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SKIL Super Agent Activity Journal</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <style>
         :root {
             --bg-canvas: #f4f5f8;
@@ -19,6 +20,13 @@
             --shadow-brutal: 5px 5px 0px #000000;
             --shadow-lime: 5px 5px 0px var(--accent-lime);
         }
+
+        /* Custom Sleek Thin Neon Lime Scrollbar System */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #f4f5f8; }
+        ::-webkit-scrollbar-thumb { background: var(--accent-lime); border: 1px solid #000000; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #cbf530; }
+        ::-webkit-scrollbar-corner { background: var(--bg-canvas); }
 
         * {
             box-sizing: border-box;
@@ -331,7 +339,7 @@
             font-weight: 700;
             padding: 3px 8px;
             border-radius: 4px;
-            border: 1px solid #000;
+            border: 1.5px solid #000;
         }
 
         .status-badge {
@@ -456,7 +464,7 @@
     <header>
         <div class="header-brand">
             <div class="logo-box">
-                <img src="assets/logo/SKIL_Lifestyle_Black_Transparent_BG_Logo.png" alt="SKIL Logo" id="headerLogo">
+                <img src="https://res.cloudinary.com/aiz2tooi/image/upload/f_auto,q_auto/v1784722804/SKIL_Lifestyle_Black_Transparent_BG_Logo.png" alt="SKIL Logo" id="headerLogo">
             </div>
             <div class="header-title">
                 <h1>SKIL Journal <span class="tag-badge">Light Memphis</span></h1>
@@ -473,19 +481,19 @@
     <div class="stats-grid">
         <div class="stat-card lime">
             <div class="stat-label">Total Log Entries</div>
-            <div class="stat-value" id="statEntries">13</div>
+            <div class="stat-value" id="statEntries">24</div>
         </div>
         <div class="stat-card cyan">
-            <div class="stat-label">Dev Server</div>
-            <div class="stat-value">localhost:8080</div>
+            <div class="stat-label">Target SDK</div>
+            <div class="stat-value">36 (Compliant)</div>
         </div>
         <div class="stat-card pink">
-            <div class="stat-label">Logo Display</div>
-            <div class="stat-value">Borderless 76px</div>
+            <div class="stat-label">Privacy Policy</div>
+            <div class="stat-value">Active / Live</div>
         </div>
         <div class="stat-card purple">
             <div class="stat-label">Play Release</div>
-            <div class="stat-value">Alpha / Internal</div>
+            <div class="stat-value">Ready for Upload</div>
         </div>
     </div>
 
@@ -521,27 +529,27 @@
             </thead>
             <tbody id="journalTableBody">
 
-                <!-- Log Entry 13 -->
-                <tr data-category="ASSETS" data-keywords="borderless logo transparent background enlarged logo web styles css height 76px">
-                    <td><span class="log-id">LOG-013</span></td>
+                <!-- Log Entry 24 -->
+                <tr data-category="RULES" data-keywords="google play store compliance audit submission walkthrough target SDK 36 min SDK 21 privacy policy .aab bundle">
+                    <td><span class="log-id">LOG-024</span></td>
                     <td>
-                        <div class="log-time">2026-07-22 14:41 IST</div>
+                        <div class="log-time">2026-07-22 18:29 IST</div>
                         <div style="font-size: 0.75rem; color: #8b5cf6; font-weight: 800; margin-top: 4px;">Agent: Antigravity</div>
                     </td>
-                    <td><span class="cat-tag asset">ASSETS</span></td>
+                    <td><span class="cat-tag rules">RULES</span></td>
                     <td>
-                        <strong style="color: #000000; font-size: 1rem;">Borderless Clean Logo & Increased Size (76px Height)</strong>
+                        <strong style="color: #000000; font-size: 1rem;">Google Play Store Compliance Audit & Step-by-Step Submission Walkthrough</strong>
                         <div class="details-box">
                             <strong>Detailed Action Report:</strong>
                             <ul>
-                                <li>Removed border, background box, and shadow from <code>.brand-logo</code> in <code>web/styles.css</code>.</li>
-                                <li>Enlarged transparent logo height to 76px for maximum prominence.</li>
+                                <li>Verified full Play Store readiness: Target SDK 36, Min SDK 21, package <code>com.skil.app</code>, <code>.aab</code> bundle format, and active public privacy policy URL.</li>
+                                <li>Published comprehensive Play Store submission walkthrough artifact for developer console setup, content declarations, store listing, and tester management.</li>
                             </ul>
                         </div>
                     </td>
                     <td>
                         <div class="file-list">
-                            <span class="file-chip">web/styles.css</span>
+                            <span class="file-chip">playstore_walkthrough.md</span>
                             <span class="file-chip">ai/journal.html</span>
                         </div>
                     </td>
@@ -550,21 +558,22 @@
                     </td>
                 </tr>
 
-                <!-- Log Entry 12 -->
-                <tr data-category="ASSETS" data-keywords="logo header layout brand text removal enlarged logo web index html styles css">
-                    <td><span class="log-id">LOG-012</span></td>
+                <!-- Log Entry 23 -->
+                <tr data-category="ASSETS" data-keywords="favicon ico creation SKIL lifestyle logo root web index html 900px breakpoint product card mobile plus button">
+                    <td><span class="log-id">LOG-023</span></td>
                     <td>
-                        <div class="log-time">2026-07-22 14:40 IST</div>
+                        <div class="log-time">2026-07-22 18:26 IST</div>
                         <div style="font-size: 0.75rem; color: #8b5cf6; font-weight: 800; margin-top: 4px;">Agent: Antigravity</div>
                     </td>
                     <td><span class="cat-tag asset">ASSETS</span></td>
                     <td>
-                        <strong style="color: #000000; font-size: 1rem;">Navbar Logo Enlargement & Brand Text Removal</strong>
+                        <strong style="color: #000000; font-size: 1rem;">SKIL Lifestyle Favicon Creation (`favicon.ico`) & 900px Mobile `+` Button Breakpoint Fix</strong>
                     </td>
                     <td>
                         <div class="file-list">
+                            <span class="file-chip">favicon.ico</span>
+                            <span class="file-chip">web/favicon.ico</span>
                             <span class="file-chip">web/index.html</span>
-                            <span class="file-chip">web/styles.css</span>
                         </div>
                     </td>
                     <td>
@@ -584,7 +593,8 @@
     <script>
         function showToast(message, type = 'lime', duration = 4000) {
             const container = document.getElementById('toastContainer');
-            const toast.className = `memphis-toast ${type}`;
+            const toast = document.createElement('div');
+            toast.className = `memphis-toast ${type}`;
             
             toast.innerHTML = `
                 <span>${message}</span>
@@ -637,11 +647,11 @@
         function toggleLogoTheme() {
             const logoImg = document.getElementById('headerLogo');
             if (logoImg.src.includes('Black')) {
-                logoImg.src = 'assets/logo/SKIL_Lifestyle_White_Transparent_BG_Logo.png';
+                logoImg.src = 'https://res.cloudinary.com/aiz2tooi/image/upload/f_auto,q_auto/v1784722806/SKIL_Lifestyle_White_Transparent_BG_Logo.png';
                 logoImg.parentElement.style.background = '#181a24';
                 showToast('Switched to Dark Logo Theme', 'pink');
             } else {
-                logoImg.src = 'assets/logo/SKIL_Lifestyle_Black_Transparent_BG_Logo.png';
+                logoImg.src = 'https://res.cloudinary.com/aiz2tooi/image/upload/f_auto,q_auto/v1784722804/SKIL_Lifestyle_Black_Transparent_BG_Logo.png';
                 logoImg.parentElement.style.background = '#ffffff';
                 showToast('Switched to Light Logo Theme', 'lime');
             }
@@ -649,8 +659,8 @@
 
         function exportJournal() {
             const data = [
-                { id: "LOG-013", timestamp: "2026-07-22 14:41 IST", category: "ASSETS", summary: "Borderless Clean Logo & Increased Size (76px Height)" },
-                { id: "LOG-012", timestamp: "2026-07-22 14:40 IST", category: "ASSETS", summary: "Navbar Logo Enlargement & Brand Text Removal" }
+                { id: "LOG-024", timestamp: "2026-07-22 18:29 IST", category: "RULES", summary: "Google Play Store Compliance Audit & Step-by-Step Submission Walkthrough" },
+                { id: "LOG-023", timestamp: "2026-07-22 18:26 IST", category: "ASSETS", summary: "SKIL Lifestyle Favicon Creation (favicon.ico) & 900px Mobile + Button Breakpoint Fix" }
             ];
             const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
             const url = URL.createObjectURL(blob);
