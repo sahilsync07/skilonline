@@ -50,8 +50,8 @@ android {
         applicationId = "com.skil.app"
         minSdk = 21
         targetSdk = 36
-        versionCode = 100003
-        versionName = "1.0.2"
+        versionCode = (project.findProperty("versionCode") as? String)?.toInt() ?: 100003
+        versionName = (project.findProperty("versionName") as? String) ?: "1.0.3"
     }
 
     packaging {

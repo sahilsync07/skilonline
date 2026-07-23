@@ -31,6 +31,14 @@ jobs:
           gradle-version: "8.9"
           cache-disabled: true
 
+      - name: Calculate Dynamic Auto-Increment Version Code
+        run: |
+          AUTO_VERSION_CODE=$(( 100000 + ${{ github.run_number }} ))
+          AUTO_VERSION_NAME="1.0.${{ github.run_number }}"
+          echo "VERSION_CODE=$AUTO_VERSION_CODE" >> $GITHUB_ENV
+          echo "VERSION_NAME=$AUTO_VERSION_NAME" >> $GITHUB_ENV
+          echo "Generated Auto-Increment Version Code: $AUTO_VERSION_CODE ($AUTO_VERSION_NAME)"
+
       - name: Decode Release Keystore
         run: |
           mkdir -p android/composeApp
@@ -40,8 +48,8 @@ jobs:
         working-directory: android
         run: |
           set -o pipefail
-          gradle :composeApp:bundleRelease --stacktrace 2>&1 | tee /tmp/build.log
-          echo "BUILD SUCCEEDED"
+          gradle :composeApp:bundleRelease -PversionCode=${{ env.VERSION_CODE }} -PversionName="${{ env.VERSION_NAME }}" --stacktrace 2>&1 | tee /tmp/build.log
+          echo "BUILD SUCCEEDED WITH VERSION CODE ${{ env.VERSION_CODE }}"
 
       - name: Show build log on failure
         if: failure()
