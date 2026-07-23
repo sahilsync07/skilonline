@@ -12,6 +12,7 @@ concurrency:
 jobs:
   build-android:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     permissions:
       contents: write
 
@@ -64,9 +65,18 @@ jobs:
           name: skil-lifestyle-release-alpha-aab
           path: android/composeApp/build/outputs/bundle/release/*.aab
 
+      - name: Verify AAB exists
+        run: |
+          AAB_PATH=$(ls android/composeApp/build/outputs/bundle/release/*.aab || true)
+          if [ -z "$AAB_PATH" ]; then
+            echo "No AAB found!"
+            exit 1
+          fi
+          echo "Found AAB: $AAB_PATH"
+
       - name: Auto-Upload to Play Store (Alpha / Closed Testing Track)
         if: success()
-        uses: r0adkll/upload-google-play@v1.1.3
+        uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_JSON }}
           packageName: com.skil.app
