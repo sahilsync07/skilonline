@@ -73,4 +73,3 @@ jobs:
           releaseFiles: android/composeApp/build/outputs/bundle/release/*.aab
           track: alpha
           status: completed
-          changesNotSentForReview: true
