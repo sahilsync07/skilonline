@@ -11,7 +11,7 @@ data class Product(
     val category: String,
     val price: Double,
     val rating: String,
-    val iconEmoji: String,
+    val itemLabel: String,
     val badge: String
 )
 

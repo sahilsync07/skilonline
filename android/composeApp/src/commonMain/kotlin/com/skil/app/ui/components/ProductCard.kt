@@ -67,7 +67,7 @@ fun ProductCard(
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            // Emoji Placeholder Box
+            // Typography Badge Box (Rule 07 compliant, zero emojis)
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -76,7 +76,13 @@ fun ProductCard(
                     .border(width = 2.dp, color = Color.Black, shape = RoundedCornerShape(8.dp)),
                 contentAlignment = Alignment.Center
             ) {
-                Text(text = product.iconEmoji, fontSize = 48.sp)
+                Text(
+                    text = product.itemLabel.uppercase(),
+                    fontWeight = FontWeight.Black,
+                    fontSize = 18.sp,
+                    color = Color.Black,
+                    letterSpacing = 1.sp
+                )
             }
 
             Spacer(modifier = Modifier.height(10.dp))
@@ -89,7 +95,7 @@ fun ProductCard(
             )
 
             Text(
-                text = product.rating,
+                text = "RATING: ${product.rating}",
                 fontSize = 11.sp,
                 color = MemphisColors.RetroOrange,
                 fontWeight = FontWeight.Bold

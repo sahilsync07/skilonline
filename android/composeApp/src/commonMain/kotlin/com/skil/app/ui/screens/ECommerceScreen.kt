@@ -83,7 +83,7 @@ fun ECommerceScreen(
                         )
                     }
 
-                    // Cart FAB Trigger
+                    // Cart FAB Trigger (Rule 07 compliant typography pill)
                     Box(
                         modifier = Modifier
                             .background(MemphisColors.RetroCyan, shape = RoundedCornerShape(8.dp))
@@ -92,7 +92,12 @@ fun ECommerceScreen(
                             .padding(horizontal = 14.dp, vertical = 8.dp)
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text(text = "🛒 ", fontSize = 14.sp)
+                            Text(
+                                text = "CART: ",
+                                fontWeight = FontWeight.Black,
+                                fontSize = 12.sp,
+                                color = Color.Black
+                            )
                             Text(
                                 text = "${uiState.totalCartCount}",
                                 fontWeight = FontWeight.Black,

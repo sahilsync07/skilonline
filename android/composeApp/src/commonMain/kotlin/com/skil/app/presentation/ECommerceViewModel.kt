@@ -9,12 +9,12 @@ import kotlinx.coroutines.flow.update
 
 class ECommerceViewModel {
     private val initialProducts = listOf(
-        Product("prod-1", "SKIL Memphis Oversized Hoodie", "APPAREL", 89.0, "★★★★★", "🧥", "HOT DROP"),
-        Product("prod-2", "120Hz Velocity Retro Kicks", "FOOTWEAR", 149.0, "★★★★★", "👟", "LIMITED"),
-        Product("prod-3", "Cyber Neon Crossbody Bag", "ACCESSORIES", 45.0, "★★★★☆", "🎒", "NEW"),
-        Product("prod-4", "Brutalist Mechanical Keyboard", "TECH", 129.0, "★★★★★", "⌨️", "BEST SELLER"),
-        Product("prod-5", "SKIL Signature Graphic Tee", "APPAREL", 39.0, "★★★★☆", "👕", "POPULAR"),
-        Product("prod-6", "Lime Brutal Wireless Earbuds", "TECH", 79.0, "★★★★★", "🎧", "NEW")
+        Product("prod-1", "SKIL Memphis Oversized Hoodie", "APPAREL", 89.0, "5.0", "HOODIE", "HOT DROP"),
+        Product("prod-2", "120Hz Velocity Retro Kicks", "FOOTWEAR", 149.0, "5.0", "KICKS", "LIMITED"),
+        Product("prod-3", "Cyber Neon Crossbody Bag", "ACCESSORIES", 45.0, "4.8", "BAG", "NEW"),
+        Product("prod-4", "Brutalist Mechanical Keyboard", "TECH", 129.0, "5.0", "KEYS", "BEST SELLER"),
+        Product("prod-5", "SKIL Signature Graphic Tee", "APPAREL", 39.0, "4.7", "TEE", "POPULAR"),
+        Product("prod-6", "Lime Brutal Wireless Earbuds", "TECH", 79.0, "4.9", "EARBUDS", "NEW")
     )
 
     private val _uiState = MutableStateFlow(
