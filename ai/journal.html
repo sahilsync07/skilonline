@@ -529,6 +529,38 @@
             </thead>
             <tbody id="journalTableBody">
 
+                <!-- Log Entry 48 -->
+                <tr data-category="FIX" data-keywords="Version Code Reuse Fix Google Play Console Upload Single Track">
+                    <td><span class="log-id">LOG-048</span></td>
+                    <td>
+                        <div class="log-time">2026-07-23 23:28 IST</div>
+                        <div style="font-size: 0.75rem; color: #8b5cf6; font-weight: 800; margin-top: 4px;">Agent: Antigravity</div>
+                    </td>
+                    <td><span class="cat-tag fix" style="background: #ff3333; color: #ffffff; padding: 4px 8px; border-radius: 6px; font-weight: 800; font-size: 0.75rem; border: 1px solid #000;">FIX</span></td>
+                    <td>
+                        <strong style="color: #000000; font-size: 1rem;">Fix Play Store Version Code Reuse Error & Single-Track Upload</strong>
+                        <div class="details-box">
+                            <strong>Detailed Action Report:</strong>
+                            <ul>
+                                <li>Identified root cause of failure in run #2: <code>Version code 100002 has already been used</code>. In Google Play, a single <code>.aab</code> version code can only be uploaded once.</li>
+                                <li>Updated auto-increment version code formula to <code>AUTO_VERSION_CODE=$(( 100000 + (${{ github.run_number }} * 10) + ${{ github.run_attempt }} ))</code> to guarantee strictly increasing, non-colliding version codes.</li>
+                                <li>Configured single `upload-google-play` step targeting `internal` track per pipeline execution.</li>
+                                <li>Pushed commit <code>149caac</code> to GitHub and spawned verification subagent <code>f4a69bcb-37ea-4519-96da-f8a018fb7a4e</code>.</li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="font-family: monospace; font-size: 0.8rem; background: #eef2ff; padding: 8px; border-radius: 6px; border: 1px solid #000;">
+                            📄 .github/workflows/android-release.yml [MODIFY]
+                        </div>
+                    </td>
+                    <td>
+                        <span class="status-badge completed">
+                            <span>✔</span> SUCCESS
+                        </span>
+                    </td>
+                </tr>
+
                 <!-- Log Entry 47 -->
                 <tr data-category="ARCH" data-keywords="Unified Workflow Google Play API Edit Expired Race Condition Permanent Fix">
                     <td><span class="log-id">LOG-047</span></td>
