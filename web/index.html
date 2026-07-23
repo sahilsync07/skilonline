@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKIL Lifestyle - Dual Navbar E-Commerce</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="https://res.cloudinary.com/aiz2tooi/image/upload/f_auto,q_auto,w_180,h_180/v1784722804/SKIL_Lifestyle_Black_Transparent_BG_Logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Toast Notification Overlay (Rule 05 Compliant) -->
+    <div id="toastContainer"></div>
+
+    <!-- Announcement Bar -->
+    <div class="top-bar">
+        SUMMER DROP '26 IS LIVE &bull; FREE SHIPPING ON ORDERS OVER $100 &bull; USE CODE "SKIL26"
+    </div>
+
+    <!-- Dual Navbar 1: Top Brand & Partner Logo Bar -->
+    <header class="logo-navbar">
+        <a href="#" class="nav-brand">
+            <img src="https://res.cloudinary.com/aiz2tooi/image/upload/f_auto,q_auto/v1784722804/SKIL_Lifestyle_Black_Transparent_BG_Logo.png" alt="SKIL Lifestyle Logo" class="brand-logo-main">
+        </a>
+
+        <!-- Top Right Partner Logos Container -->
+        <div class="partner-logos-container">
+            <img src="https://res.cloudinary.com/aiz2tooi/image/upload/f_auto,q_auto/v1784722809/Ajanta_Transparent_Logo.png" alt="Ajanta Logo" class="partner-logo-item" title="Ajanta Official Partner">
+            <div class="partner-divider"></div>
+            <img src="https://res.cloudinary.com/aiz2tooi/image/upload/f_auto,q_auto/v1784722811/Xpania_Transparent_Logo.png" alt="Xpania Logo" class="partner-logo-item" title="Xpania Official Partner">
+        </div>
+    </header>
+
+    <!-- Dual Navbar 2: Navigation Controls & Cart (Cart Placed Beside Search Bar) -->
+    <nav class="controls-navbar">
+        <div class="controls-top-row">
+            <div class="search-input-wrapper">
+                <svg class="search-icon-inside" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" class="search-input" placeholder="Search products, kicks, tech..." onkeyup="handleSearch(this.value)">
+            </div>
+
+            <!-- Memphis Cart Button (Positioned Beside Search Input) -->
+            <button class="btn-cart" onclick="toggleCartDrawer()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                <span class="btn-cart-text">CART</span>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </button>
+        </div>
+
+        <div class="nav-cat-row">
+            <button class="nav-cat-pill active" onclick="setCategory('all', this)">ALL DROPS</button>
+            <button class="nav-cat-pill" onclick="setCategory('apparel', this)">APPAREL</button>
+            <button class="nav-cat-pill" onclick="setCategory('footwear', this)">FOOTWEAR</button>
+            <button class="nav-cat-pill" onclick="setCategory('tech', this)">TECH</button>
+            <button class="nav-cat-pill" onclick="setCategory('accessories', this)">ACCESSORIES</button>
+        </div>
+    </nav>
+
+    <!-- Hero Showcase Section -->
+    <div class="hero-container">
+        <div class="hero-banner">
+            <div class="hero-text">
+                <span class="hero-tag">EXCLUSIVE DROP</span>
+                <h1>SUPER FLUID STREETWEAR & TECH GEAR</h1>
+                <p>Engineered for maximum 120Hz performance, bold aesthetics, and high-impact everyday style.</p>
+                <button class="btn-hero" onclick="showToast('Browsing Summer 2026 Collection!', 'lime')">Shop Collection</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Products Grid -->
+    <div class="products-section">
+        <div class="section-title">
+            <span>Featured Products</span>
+        </div>
+        <div class="products-grid" id="productsContainer">
+            <!-- Dynamically Rendered by app.js -->
+        </div>
+    </div>
+
+    <!-- Cart Slide-Over Drawer -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCartDrawer()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="drawer-header">
+            <div class="drawer-title">YOUR SHOPPING CART</div>
+            <button class="btn-close-drawer" onclick="toggleCartDrawer()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+
+        <div class="drawer-body" id="drawerBody">
+            <!-- Dynamically Rendered Cart Items -->
+        </div>
+
+        <div class="drawer-footer">
+            <div class="cart-total-row">
+                <span>SUBTOTAL:</span>
+                <span id="cartTotalVal">$0</span>
+            </div>
+            <button class="btn-checkout" onclick="checkout()">Proceed To Checkout →</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

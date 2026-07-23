@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.skil.app",
+      "sha256_cert_fingerprints": [
+        "44:2B:9E:4E:AC:EE:9C:3C:30:77:8E:3B:4C:83:43:C7:AA:BA:E8:8F:33:80:EE:0D:07:7A:E1:B4:DD:2A:39:6B",
+        "26:74:E4:A7:76:8B:24:BB:2D:D8:4F:B2:E9:98:48:3A:52:99:D1:3A:BB:8B:D2:69:7E:6A:54:6C:8F:76:F7:C1"
+      ]
+    }
+  }
+]

@@ -1,40 +1,63 @@
-# 👑 SUPER ADMIN MASTER RULEBOOK
+# SUPER_ADMIN_RULES.md - SKIL Master Control Directives
 
-> **SKIL Lifestyle Multi-Platform Super Fluid Project System**
-> **Master Control Hub & AI Operating Protocol**
-
----
-
-## ⚡ Executive Mandate for ALL AI Agents
-
-> [!CRITICAL]
-> **MANDATORY INSTRUCTIONS (ENFORCED FOR ALL CHAT SESSIONS)**
-> Whether the user explicitly tags `@SUPER_ADMIN_RULES.md` or forgets to tag it, **ALL AI AGENTS MUST ADHERE TO THE FOLLOWING PROTOCOLS**:
->
-> 1. **FIRST STEP FOR NEW AI AGENTS**: Read [appended-context-window.html](file:///c:/Projects/skilonline/appended-context-window.html) immediately upon starting a turn to gain full context of the project before proceeding with any task.
-> 2. **JOURNAL EVERY CHAT UPDATE**: Log every file modification, architectural update, or chat interaction into [journal.html](file:///c:/Projects/skilonline/journal.html) with exact timestamp, status, and details in the Light-Mode Memphis Brutalist table layout.
-> 3. **UPDATE CONTEXT WINDOW**: Update [appended-context-window.html](file:///c:/Projects/skilonline/appended-context-window.html) at the end of execution to ensure seamless continuity for subsequent subagents or AI sessions.
-> 4. **STRICTLY BAN NATIVE BROWSER ALERTS**: Never use `window.alert()`. Use the custom Light Mode Memphis Toast notification system ([TOAST_NOTIFICATION_RULES.md](file:///c:/Projects/skilonline/rules/TOAST_NOTIFICATION_RULES.md)).
-> 5. **GOOGLE PLAY STORE SUBMISSION COMPLIANCE**: Maintain Target SDK 36, Min SDK 21, `.aab` format, and active privacy policy page ([PLAY_STORE_RULES.md](file:///c:/Projects/skilonline/rules/PLAY_STORE_RULES.md)).
+> **OPERATIONAL MANDATE FOR ALL AI AGENTS & WORKSPACE CONVERSATIONS**  
+> **Repository Owner**: `sahilsync07`  
+> **Repository**: `skilonline`  
+> **Project Scope**: SKIL Lifestyle Super Fluid App System (Web, Android Compose, Multiplatform)
 
 ---
 
-## 🧭 Rulebook Index & Redirect Map
-
-| Protocol # | Focus Area | Master Rule File | Description |
-| :--- | :--- | :--- | :--- |
-| **RULE 01** | **Journaling Protocol** | [JOURNAL_RULES.md](file:///c:/Projects/skilonline/rules/JOURNAL_RULES.md) | Log every chat update and file change in [journal.html](file:///c:/Projects/skilonline/journal.html) with timestamp and inline CSS/JS. |
-| **RULE 02** | **Dump Collector** | [DUMP_COLLECTOR_RULES.md](file:///c:/Projects/skilonline/rules/DUMP_COLLECTOR_RULES.md) | Monitor `content-temp-dump/` and auto-organize assets to standard project locations (`assets/`). |
-| **RULE 03** | **AI Context Window** | [CONTEXT_WINDOW_RULES.md](file:///c:/Projects/skilonline/rules/CONTEXT_WINDOW_RULES.md) | Maintain [appended-context-window.html](file:///c:/Projects/skilonline/appended-context-window.html) as active memory. **Must be read first by all new AI agents.** |
-| **RULE 04** | **Super Fluid Architecture** | [SUPER_FLUID_ARCHITECTURE.md](file:///c:/Projects/skilonline/rules/SUPER_FLUID_ARCHITECTURE.md) | Specs for 120Hz Super Fluid Android app engineered to scale to Web (Wasm), PC (JVM), and Mobile. |
-| **RULE 05** | **Toast & Notification System** | [TOAST_NOTIFICATION_RULES.md](file:///c:/Projects/skilonline/rules/TOAST_NOTIFICATION_RULES.md) | **STRICT BAN on `window.alert()`**. Mandates custom Light Mode Memphis Toast notifications with auto-timeout & manual `×` cross button. |
-| **RULE 06** | **Play Store Compliance** | [PLAY_STORE_RULES.md](file:///c:/Projects/skilonline/rules/PLAY_STORE_RULES.md) | Google Play Store requirements: Target SDK 36, Min SDK 21, `.aab` format, Privacy Policy ([privacy-policy.html](file:///c:/Projects/skilonline/privacy-policy.html)), 12-Tester rule. |
+## 🚨 1. Repository Layout Directive (STRICT RULE)
+The root directory (`c:\Projects\skilonline\`) MUST ONLY contain the following:
+1. `SUPER_ADMIN_RULES.md` (This master control document)
+2. `index.html` (GitHub Pages Root Router & Portal)
+3. `ai/` (Rules, memory logs, journal, app context, assets, privacy policy)
+4. `android/` (Native Android Kotlin & Jetpack Compose Multiplatform codebase)
+5. `web/` (Production Web Application: `index.html`, `styles.css`, `app.js`, assets)
 
 ---
 
-## 🛡️ Theme & Design Standard
+## ⚡ 2. Mandatory Step 1 Protocol (Agent Memory & Continuity)
+BEFORE performing any coding, file creation, or system modifications:
+- You **MUST** read [ai/appended-context-window.html](file:///c:/Projects/skilonline/ai/appended-context-window.html).
+- Verify the current workspace memory state, open logs, and task status.
 
-- **Default Theme**: Light Mode Memphis Brutalist based on [design-inspo.jpeg](file:///c:/Projects/skilonline/assets/design/design-inspo.jpeg).
-- **Canvas**: Clean Light Off-White (`#fafafa` / `#f4f5f8`) with subtle retro grid lines.
-- **Accents**: Neon Lime Yellow (`#e2fc52`), Memphis Pink (`#ff65a3`), Retro Cyan (`#00f0ff`), Drop Shadows (`5px 5px 0px #000`), Thick Black Borders (`3px solid #000`).
-- **Brand Logo**: SKIL Lifestyle Black Transparent Logo (`assets/logo/SKIL_Lifestyle_Black_Transparent_BG_Logo.png`).
+---
+
+## 📜 3. Eight Mandatory Rules for All AI Workflows
+
+### **Rule 01: Journaling Directive**
+After EVERY edit, build, or chat turn, you MUST log your work in [ai/journal.html](file:///c:/Projects/skilonline/ai/journal.html).
+- Use **Light Mode Memphis Brutalist** styling.
+- Include Log ID (`LOG-001`, `LOG-002`, etc.), timestamp, category tag, detailed changes, touched files, and status badge.
+
+### **Rule 02: Raw File Dump Processing**
+When raw asset files (logos, fonts, images) are dropped in raw dumps or `ai/dump/`:
+- Process and copy them into `ai/assets/` or `web/assets/` / production locations immediately.
+
+### **Rule 03: Context Window Updates**
+At the conclusion of every turn, update [ai/appended-context-window.html](file:///c:/Projects/skilonline/ai/appended-context-window.html) with a condensed digest of current progress.
+
+### **Rule 04: Super Fluidity (120Hz UI Standard)**
+Ensure cross-platform 120Hz super fluid performance across `android/` Compose Multiplatform and `web/` vanilla JS/CSS.
+
+### **Rule 05: Memphis Toast Notifications**
+NEVER use native browser `window.alert()`. Always use custom theme-based Memphis brutalist toast notifications with auto-timeout and manual `×` dismiss buttons.
+
+### **Rule 06: Play Store Submission Compliance**
+Maintain Android Target SDK 36, Min SDK 21, `.aab` bundle format, and active privacy policy ([ai/privacy-policy.html](file:///c:/Projects/skilonline/ai/privacy-policy.html)).
+
+### **Rule 07: No Emojis Standard (In-House Vector Icons)**
+NEVER use native OS emojis (e.g. 🧥, 👟, 🎒, 🛒, 🛍️, 🔥, 🎧, 📦) anywhere in the application UI, web components, Compose layouts, or system messages. Always use custom theme-based inline SVG / CSS vector icons or high-impact typography instead.
+
+### **Rule 08: Verification Subagent Directive (Mandatory Workflow Audit)**
+Whenever initiating, editing, or triggering background jobs, CI/CD pipelines, build steps, or system tasks:
+- You **MUST** spawn a specialized verification subagent (or background task/schedule monitor) to track, inspect, and verify the outcome of the action until 100% successful completion.
+- If a failure occurs, the subagent must immediately capture exact un-truncated failure logs and report back to resolve the issue before declaring success.
+
+---
+
+## 🔑 4. GitHub Credentials & Remote Sync
+- **GitHub Username**: `sriyasync`
+- **GitHub Password**: `Sriya@git07`
+- **Target Repository**: `https://github.com/sahilsync07/skilonline.git` (Branch: `main`)
