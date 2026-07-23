@@ -45,7 +45,7 @@ Ensure cross-platform 120Hz super fluid performance across `android/` Compose Mu
 NEVER use native browser `window.alert()`. Always use custom theme-based Memphis brutalist toast notifications with auto-timeout and manual `×` dismiss buttons.
 
 ### **Rule 06: Play Store Submission Compliance**
-Maintain Android Target SDK 36, Min SDK 21, `.aab` bundle format, and active privacy policy ([ai/privacy-policy.html](file:///c:/Projects/skilonline/ai/privacy-policy.html)).
+Maintain Android Target SDK 36, Min SDK 21, `.aab` bundle format, active privacy policy ([ai/privacy-policy.html](file:///c:/Projects/skilonline/ai/privacy-policy.html)), and a **single unified GitHub Actions workflow** (`android-release.yml`) for Play Store deployment. Multi-track deployment (Internal + Alpha) MUST be run sequentially inside one job to prevent Google Play API concurrent edit lock contention ("Edit expired" errors).
 
 ### **Rule 07: No Emojis Standard (In-House Vector Icons)**
 NEVER use native OS emojis (e.g. 🧥, 👟, 🎒, 🛒, 🛍️, 🔥, 🎧, 📦) anywhere in the application UI, web components, Compose layouts, or system messages. Always use custom theme-based inline SVG / CSS vector icons or high-impact typography instead.

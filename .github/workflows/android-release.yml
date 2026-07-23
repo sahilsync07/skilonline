@@ -1,18 +1,20 @@
-name: Build and Release Android App (Closed Testing / Alpha Track)
+name: Build and Release Android App (All Tracks)
 
 on:
   push:
     branches: [ main ]
   workflow_dispatch:
 
+# CRITICAL: Single concurrency group ensures only ONE Play Console
+# edit session exists at a time, permanently preventing "Edit expired" errors.
 concurrency:
-  group: google-play-deploy-skil-closed
+  group: google-play-deploy-skil-unified
   cancel-in-progress: false
 
 jobs:
   build-android:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     permissions:
       contents: write
 
@@ -62,7 +64,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: skil-lifestyle-release-alpha-aab
+          name: skil-lifestyle-release-aab
           path: android/composeApp/build/outputs/bundle/release/*.aab
 
       - name: Verify AAB exists
@@ -74,7 +76,24 @@ jobs:
           fi
           echo "Found AAB: $AAB_PATH"
 
-      - name: Auto-Upload to Play Store (Alpha / Closed Testing Track)
+      # ---------------------------------------------------------------
+      # SEQUENTIAL UPLOADS: Internal first, then Alpha.
+      # Google Play API allows only ONE active Edit per app.
+      # Running these in sequence within the SAME job guarantees
+      # no edit contention. This is the PERMANENT fix.
+      # ---------------------------------------------------------------
+
+      - name: Upload to Play Store - Internal Track
+        if: success()
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_JSON }}
+          packageName: com.skil.app
+          releaseFiles: android/composeApp/build/outputs/bundle/release/*.aab
+          track: internal
+          status: completed
+
+      - name: Upload to Play Store - Alpha Track (Closed Testing)
         if: success()
         uses: r0adkll/upload-google-play@v1
         with:
