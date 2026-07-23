@@ -32,7 +32,15 @@ jobs:
       - name: Build Release App Bundle (.aab)
         working-directory: android
         run: |
-          gradle :composeApp:bundleRelease --stacktrace --info 2>&1 | tail -200
+          set -o pipefail
+          gradle :composeApp:bundleRelease --stacktrace 2>&1 | tee /tmp/build.log
+          echo "BUILD SUCCEEDED"
+
+      - name: Show build log on failure
+        if: failure()
+        run: |
+          echo "=== LAST 300 LINES OF BUILD LOG ==="
+          tail -300 /tmp/build.log || echo "No build log found"
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
