@@ -32,7 +32,7 @@ jobs:
       - name: Build Release App Bundle (.aab)
         working-directory: android
         run: |
-          gradle :composeApp:bundleRelease --stacktrace
+          gradle :composeApp:bundleRelease --stacktrace --info 2>&1 | tail -200
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
