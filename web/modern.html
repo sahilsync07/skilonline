@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKIL Lifestyle — Modern Light Experience</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="modern.css">
+</head>
+<body>
+    <div id="toastContainer"></div>
+
+    <header class="page-header">
+        <div class="brand-panel">
+            <img src="assets/logo/SKIL_Lifestyle_Black_Transparent_BG_Logo.png" alt="SKIL Lifestyle Logo" class="brand-mark">
+            <div>
+                <p class="brand-eyebrow">SKIL Lifestyle LLP</p>
+                <p class="brand-subtitle">Visakhapatnam • Andhra Pradesh</p>
+            </div>
+        </div>
+
+        <div class="header-actions">
+            <a class="nav-link" href="index.html">View legacy UI</a>
+            <button class="btn-outline" onclick="toggleCartDrawer()">
+                <span class="cart-label">Cart</span>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-panel">
+            <div class="hero-copy">
+                <span class="eyebrow">Premium Design, Modern Drop</span>
+                <h1>Light, elevated retail for discerning style.</h1>
+                <p>Experience a refined daily shopping destination inspired by SKIL’s signature branding, clean lines, and premium gold accents.</p>
+                <div class="hero-actions">
+                    <button class="btn-primary" onclick="showToast('Browsing the new SKIL collection', 'lime')">Explore Collection</button>
+                    <button class="btn-secondary" onclick="toggleCartDrawer()">Open Cart</button>
+                </div>
+            </div>
+            <div class="hero-panel-card">
+                <div class="hero-card-badge">NEW RELEASE</div>
+                <div class="hero-card-copy">
+                    <p class="hero-card-eyebrow">Super Stockist of</p>
+                    <div class="partner-logos-grid">
+                        <img src="assets/logo/Ajanta_Transparent_Logo.png" alt="Ajanta Shoes" class="partner-logo partner-logo-large">
+                        <img src="assets/logo/Xpania_Transparent_Logo.png" alt="Xpania" class="partner-logo partner-logo-large">
+                    </div>
+                    <p class="hero-card-detail">Luxury footwear, premium craftsmanship, modern comfort.</p>
+                </div>
+                <div class="hero-card-footer">
+                    <span>Live inventory</span>
+                    <span>Fast checkout</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="search-filters">
+            <div class="search-card">
+                <label class="field-label" for="searchInput">Search products</label>
+                <div class="search-field">
+                    <input id="searchInput" type="text" placeholder="Search apparel, footwear, tech, accessories..." onkeyup="handleSearch(this.value)">
+                </div>
+            </div>
+            <div class="category-card">
+                <p class="field-label">Shop by category</p>
+                <div class="category-list">
+                    <button class="nav-cat-pill active" onclick="setCategory('all', this)">All Drops</button>
+                    <button class="nav-cat-pill" onclick="setCategory('apparel', this)">Apparel</button>
+                    <button class="nav-cat-pill" onclick="setCategory('footwear', this)">Footwear</button>
+                    <button class="nav-cat-pill" onclick="setCategory('tech', this)">Tech</button>
+                    <button class="nav-cat-pill" onclick="setCategory('accessories', this)">Accessories</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="products-section">
+            <div class="section-heading">
+                <div>
+                    <p class="section-eyebrow">Featured products</p>
+                    <h2>Curated essentials for modern living.</h2>
+                </div>
+                <div class="section-meta">
+                    <span>8 items</span>
+                    <span>Fast shipping</span>
+                </div>
+            </div>
+            <div class="products-grid" id="productsContainer"></div>
+        </section>
+    </main>
+
+    <aside class="cart-overlay" id="cartOverlay" onclick="toggleCartDrawer()"></aside>
+    <aside class="cart-drawer" id="cartDrawer">
+        <div class="drawer-header">
+            <div>
+                <p class="small-eyebrow">Your basket</p>
+                <h3>Shopping summary</h3>
+            </div>
+            <button class="close-button" onclick="toggleCartDrawer()">×</button>
+        </div>
+        <div class="drawer-body" id="drawerBody"></div>
+        <div class="drawer-footer">
+            <div class="drawer-total">
+                <span>Subtotal</span>
+                <strong id="cartTotalVal">$0</strong>
+            </div>
+            <button class="btn-primary" onclick="checkout()">Proceed to checkout</button>
+        </div>
+    </aside>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -69,6 +69,10 @@ class ECommerceViewModel {
         _uiState.update { it.copy(isToastVisible = false) }
     }
 
+    fun showToast(message: String) {
+        _uiState.update { it.copy(isToastVisible = true, toastMessage = message) }
+    }
+
     fun checkout() {
         _uiState.update { currentState ->
             val total = currentState.totalCartAmount

@@ -529,6 +529,37 @@
             </thead>
             <tbody id="journalTableBody">
 
+                <!-- Log Entry 51 -->
+                <tr data-category="FIX" data-keywords="Android CI/CD Build Failure Kotlin Compilation Error ViewModel showToast">
+                    <td><span class="log-id">LOG-051</span></td>
+                    <td>
+                        <div class="log-time">2026-07-24 01:26 IST</div>
+                        <div style="font-size: 0.75rem; color: #8b5cf6; font-weight: 800; margin-top: 4px;">Agent: Antigravity</div>
+                    </td>
+                    <td><span class="cat-tag fix" style="background: #ef4444; color: #ffffff; padding: 4px 8px; border-radius: 6px; font-weight: 800; font-size: 0.75rem; border: 1px solid #000;">FIX</span></td>
+                    <td>
+                        <strong style="color: #000000; font-size: 1rem;">Fix Android CI/CD Compilation Error (Missing showToast Method)</strong>
+                        <div class="details-box">
+                            <strong>Detailed Action Report:</strong>
+                            <ul>
+                                <li>Investigated Android GitHub Actions workflow failure which prevented the updated Web-aligned Compose UI (LOG-050) from compiling and deploying.</li>
+                                <li>Identified root cause: <code>ECommerceScreen.kt</code> called <code>viewModel.showToast(...)</code> but the <code>showToast(message: String)</code> method was missing from <code>ECommerceViewModel.kt</code>.</li>
+                                <li>Implemented the missing method in <code>ECommerceViewModel.kt</code>, fully unblocking the Android build pipeline so the updated Web-matched UI is now published to the Play Console.</li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="font-family: monospace; font-size: 0.8rem; background: #eef2ff; padding: 8px; border-radius: 6px; border: 1px solid #000;">
+                            📄 ECommerceViewModel.kt [MODIFY]
+                        </div>
+                    </td>
+                    <td>
+                        <span class="status-badge completed">
+                            <span>✔</span> SUCCESS
+                        </span>
+                    </td>
+                </tr>
+
                 <!-- Log Entry 50 -->
                 <tr data-category="UI" data-keywords="Android Compose Web Phone UI Alignment Vector Icons Dual Navbar Hero Paragraph Shop Collection Button">
                     <td><span class="log-id">LOG-050</span></td>
