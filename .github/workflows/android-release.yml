@@ -1,14 +1,12 @@
-name: Build and Release Android App (All Tracks)
+name: Build and Release Android App (Play Store)
 
 on:
   push:
     branches: [ main ]
   workflow_dispatch:
 
-# CRITICAL: Single concurrency group ensures only ONE Play Console
-# edit session exists at a time, permanently preventing "Edit expired" errors.
 concurrency:
-  group: google-play-deploy-skil-unified
+  group: google-play-deploy-skil
   cancel-in-progress: false
 
 jobs:
@@ -36,7 +34,7 @@ jobs:
 
       - name: Calculate Dynamic Auto-Increment Version Code
         run: |
-          AUTO_VERSION_CODE=$(( 100000 + ${{ github.run_number }} ))
+          AUTO_VERSION_CODE=$(( 100000 + (${{ github.run_number }} * 10) + ${{ github.run_attempt }} ))
           AUTO_VERSION_NAME="1.0.${{ github.run_number }}"
           echo "VERSION_CODE=$AUTO_VERSION_CODE" >> $GITHUB_ENV
           echo "VERSION_NAME=$AUTO_VERSION_NAME" >> $GITHUB_ENV
@@ -76,14 +74,7 @@ jobs:
           fi
           echo "Found AAB: $AAB_PATH"
 
-      # ---------------------------------------------------------------
-      # SEQUENTIAL UPLOADS: Internal first, then Alpha.
-      # Google Play API allows only ONE active Edit per app.
-      # Running these in sequence within the SAME job guarantees
-      # no edit contention. This is the PERMANENT fix.
-      # ---------------------------------------------------------------
-
-      - name: Upload to Play Store - Internal Track
+      - name: Auto-Upload to Play Store (Internal Track)
         if: success()
         uses: r0adkll/upload-google-play@v1
         with:
@@ -91,14 +82,4 @@ jobs:
           packageName: com.skil.app
           releaseFiles: android/composeApp/build/outputs/bundle/release/*.aab
           track: internal
-          status: completed
-
-      - name: Upload to Play Store - Alpha Track (Closed Testing)
-        if: success()
-        uses: r0adkll/upload-google-play@v1
-        with:
-          serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_JSON }}
-          packageName: com.skil.app
-          releaseFiles: android/composeApp/build/outputs/bundle/release/*.aab
-          track: alpha
           status: completed
