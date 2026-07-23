@@ -13,6 +13,7 @@ object MemphisColors {
     // Core Accent Colors
     val LimeYellow = Color(0xFFE2FC52)
     val MemphisPink = Color(0xFFFF65A3)
+    val HotPink = Color(0xFFFF2A85)
     val RetroCyan = Color(0xFF00F0FF)
     val ElectricPurple = Color(0xFF9B51E0)
     val RetroOrange = Color(0xFFFF9F43)
