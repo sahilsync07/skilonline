@@ -24,7 +24,7 @@ BEFORE performing any coding, file creation, or system modifications:
 
 ---
 
-## 📜 3. Seven Mandatory Rules for All AI Workflows
+## 📜 3. Eight Mandatory Rules for All AI Workflows
 
 ### **Rule 01: Journaling Directive**
 After EVERY edit, build, or chat turn, you MUST log your work in [ai/journal.html](file:///c:/Projects/skilonline/ai/journal.html).
@@ -49,6 +49,11 @@ Maintain Android Target SDK 36, Min SDK 21, `.aab` bundle format, and active pri
 
 ### **Rule 07: No Emojis Standard (In-House Vector Icons)**
 NEVER use native OS emojis (e.g. 🧥, 👟, 🎒, 🛒, 🛍️, 🔥, 🎧, 📦) anywhere in the application UI, web components, Compose layouts, or system messages. Always use custom theme-based inline SVG / CSS vector icons or high-impact typography instead.
+
+### **Rule 08: Verification Subagent Directive (Mandatory Workflow Audit)**
+Whenever initiating, editing, or triggering background jobs, CI/CD pipelines, build steps, or system tasks:
+- You **MUST** spawn a specialized verification subagent (or background task/schedule monitor) to track, inspect, and verify the outcome of the action until 100% successful completion.
+- If a failure occurs, the subagent must immediately capture exact un-truncated failure logs and report back to resolve the issue before declaring success.
 
 ---
 
