@@ -20,7 +20,9 @@ kotlin {
             implementation(compose.foundation)
             implementation(compose.material3)
             implementation(compose.ui)
+            implementation(compose.animation)
             implementation(compose.components.resources)
+            implementation(libs.kotlinx.coroutines.core)
         }
         androidMain.dependencies {
             implementation(libs.androidx.activity.compose)
@@ -31,12 +33,12 @@ kotlin {
 
 android {
     namespace = "com.skil.app"
-    compileSdk = 36
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.skil.app"
         minSdk = 21
-        targetSdk = 36
+        targetSdk = 34
         versionCode = 100001
         versionName = "1.0.0"
     }
