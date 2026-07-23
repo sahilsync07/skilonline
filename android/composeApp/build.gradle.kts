@@ -32,7 +32,7 @@ kotlin {
 
 android {
     namespace = "com.skil.app"
-    compileSdk = 34
+    compileSdk = 36
 
     signingConfigs {
         create("release") {
@@ -49,9 +49,9 @@ android {
     defaultConfig {
         applicationId = "com.skil.app"
         minSdk = 21
-        targetSdk = 34
-        versionCode = 100001
-        versionName = "1.0.0"
+        targetSdk = 36
+        versionCode = 100002
+        versionName = "1.0.1"
     }
 
     packaging {
