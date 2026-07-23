@@ -34,6 +34,18 @@ android {
     namespace = "com.skil.app"
     compileSdk = 34
 
+    signingConfigs {
+        create("release") {
+            val keyFile = file("skil-release-key.jks")
+            if (keyFile.exists()) {
+                storeFile = keyFile
+                storePassword = "skillifestyle"
+                keyAlias = "skilkey"
+                keyPassword = "skillifestyle"
+            }
+        }
+    }
+
     defaultConfig {
         applicationId = "com.skil.app"
         minSdk = 21
@@ -51,7 +63,12 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            signingConfig = signingConfigs.getByName("debug")
+            val keyFile = file("skil-release-key.jks")
+            if (keyFile.exists()) {
+                signingConfig = signingConfigs.getByName("release")
+            } else {
+                signingConfig = signingConfigs.getByName("debug")
+            }
         }
     }
 
