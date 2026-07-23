@@ -21,7 +21,6 @@ kotlin {
             implementation(compose.material3)
             implementation(compose.ui)
             implementation(compose.animation)
-            implementation(compose.components.resources)
             implementation(libs.kotlinx.coroutines.core)
         }
         androidMain.dependencies {
