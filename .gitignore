@@ -1,5 +1,8 @@
 # Build & Temporary Files
 .gradle/
+.kotlin/
+kotlin-js-store/
+android/kotlin-js-store/
 build/
 composeApp/build/
 *.apk

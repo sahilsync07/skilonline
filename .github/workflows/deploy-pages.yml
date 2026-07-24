@@ -3,6 +3,7 @@ name: Build and Deploy Web & Documentation to GitHub Pages
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -10,14 +11,48 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy Dashboards & Preview Pages to gh-pages
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+
+      - name: Setup Gradle 8.9
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: "8.9"
+          cache-disabled: true
+
+      - name: Build Compose Multiplatform WASM Web App
+        working-directory: android
+        run: |
+          set -o pipefail
+          ./gradlew :composeApp:wasmJsBrowserDistribution --stacktrace 2>&1 | tee /tmp/wasm_build.log
+
+      - name: Assemble GitHub Pages Distribution Payload
+        run: |
+          mkdir -p public_dist
+          # Copy compiled Compose WASM web application
+          cp -r android/composeApp/build/dist/wasmJs/productionExecutable/* public_dist/
+          # Copy AI dashboards and context documentation
+          mkdir -p public_dist/ai
+          cp -r ai/* public_dist/ai/
+          # Copy root metadata
+          cp SUPER_ADMIN_RULES.md public_dist/ || true
+          cp README.md public_dist/ || true
+          echo "Assembled Payload Directory Contents:"
+          ls -la public_dist/
+
+      - name: Deploy to GitHub Pages Branch (gh-pages)
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
+          publish_dir: ./public_dist
           publish_branch: gh-pages
           force_orphan: true
