@@ -45,16 +45,16 @@
     <div class="card">
         <h2>📌 Active Project State & Architecture</h2>
         <div class="status-pill status-completed">CI/CD & UI Status</div>
-        <p><strong>Android & Web UI 100% Aligned:</strong> Rewrote <code>ECommerceScreen.kt</code>, <code>ProductCard.kt</code>, and created <code>MemphisIcons.kt</code>. Android now perfectly replicates the Web phone layout (Lime top bar, SKIL logo header with Ajanta/Xpania partner badge, side-by-side search + cart row with vector icons, full hero card with subtext & button, and price/add button product cards).</p>
-        <p><strong>Google Play Pipeline:</strong> Consolidated single-track upload (`track: internal`) via <code>android-release.yml</code>. Prevents edit lock collisions and duplicate version code errors.</p>
+        <p><strong>Android & Web UI 100% Aligned:</strong> Migrated to a Single-Source UI Architecture using Compose Multiplatform WASM. The legacy web codebase is archived in <code>web-legacy/</code>, and all UI code (Android and Web) is now shared from <code>android/composeApp/src/commonMain</code>.</p>
+        <p><strong>Google Play & GitHub Pages Pipeline:</strong> Both pipelines unified to build from the shared Kotlin module. GitHub Actions correctly deploys the generated WASM bundle (<code>wasmJsBrowserDistribution</code>) directly to GitHub Pages and Google Play.</p>
         <ul>
-            <li><strong>Root Directory Structure:</strong> strictly <code>SUPER_ADMIN_RULES.md</code>, <code>index.html</code>, <code>ai/</code>, <code>android/</code>, <code>web/</code>.</li>
-            <li><strong>Web App Target:</strong> <code>web/index.html</code>, <code>web/styles.css</code>, <code>web/app.js</code> running on local HTTP server <code>http://localhost:8080</code>.</li>
+            <li><strong>Root Directory Structure:</strong> <code>SUPER_ADMIN_RULES.md</code>, <code>index.html</code>, <code>ai/</code>, <code>android/</code>, <code>web-legacy/</code>.</li>
+            <li><strong>Web App Target:</strong> Compiled via Kotlin WASM/JS and deployed through <code>deploy-pages.yml</code>.</li>
             <li><strong>GitHub Pages Router:</strong> Root <code>index.html</code> redirecting live at <code>https://sahilsync07.github.io/skilonline/</code>.</li>
             <li><strong>Media Assets CDN:</strong> Cloudinary Cloud Name <code>aiz2tooi</code>, Unsigned Preset <code>skilonline</code> with automatic WebP/AVIF 120Hz URL optimization (<code>f_auto,q_auto</code>).</li>
             <li><strong>Scrollbar System:</strong> Sleek 6px/8px Neon Lime Green (<code>#e2fc52</code>) brutalist scrollbars applied globally across <code>html, body, *</code>.</li>
             <li><strong>GitHub Repository:</strong> <code>sahilsync07/skilonline</code> on branch <code>main</code>.</li>
-            <li><strong>Rule 08 Verification Audit:</strong> Verification Subagent <code>f4a69bcb-37ea-4519-96da-f8a018fb7a4e</code> active to audit commit <code>149caac</code>.</li>
+            <li><strong>Rule 08 Verification Audit:</strong> Verification Subagent audited commit <code>5049c9e</code> (fixed <code>gradlew</code> permissions). GitHub Actions CI/CD workflows passed successfully.</li>
         </ul>
     </div>
 </body>

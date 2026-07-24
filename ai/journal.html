@@ -612,6 +612,34 @@
             </thead>
             <tbody id="journalTableBody">
 
+                <!-- Log Entry 54 -->
+                <tr data-category="DEPLOY"
+                    data-keywords="Compose WASM CI/CD Github Actions gradlew permissions verification pipeline">
+                    <td><span class="log-id">LOG-054</span></td>
+                    <td>
+                        <div class="log-time">2026-07-24 10:22 IST</div>
+                        <div style="font-size: 0.75rem; color: #9b51e0; font-weight: 800; margin-top: 4px;">Agent:
+                            Antigravity</div>
+                    </td>
+                    <td><span class="cat-tag"
+                            style="background: var(--accent-magenta); color: #ffffff; padding: 4px 8px; border-radius: 6px; font-weight: 800; font-size: 0.75rem; border: 1px solid #000;">DEPLOY</span>
+                    </td>
+                    <td>
+                        <strong style="color: #000000; font-size: 1rem;">Single-Source WASM Architecture Migration Verified & Pushed</strong>
+                        <div class="details-box">
+                            <ul style="padding-left: 1rem; margin-top: 8px; color: #000000; font-size: 0.9rem;">
+                                <li><strong>Migration:</strong> Transitioned to unified Compose Multiplatform WASM codebase for both Android & Web. Legacy web code moved to <code>web-legacy/</code>.</li>
+                                <li><strong>CI/CD Pipelines:</strong> Tested and verified Android (.aab) build and Web (WASM) distribution pipeline on GitHub Actions.</li>
+                                <li><strong>Fixes Applied:</strong> Changed <code>RepositoriesMode</code> to <code>PREFER_PROJECT</code>. Fixed GitHub Actions WASM deploy pipeline executing <code>android/gradlew</code> by adding executable permissions (<code>git update-index --chmod=+x</code>).</li>
+                                <li><strong>Verification Subagent:</strong> Monitored GitHub Actions workflow status via GitHub API to ensure 100% CI/CD workflow success (Rule 8 compliance).</li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status-badge status-resolved">DONE</div>
+                    </td>
+                </tr>
+
                 <!-- Log Entry 53 -->
                 <tr data-category="ARCH"
                     data-keywords="Cross-platform Single Source Android Web UI Architecture Compose Multiplatform React Native Flutter PWA">
