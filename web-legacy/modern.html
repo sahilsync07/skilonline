@@ -10,81 +10,66 @@
 <body>
     <div id="toastContainer"></div>
 
-    <header class="page-header">
-        <div class="brand-panel">
-            <img src="assets/logo/SKIL_Lifestyle_Black_Transparent_BG_Logo.png" alt="SKIL Lifestyle Logo" class="brand-mark">
-            <div>
-                <p class="brand-eyebrow">SKIL Lifestyle LLP</p>
-                <p class="brand-subtitle">Visakhapatnam • Andhra Pradesh</p>
-            </div>
-        </div>
+    <!-- Announcement Bar -->
+    <div class="top-bar">
+        SUMMER DROP '26 IS LIVE &bull; FREE SHIPPING ON ORDERS OVER $100 &bull; USE CODE "SKIL26"
+    </div>
 
-        <div class="header-actions">
-            <a class="nav-link" href="index.html">View legacy UI</a>
-            <button class="btn-outline" onclick="toggleCartDrawer()">
-                <span class="cart-label">Cart</span>
-                <span class="cart-badge" id="cartBadge">0</span>
-            </button>
+    <!-- Dual Navbar 1: Top Brand & Partner Logo Bar -->
+    <header class="logo-navbar">
+        <a href="#" class="nav-brand">
+            <img src="https://res.cloudinary.com/aiz2tooi/image/upload/f_auto,q_auto/v1784722804/SKIL_Lifestyle_Black_Transparent_BG_Logo.png" alt="SKIL Lifestyle Logo" class="brand-logo-main">
+        </a>
+        <div class="partner-logos-container">
+            <img src="https://res.cloudinary.com/aiz2tooi/image/upload/f_auto,q_auto/v1784722809/Ajanta_Transparent_Logo.png" alt="Ajanta Logo" class="partner-logo-item" title="Ajanta Official Partner">
+            <div class="partner-divider"></div>
+            <img src="https://res.cloudinary.com/aiz2tooi/image/upload/f_auto,q_auto/v1784722811/Xpania_Transparent_Logo.png" alt="Xpania Logo" class="partner-logo-item" title="Xpania Official Partner">
         </div>
     </header>
 
+    <!-- Dual Navbar 2: Navigation Controls & Cart -->
+    <nav class="controls-navbar">
+        <div class="controls-top-row">
+            <div class="search-input-wrapper">
+                <svg class="search-icon-inside" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input id="searchInput" type="text" class="search-input" placeholder="Search products, kicks, tech..." onkeyup="handleSearch(this.value)">
+            </div>
+            <button class="btn-cart" onclick="toggleCartDrawer()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                <span class="btn-cart-text">CART</span>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </button>
+        </div>
+
+        <div class="nav-cat-row">
+            <button class="nav-cat-pill active" onclick="setCategory('all', this)">ALL DROPS</button>
+            <button class="nav-cat-pill" onclick="setCategory('apparel', this)">APPAREL</button>
+            <button class="nav-cat-pill" onclick="setCategory('footwear', this)">FOOTWEAR</button>
+            <button class="nav-cat-pill" onclick="setCategory('tech', this)">TECH</button>
+            <button class="nav-cat-pill" onclick="setCategory('accessories', this)">ACCESSORIES</button>
+        </div>
+    </nav>
+
     <main>
-        <section class="hero-panel">
-            <div class="hero-copy">
-                <span class="eyebrow">Premium Design, Modern Drop</span>
-                <h1>Light, elevated retail for discerning style.</h1>
-                <p>Experience a refined daily shopping destination inspired by SKIL’s signature branding, clean lines, and premium gold accents.</p>
-                <div class="hero-actions">
-                    <button class="btn-primary" onclick="showToast('Browsing the new SKIL collection', 'lime')">Explore Collection</button>
-                    <button class="btn-secondary" onclick="toggleCartDrawer()">Open Cart</button>
-                </div>
-            </div>
-            <div class="hero-panel-card">
-                <div class="hero-card-badge">NEW RELEASE</div>
-                <div class="hero-card-copy">
-                    <p class="hero-card-eyebrow">Super Stockist of</p>
-                    <div class="partner-logos-grid">
-                        <img src="assets/logo/Ajanta_Transparent_Logo.png" alt="Ajanta Shoes" class="partner-logo partner-logo-large">
-                        <img src="assets/logo/Xpania_Transparent_Logo.png" alt="Xpania" class="partner-logo partner-logo-large">
+        <!-- Hero Showcase Section -->
+        <div class="hero-container">
+            <div class="hero-banner">
+                <div class="hero-text">
+                    <span class="hero-tag">PREMIUM DESIGN, MODERN DROP</span>
+                    <h1>Light, elevated retail for discerning style.</h1>
+                    <p>Experience a refined daily shopping destination inspired by SKIL’s signature branding, clean lines, and premium gold accents.</p>
+                    <div class="hero-actions">
+                        <button class="btn-primary" onclick="showToast('Browsing the new SKIL collection', 'lime')">Explore Collection</button>
+                        <a class="btn-secondary" href="index.html" style="text-decoration: none; display: inline-flex; align-items: center;">View Legacy UI</a>
                     </div>
-                    <p class="hero-card-detail">Luxury footwear, premium craftsmanship, modern comfort.</p>
-                </div>
-                <div class="hero-card-footer">
-                    <span>Live inventory</span>
-                    <span>Fast checkout</span>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <section class="search-filters">
-            <div class="search-card">
-                <label class="field-label" for="searchInput">Search products</label>
-                <div class="search-field">
-                    <input id="searchInput" type="text" placeholder="Search apparel, footwear, tech, accessories..." onkeyup="handleSearch(this.value)">
-                </div>
-            </div>
-            <div class="category-card">
-                <p class="field-label">Shop by category</p>
-                <div class="category-list">
-                    <button class="nav-cat-pill active" onclick="setCategory('all', this)">All Drops</button>
-                    <button class="nav-cat-pill" onclick="setCategory('apparel', this)">Apparel</button>
-                    <button class="nav-cat-pill" onclick="setCategory('footwear', this)">Footwear</button>
-                    <button class="nav-cat-pill" onclick="setCategory('tech', this)">Tech</button>
-                    <button class="nav-cat-pill" onclick="setCategory('accessories', this)">Accessories</button>
-                </div>
-            </div>
-        </section>
-
+        <!-- Products Grid -->
         <section class="products-section">
-            <div class="section-heading">
-                <div>
-                    <p class="section-eyebrow">Featured products</p>
-                    <h2>Curated essentials for modern living.</h2>
-                </div>
-                <div class="section-meta">
-                    <span>8 items</span>
-                    <span>Fast shipping</span>
-                </div>
+            <div class="section-title">
+                <span>Curated essentials for modern living.</span>
             </div>
             <div class="products-grid" id="productsContainer"></div>
         </section>
