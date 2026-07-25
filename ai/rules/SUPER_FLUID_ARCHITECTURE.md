@@ -43,7 +43,7 @@ Launch the app instantly in Chrome / Edge / Firefox using WebAssembly (Wasm):
 ```
 
 ### Option 3: Standalone Interactive HTML Preview (`preview.html`)
-Open `preview.html` directly in any web browser on your laptop for instant visual inspection of the Light Mode Memphis UI components!
+Open `preview.html` directly in any web browser on your laptop for instant visual inspection of the Modern Elegant Light UI components!
 
 ### Option 4: Android Studio Composable `@Preview`
 Open any `@Composable` file in Android Studio or JetBrains Fleet and toggle the split **Design / Preview** pane.

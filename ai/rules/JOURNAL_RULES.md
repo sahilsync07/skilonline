@@ -17,10 +17,10 @@ To ensure total transparency, auditability, and historical tracking of every upd
    - MUST use **inline CSS** and **inline JavaScript**.
    - No external CSS framework dependencies (e.g. Tailwind or Bootstrap CDN).
 3. **Visual Aesthetic**:
-   - Must adhere to the **Memphis / Neo-Brutalist 80s/90s style** defined in `assets/design/design-inspo.jpeg`.
-   - Dark background (`#0f1015` grid pattern), high-contrast neon accents (`#e2fc52` Lime, `#ff65a3` Memphis Pink, `#00f0ff` Cyan, `#9b51e0` Purple).
-   - Thick black borders (`3px solid #000`), hard offset drop-shadows (`5px 5px 0px #000`).
-   - SKIL Lifestyle transparent logo in header with light/dark toggle capability.
+   - Must adhere to the **Modern Elegant Light style** defined in legacy `modern.css`.
+   - Background `#FCFBF8`, elegant gold accents (`#C19652`), and refined rounded components.
+   - Soft offset drop-shadows and thin borders.
+   - SKIL Lifestyle transparent logo in header.
 4. **Table Structure & Fields**:
    - **ID**: Sequential tag (e.g., `LOG-001`, `LOG-002`).
    - **Timestamp**: Exact local time formatted as `YYYY-MM-DD HH:MM IST`.

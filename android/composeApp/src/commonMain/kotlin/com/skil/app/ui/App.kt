@@ -8,8 +8,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import com.skil.app.presentation.ECommerceViewModel
-import com.skil.app.theme.MemphisColors
-import com.skil.app.theme.MemphisTheme
+import com.skil.app.theme.AppColors
+import com.skil.app.theme.AppTheme
 import com.skil.app.ui.screens.ECommerceScreen
 
 /**
@@ -23,11 +23,11 @@ import com.skil.app.ui.screens.ECommerceScreen
 fun App() {
     val ecommerceViewModel = remember { ECommerceViewModel() }
 
-    MemphisTheme {
+    AppTheme {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(MemphisColors.CanvasBackground)
+                .background(AppColors.SurfaceBackground)
                 .safeDrawingPadding()
         ) {
             ECommerceScreen(viewModel = ecommerceViewModel)

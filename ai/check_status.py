@@ -2,7 +2,7 @@ import urllib.request
 import json
 import time
 
-COMMIT = "b0aa462403547e2560d9f0e67eaa9365e0c4a343"
+COMMIT = "8537b2d"
 URL = f"https://api.github.com/repos/sahilsync07/skilonline/actions/runs?head_sha={COMMIT}"
 
 def poll_until_completion(max_attempts=40, delay=15):

@@ -36,9 +36,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.skil.app.presentation.ECommerceViewModel
-import com.skil.app.theme.MemphisColors
+import com.skil.app.theme.AppColors
 import com.skil.app.ui.components.CartIcon
-import com.skil.app.ui.components.MemphisToast
+import com.skil.app.ui.components.AppToast
 import com.skil.app.ui.components.ProductCard
 import com.skil.app.ui.components.SearchIcon
 
@@ -53,89 +53,89 @@ fun ECommerceScreen(
     Box(
         modifier = modifier
             .fillMaxSize()
-            .background(MemphisColors.CanvasBackground)
+            .background(AppColors.SurfaceBackground)
     ) {
         Column(modifier = Modifier.fillMaxSize()) {
-            // 1. Top Announcement Bar (Web-Matched Lime Green #E2FC52)
+            // 1. Top Announcement Bar
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(MemphisColors.LimeYellow)
-                    .border(width = 2.dp, color = Color.Black)
-                    .padding(vertical = 6.dp, horizontal = 12.dp),
+                    .background(AppColors.AccentGold)
+                    .padding(vertical = 10.dp, horizontal = 16.dp),
                 contentAlignment = Alignment.Center
             ) {
                 Text(
                     text = "SUMMER DROP '26 IS LIVE • FREE SHIPPING ON ORDERS OVER $100 • USE CODE \"SKIL26\"",
-                    color = Color.Black,
-                    fontSize = 10.sp,
-                    fontWeight = FontWeight.Black
+                    color = Color.White,
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 1.sp
                 )
             }
 
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(horizontal = 14.dp, vertical = 10.dp)
+                    .padding(horizontal = 24.dp, vertical = 14.dp)
             ) {
-                // 2. Navbar 1: Top Brand & Partner Logo Bar (Web-Matched)
+                // 2. Navbar 1: Top Brand & Partner Logo Bar
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .shadow(elevation = 4.dp, shape = RoundedCornerShape(12.dp), spotColor = Color.Black)
-                        .background(Color.White, shape = RoundedCornerShape(12.dp))
-                        .border(width = 2.5.dp, color = MemphisColors.BorderBlack, shape = RoundedCornerShape(12.dp))
-                        .padding(horizontal = 14.dp, vertical = 10.dp)
+                        .shadow(elevation = 8.dp, shape = RoundedCornerShape(18.dp), spotColor = Color(0x0A131518))
+                        .background(Color.White, shape = RoundedCornerShape(18.dp))
+                        .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(18.dp))
+                        .padding(horizontal = 20.dp, vertical = 14.dp)
                 ) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        // Left Brand Logo Typography
+                        // Left Brand Logo Typography (Elegant)
                         Column {
                             Text(
                                 text = "SKIL",
-                                fontWeight = FontWeight.Black,
-                                fontSize = 22.sp,
-                                color = Color.Black,
+                                fontWeight = FontWeight.Normal,
+                                fontSize = 28.sp,
+                                color = AppColors.TextPrimary,
                                 letterSpacing = 2.sp
                             )
                             Text(
-                                text = "LIFESTYLE",
+                                text = "L I F E S T Y L E",
                                 fontSize = 8.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = MemphisColors.TextMuted,
-                                letterSpacing = 3.sp
+                                fontWeight = FontWeight.Normal,
+                                color = AppColors.TextMuted,
+                                letterSpacing = 4.sp
                             )
                         }
 
-                        // Right Partner Logos Badge Container (Ajanta | Xpania)
+                        // Right Partner Logos Badge Container
                         Box(
                             modifier = Modifier
-                                .background(Color.White, shape = RoundedCornerShape(8.dp))
-                                .border(width = 1.5.dp, color = Color.Black, shape = RoundedCornerShape(8.dp))
-                                .padding(horizontal = 10.dp, vertical = 5.dp)
+                                .background(AppColors.SurfaceBackground, shape = RoundedCornerShape(12.dp))
+                                .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(12.dp))
+                                .padding(horizontal = 14.dp, vertical = 8.dp)
                         ) {
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 Text(
                                     text = "Ajanta",
-                                    fontWeight = FontWeight.Black,
-                                    fontSize = 11.sp,
-                                    color = Color(0xFFD32F2F)
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 13.sp,
+                                    color = Color(0xFFC62828)
                                 )
-                                Spacer(modifier = Modifier.width(6.dp))
+                                Spacer(modifier = Modifier.width(10.dp))
                                 Box(
                                     modifier = Modifier
-                                        .width(1.5.dp)
-                                        .height(12.dp)
-                                        .background(Color.Black)
+                                        .width(1.dp)
+                                        .height(16.dp)
+                                        .background(AppColors.BorderLight)
                                 )
-                                Spacer(modifier = Modifier.width(6.dp))
+                                Spacer(modifier = Modifier.width(10.dp))
                                 Text(
                                     text = "xpania",
-                                    fontWeight = FontWeight.Black,
-                                    fontSize = 11.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 13.sp,
                                     color = Color(0xFFC2185B)
                                 )
                             }
@@ -143,27 +143,27 @@ fun ECommerceScreen(
                     }
                 }
 
-                Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = Modifier.height(14.dp))
 
-                // 3. Navbar 2: Controls Row (Search Input + Cart Button Placed Side-by-Side)
+                // 3. Navbar 2: Controls Row
                 Row(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(14.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     // Search Bar Box
                     Box(
                         modifier = Modifier
                             .weight(1f)
-                            .height(42.dp)
-                            .background(Color.White, shape = RoundedCornerShape(8.dp))
-                            .border(width = 2.dp, color = Color.Black, shape = RoundedCornerShape(8.dp))
-                            .padding(horizontal = 10.dp),
+                            .height(48.dp)
+                            .background(Color.White, shape = RoundedCornerShape(24.dp))
+                            .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(24.dp))
+                            .padding(horizontal = 16.dp),
                         contentAlignment = Alignment.CenterStart
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            SearchIcon(size = 16.dp, tint = Color.Black)
-                            Spacer(modifier = Modifier.width(8.dp))
+                            SearchIcon(size = 18.dp, tint = AppColors.TextMuted)
+                            Spacer(modifier = Modifier.width(12.dp))
                             BasicTextField(
                                 value = uiState.searchQuery,
                                 onValueChange = { viewModel.setSearchQuery(it) },
@@ -173,9 +173,9 @@ fun ECommerceScreen(
                                     if (uiState.searchQuery.isEmpty()) {
                                         Text(
                                             text = "Search products, kicks, tech...",
-                                            color = MemphisColors.TextMuted,
-                                            fontSize = 11.sp,
-                                            fontWeight = FontWeight.Bold
+                                            color = AppColors.TextMuted,
+                                            fontSize = 13.sp,
+                                            fontWeight = FontWeight.Normal
                                         )
                                     }
                                     innerTextField()
@@ -184,37 +184,38 @@ fun ECommerceScreen(
                         }
                     }
 
-                    // Ergonomic Luxury Pill Cart Button (Web & Mobile Optimized)
+                    // Ergonomic Luxury Pill Cart Button
                     Box(
                         modifier = Modifier
-                            .height(44.dp)
-                            .shadow(elevation = 4.dp, shape = RoundedCornerShape(999.dp), spotColor = Color.Black)
+                            .height(48.dp)
+                            .shadow(elevation = 6.dp, shape = RoundedCornerShape(999.dp), spotColor = Color(0x0C131518))
                             .background(Color.White, shape = RoundedCornerShape(999.dp))
-                            .border(width = 1.5.dp, color = Color.Black, shape = RoundedCornerShape(999.dp))
+                            .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(999.dp))
                             .clickable { viewModel.toggleCartDrawer() }
-                            .padding(horizontal = 14.dp),
+                            .padding(horizontal = 20.dp),
                         contentAlignment = Alignment.Center
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            CartIcon(size = 18.dp, tint = Color.Black)
-                            Spacer(modifier = Modifier.width(6.dp))
+                            CartIcon(size = 20.dp, tint = AppColors.TextPrimary)
+                            Spacer(modifier = Modifier.width(8.dp))
                             Text(
                                 text = "CART",
-                                fontWeight = FontWeight.Black,
-                                fontSize = 11.sp,
-                                color = Color.Black
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 12.sp,
+                                color = AppColors.TextPrimary,
+                                letterSpacing = 1.sp
                             )
-                            Spacer(modifier = Modifier.width(6.dp))
+                            Spacer(modifier = Modifier.width(8.dp))
                             Box(
                                 modifier = Modifier
-                                    .background(MemphisColors.LuxuryGold, shape = CircleShape)
-                                    .padding(horizontal = 7.dp, vertical = 2.dp),
+                                    .background(AppColors.AccentGold, shape = CircleShape)
+                                    .padding(horizontal = 8.dp, vertical = 2.dp),
                                 contentAlignment = Alignment.Center
                             ) {
                                 Text(
                                     text = "${uiState.totalCartCount}",
-                                    fontWeight = FontWeight.Black,
-                                    fontSize = 10.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 11.sp,
                                     color = Color.White
                                 )
                             }
@@ -222,117 +223,123 @@ fun ECommerceScreen(
                     }
                 }
 
-                Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = Modifier.height(14.dp))
 
-                // 4. Category Filter Pills Row (Web-Matched)
+                // 4. Category Filter Pills Row
                 LazyRow(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     items(categories) { category ->
                         val normalizedCategory = if (category == "ALL DROPS") "ALL" else category
                         val isSelected = (uiState.selectedCategory == "ALL" && category == "ALL DROPS") ||
                                 (uiState.selectedCategory == category)
-                        val bgColor = if (isSelected) MemphisColors.LimeYellow else Color.White
+                                
+                        val bgColor = if (isSelected) AppColors.TextPrimary else Color.White
+                        val textColor = if (isSelected) Color.White else AppColors.TextSecondary
+                        val borderColor = if (isSelected) AppColors.TextPrimary else AppColors.BorderLight
+                        val elevation = if (isSelected) 8.dp else 4.dp
 
                         Box(
                             modifier = Modifier
-                                .shadow(elevation = 2.dp, shape = RoundedCornerShape(14.dp), spotColor = Color.Black)
-                                .background(bgColor, shape = RoundedCornerShape(14.dp))
-                                .border(width = 2.dp, color = Color.Black, shape = RoundedCornerShape(14.dp))
+                                .shadow(elevation = elevation, shape = RoundedCornerShape(999.dp), spotColor = Color(0x0C131518))
+                                .background(bgColor, shape = RoundedCornerShape(999.dp))
+                                .border(width = 1.dp, color = borderColor, shape = RoundedCornerShape(999.dp))
                                 .clickable { viewModel.setCategory(normalizedCategory) }
-                                .padding(horizontal = 14.dp, vertical = 6.dp)
+                                .padding(horizontal = 20.dp, vertical = 10.dp)
                         ) {
                             Text(
                                 text = category,
-                                fontWeight = FontWeight.Black,
-                                fontSize = 11.sp,
-                                color = Color.Black
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 12.sp,
+                                color = textColor,
+                                letterSpacing = 1.sp
                             )
                         }
                     }
                 }
 
-                Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = Modifier.height(24.dp))
 
-                // 5. Hero Showcase Section (Web-Matched Card Layout)
+                // 5. Hero Showcase Section (Elegant Light Gradient)
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .shadow(elevation = 4.dp, shape = RoundedCornerShape(12.dp), spotColor = Color.Black)
-                        .background(Color.White, shape = RoundedCornerShape(12.dp))
-                        .border(width = 2.5.dp, color = Color.Black, shape = RoundedCornerShape(12.dp))
-                        .padding(14.dp)
+                        .shadow(elevation = 12.dp, shape = RoundedCornerShape(28.dp), spotColor = Color(0x0C131518))
+                        .background(Color.White, shape = RoundedCornerShape(28.dp))
+                        .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(28.dp))
+                        .padding(48.dp)
                 ) {
                     Column {
                         // Tag Pill
                         Box(
                             modifier = Modifier
-                                .background(MemphisColors.HotPink, shape = RoundedCornerShape(4.dp))
-                                .border(width = 1.dp, color = Color.Black, shape = RoundedCornerShape(4.dp))
-                                .padding(horizontal = 8.dp, vertical = 3.dp)
+                                .background(AppColors.SurfaceBackground, shape = RoundedCornerShape(999.dp))
+                                .border(width = 1.dp, color = AppColors.AccentGold.copy(alpha=0.3f), shape = RoundedCornerShape(999.dp))
+                                .padding(horizontal = 14.dp, vertical = 6.dp)
                         ) {
                             Text(
-                                text = "EXCLUSIVE DROP",
-                                color = Color.White,
-                                fontWeight = FontWeight.Black,
-                                fontSize = 9.sp
+                                text = "PREMIUM DESIGN, MODERN DROP",
+                                color = AppColors.AccentGold,
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 10.sp,
+                                letterSpacing = 1.sp
                             )
                         }
 
-                        Spacer(modifier = Modifier.height(8.dp))
+                        Spacer(modifier = Modifier.height(16.dp))
 
                         // Title
                         Text(
-                            text = "SUPER FLUID STREETWEAR & TECH GEAR",
-                            fontWeight = FontWeight.Black,
-                            fontSize = 15.sp,
-                            color = Color.Black,
-                            lineHeight = 19.sp
+                            text = "Light, elevated retail\nfor discerning style.",
+                            fontWeight = FontWeight.ExtraBold,
+                            fontSize = 32.sp,
+                            color = AppColors.TextPrimary,
+                            lineHeight = 36.sp
                         )
 
-                        Spacer(modifier = Modifier.height(6.dp))
+                        Spacer(modifier = Modifier.height(16.dp))
 
                         // Description Paragraph
                         Text(
-                            text = "Engineered for maximum 120Hz performance, bold aesthetics, and high-impact everyday style.",
-                            fontSize = 11.sp,
-                            color = MemphisColors.TextMuted,
-                            lineHeight = 15.sp
+                            text = "Experience a refined daily shopping destination inspired by SKIL’s\nsignature branding, clean lines, and premium gold accents.",
+                            fontSize = 14.sp,
+                            color = AppColors.TextSecondary,
+                            lineHeight = 22.sp
                         )
 
-                        Spacer(modifier = Modifier.height(10.dp))
+                        Spacer(modifier = Modifier.height(24.dp))
 
-                        // Shop Collection Button (Enhanced Pill Micro-Interaction Target)
+                        // Shop Collection Button (Elegant Pill)
                         Box(
                             modifier = Modifier
-                                .shadow(elevation = 4.dp, shape = RoundedCornerShape(20.dp), spotColor = Color.Black)
-                                .background(MemphisColors.LimeYellow, shape = RoundedCornerShape(20.dp))
-                                .border(width = 2.dp, color = Color.Black, shape = RoundedCornerShape(20.dp))
-                                .clickable { viewModel.showToast("Browsing Summer 2026 Collection!") }
-                                .padding(horizontal = 18.dp, vertical = 10.dp)
+                                .shadow(elevation = 6.dp, shape = RoundedCornerShape(999.dp), spotColor = Color(0x1F111111))
+                                .background(AppColors.TextPrimary, shape = RoundedCornerShape(999.dp))
+                                .clickable { viewModel.showToast("Browsing the new SKIL collection") }
+                                .padding(horizontal = 24.dp, vertical = 12.dp)
                         ) {
                             Text(
-                                text = "SHOP COLLECTION",
-                                fontWeight = FontWeight.Black,
-                                fontSize = 11.sp,
-                                color = Color.Black
+                                text = "Explore Collection",
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 13.sp,
+                                color = Color.White
                             )
                         }
                     }
                 }
 
-                Spacer(modifier = Modifier.height(12.dp))
+                Spacer(modifier = Modifier.height(32.dp))
 
                 // 6. Featured Products Section Title & Grid
                 Text(
-                    text = "FEATURED PRODUCTS",
-                    fontWeight = FontWeight.Black,
+                    text = "CURATED ESSENTIALS FOR MODERN LIVING.",
+                    fontWeight = FontWeight.Bold,
                     fontSize = 13.sp,
-                    color = Color.Black
+                    color = AppColors.TextSecondary,
+                    letterSpacing = 1.sp
                 )
 
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(16.dp))
 
                 val filteredProducts = uiState.products.filter { product ->
                     (uiState.selectedCategory == "ALL" || product.category == uiState.selectedCategory) &&
@@ -341,8 +348,8 @@ fun ECommerceScreen(
 
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(2),
-                    horizontalArrangement = Arrangement.spacedBy(10.dp),
-                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                    horizontalArrangement = Arrangement.spacedBy(24.dp),
+                    verticalArrangement = Arrangement.spacedBy(24.dp),
                     modifier = Modifier.fillMaxSize()
                 ) {
                     items(
@@ -367,18 +374,18 @@ fun ECommerceScreen(
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(Color.Black.copy(alpha = 0.5f))
+                    .background(Color.Black.copy(alpha = 0.3f))
                     .clickable { viewModel.toggleCartDrawer() }
             ) {
                 Box(
                     modifier = Modifier
-                        .align(Alignment.BottomCenter)
-                        .fillMaxWidth()
-                        .fillMaxHeight(0.65f)
-                        .background(Color.White, shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
-                        .border(width = 3.dp, color = Color.Black, shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
+                        .align(Alignment.CenterEnd)
+                        .fillMaxHeight()
+                        .fillMaxWidth(0.4f)
+                        .background(Color.White)
+                        .shadow(elevation = 24.dp)
                         .clickable(enabled = false) {}
-                        .padding(16.dp)
+                        .padding(32.dp)
                 ) {
                     Column(modifier = Modifier.fillMaxSize()) {
                         Row(
@@ -388,29 +395,28 @@ fun ECommerceScreen(
                         ) {
                             Text(
                                 text = "YOUR SHOPPING CART",
-                                fontWeight = FontWeight.Black,
-                                fontSize = 16.sp,
-                                color = Color.Black
+                                fontWeight = FontWeight.ExtraBold,
+                                fontSize = 20.sp,
+                                color = AppColors.TextPrimary
                             )
 
                             Box(
                                 modifier = Modifier
-                                    .size(28.dp)
-                                    .background(MemphisColors.HotPink, shape = CircleShape)
-                                    .border(width = 2.dp, color = Color.Black, shape = CircleShape)
+                                    .size(36.dp)
+                                    .background(AppColors.SurfaceBackground, shape = CircleShape)
                                     .clickable { viewModel.toggleCartDrawer() },
                                 contentAlignment = Alignment.Center
                             ) {
                                 Text(
-                                    text = "X",
-                                    fontWeight = FontWeight.Black,
-                                    color = Color.White,
-                                    fontSize = 12.sp
+                                    text = "✕",
+                                    fontWeight = FontWeight.Normal,
+                                    color = AppColors.TextSecondary,
+                                    fontSize = 18.sp
                                 )
                             }
                         }
 
-                        Spacer(modifier = Modifier.height(12.dp))
+                        Spacer(modifier = Modifier.height(24.dp))
 
                         if (uiState.cartItems.isEmpty()) {
                             Box(
@@ -420,22 +426,22 @@ fun ECommerceScreen(
                                 Text(
                                     text = "Your cart is empty!",
                                     fontWeight = FontWeight.Bold,
-                                    color = MemphisColors.TextMuted,
-                                    fontSize = 14.sp
+                                    color = AppColors.TextMuted,
+                                    fontSize = 16.sp
                                 )
                             }
                         } else {
                             LazyColumn(
                                 modifier = Modifier.weight(1f).fillMaxWidth(),
-                                verticalArrangement = Arrangement.spacedBy(8.dp)
+                                verticalArrangement = Arrangement.spacedBy(16.dp)
                             ) {
                                 items(uiState.cartItems) { item ->
                                     Box(
                                         modifier = Modifier
                                             .fillMaxWidth()
-                                            .background(MemphisColors.CanvasBackground, shape = RoundedCornerShape(8.dp))
-                                            .border(width = 2.dp, color = Color.Black, shape = RoundedCornerShape(8.dp))
-                                            .padding(10.dp)
+                                            .background(AppColors.SoftBackground, shape = RoundedCornerShape(16.dp))
+                                            .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(16.dp))
+                                            .padding(16.dp)
                                     ) {
                                         Row(
                                             modifier = Modifier.fillMaxWidth(),
@@ -445,46 +451,47 @@ fun ECommerceScreen(
                                             Column(modifier = Modifier.weight(1f)) {
                                                 Text(
                                                     text = item.product.name,
-                                                    fontWeight = FontWeight.Black,
-                                                    fontSize = 12.sp,
-                                                    color = Color.Black
+                                                    fontWeight = FontWeight.Bold,
+                                                    fontSize = 14.sp,
+                                                    color = AppColors.TextPrimary
                                                 )
+                                                Spacer(modifier = Modifier.height(4.dp))
                                                 Text(
                                                     text = "$${item.product.price.toInt()} each",
-                                                    fontSize = 11.sp,
+                                                    fontSize = 13.sp,
                                                     fontWeight = FontWeight.Bold,
-                                                    color = MemphisColors.TextMuted
+                                                    color = AppColors.TextSecondary
                                                 )
                                             }
 
                                             Row(verticalAlignment = Alignment.CenterVertically) {
                                                 Box(
                                                     modifier = Modifier
-                                                        .size(24.dp)
-                                                        .background(MemphisColors.LimeYellow, shape = RoundedCornerShape(4.dp))
-                                                        .border(width = 1.dp, color = Color.Black, shape = RoundedCornerShape(4.dp))
+                                                        .size(32.dp)
+                                                        .background(Color.White, shape = RoundedCornerShape(8.dp))
+                                                        .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(8.dp))
                                                         .clickable { viewModel.updateQuantity(item.product.id, -1) },
                                                     contentAlignment = Alignment.Center
                                                 ) {
-                                                    Text("-", fontWeight = FontWeight.Black, color = Color.Black)
+                                                    Text("-", fontWeight = FontWeight.Bold, color = AppColors.TextPrimary)
                                                 }
 
                                                 Text(
                                                     text = "${item.quantity}",
-                                                    fontWeight = FontWeight.Black,
-                                                    fontSize = 13.sp,
-                                                    modifier = Modifier.padding(horizontal = 8.dp)
+                                                    fontWeight = FontWeight.ExtraBold,
+                                                    fontSize = 15.sp,
+                                                    modifier = Modifier.padding(horizontal = 12.dp)
                                                 )
 
                                                 Box(
                                                     modifier = Modifier
-                                                        .size(24.dp)
-                                                        .background(MemphisColors.LimeYellow, shape = RoundedCornerShape(4.dp))
-                                                        .border(width = 1.dp, color = Color.Black, shape = RoundedCornerShape(4.dp))
+                                                        .size(32.dp)
+                                                        .background(Color.White, shape = RoundedCornerShape(8.dp))
+                                                        .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(8.dp))
                                                         .clickable { viewModel.updateQuantity(item.product.id, 1) },
                                                     contentAlignment = Alignment.Center
                                                 ) {
-                                                    Text("+", fontWeight = FontWeight.Black, color = Color.Black)
+                                                    Text("+", fontWeight = FontWeight.Bold, color = AppColors.TextPrimary)
                                                 }
                                             }
                                         }
@@ -492,7 +499,7 @@ fun ECommerceScreen(
                                 }
                             }
 
-                            Spacer(modifier = Modifier.height(8.dp))
+                            Spacer(modifier = Modifier.height(24.dp))
 
                             Row(
                                 modifier = Modifier.fillMaxWidth(),
@@ -500,33 +507,34 @@ fun ECommerceScreen(
                             ) {
                                 Text(
                                     text = "SUBTOTAL:",
-                                    fontWeight = FontWeight.Black,
-                                    fontSize = 14.sp
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 16.sp,
+                                    color = AppColors.TextSecondary
                                 )
                                 Text(
                                     text = "$${uiState.totalCartAmount.toInt()}",
-                                    fontWeight = FontWeight.Black,
-                                    fontSize = 14.sp,
-                                    color = MemphisColors.HotPink
+                                    fontWeight = FontWeight.ExtraBold,
+                                    fontSize = 24.sp,
+                                    color = AppColors.TextPrimary
                                 )
                             }
 
-                            Spacer(modifier = Modifier.height(10.dp))
+                            Spacer(modifier = Modifier.height(24.dp))
 
                             Box(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .background(MemphisColors.LimeYellow, shape = RoundedCornerShape(10.dp))
-                                    .border(width = 2.dp, color = Color.Black, shape = RoundedCornerShape(10.dp))
+                                    .shadow(elevation = 8.dp, shape = RoundedCornerShape(999.dp), spotColor = Color(0x1F111111))
+                                    .background(AppColors.TextPrimary, shape = RoundedCornerShape(999.dp))
                                     .clickable { viewModel.checkout() }
-                                    .padding(12.dp),
+                                    .padding(18.dp),
                                 contentAlignment = Alignment.Center
                             ) {
                                 Text(
                                     text = "Proceed To Checkout →",
-                                    fontWeight = FontWeight.Black,
-                                    fontSize = 14.sp,
-                                    color = Color.Black
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 15.sp,
+                                    color = Color.White
                                 )
                             }
                         }
@@ -535,8 +543,8 @@ fun ECommerceScreen(
             }
         }
 
-        // Rule 05 Memphis Toast Overlay
-        MemphisToast(
+        // App Toast Overlay
+        AppToast(
             message = uiState.toastMessage,
             isVisible = uiState.isToastVisible,
             onDismiss = { viewModel.dismissToast() },

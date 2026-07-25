@@ -23,7 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.skil.app.domain.Product
-import com.skil.app.theme.MemphisColors
+import com.skil.app.theme.AppColors
 
 @Composable
 fun ProductCard(
@@ -34,10 +34,10 @@ fun ProductCard(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .shadow(elevation = 4.dp, shape = RoundedCornerShape(12.dp), spotColor = Color.Black)
-            .background(Color.White, shape = RoundedCornerShape(12.dp))
-            .border(width = 2.5.dp, color = MemphisColors.BorderBlack, shape = RoundedCornerShape(12.dp))
-            .padding(10.dp)
+            .shadow(elevation = 14.dp, shape = RoundedCornerShape(28.dp), spotColor = Color(0x14131518))
+            .background(Color.White, shape = RoundedCornerShape(28.dp))
+            .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(28.dp))
+            .padding(14.dp)
     ) {
         Column {
             // Category & Badge Header
@@ -48,28 +48,29 @@ fun ProductCard(
             ) {
                 Box(
                     modifier = Modifier
-                        .background(MemphisColors.LimeYellow, shape = RoundedCornerShape(4.dp))
-                        .border(width = 1.5.dp, color = Color.Black, shape = RoundedCornerShape(4.dp))
-                        .padding(horizontal = 6.dp, vertical = 2.dp)
+                        .background(AppColors.AccentGold.copy(alpha = 0.16f), shape = RoundedCornerShape(999.dp))
+                        .padding(horizontal = 10.dp, vertical = 4.dp)
                 ) {
                     Text(
                         text = product.badge.uppercase(),
-                        fontWeight = FontWeight.Black,
+                        fontWeight = FontWeight.ExtraBold,
                         fontSize = 9.sp,
-                        color = Color.Black
+                        color = AppColors.TextPrimary,
+                        letterSpacing = 0.5.sp
                     )
                 }
                 Text(
                     text = product.category.uppercase(),
                     fontSize = 9.sp,
                     fontWeight = FontWeight.Bold,
-                    color = MemphisColors.TextMuted
+                    color = AppColors.TextSecondary,
+                    letterSpacing = 1.sp
                 )
             }
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(10.dp))
 
-            // Stylized Memphis Product Image Showcase Box (Real Images)
+            // Elegant Product Image Showcase Box
             if (product.imageUrl != null) {
                 io.kamel.image.KamelImage(
                     resource = io.kamel.image.asyncPainterResource(data = product.imageUrl),
@@ -77,40 +78,40 @@ fun ProductCard(
                     contentScale = androidx.compose.ui.layout.ContentScale.Crop,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(120.dp)
-                        .background(MemphisColors.CanvasBackground, shape = RoundedCornerShape(8.dp))
-                        .clip(RoundedCornerShape(8.dp))
-                        .border(width = 2.dp, color = Color.Black, shape = RoundedCornerShape(8.dp))
+                        .height(140.dp)
+                        .background(AppColors.SoftBackground, shape = RoundedCornerShape(16.dp))
+                        .clip(RoundedCornerShape(16.dp))
+                        .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(16.dp))
                 )
             } else {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(120.dp)
-                        .background(MemphisColors.CanvasBackground, shape = RoundedCornerShape(8.dp))
-                        .border(width = 2.dp, color = Color.Black, shape = RoundedCornerShape(8.dp)),
+                        .height(140.dp)
+                        .background(AppColors.SoftBackground, shape = RoundedCornerShape(16.dp))
+                        .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(16.dp)),
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
                         text = product.itemLabel.uppercase(),
-                        fontWeight = FontWeight.Black,
+                        fontWeight = FontWeight.ExtraBold,
                         fontSize = 18.sp,
-                        color = Color.Black,
+                        color = AppColors.TextPrimary,
                         letterSpacing = 1.5.sp
                     )
                 }
             }
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(14.dp))
 
             // Product Name
             Text(
                 text = product.name,
-                fontWeight = FontWeight.Black,
-                fontSize = 12.sp,
-                color = Color.Black,
+                fontWeight = FontWeight.ExtraBold,
+                fontSize = 13.sp,
+                color = AppColors.TextPrimary,
                 maxLines = 2,
-                lineHeight = 15.sp
+                lineHeight = 16.sp
             )
 
             Spacer(modifier = Modifier.height(4.dp))
@@ -120,46 +121,39 @@ fun ProductCard(
                 text = "RATING: ${product.rating}",
                 fontSize = 10.sp,
                 fontWeight = FontWeight.Bold,
-                color = MemphisColors.RetroOrange
+                color = AppColors.TextSecondary
             )
 
-            Spacer(modifier = Modifier.height(10.dp))
+            Spacer(modifier = Modifier.height(14.dp))
 
-            // Price & Add to Cart Row (Web-Matched)
+            // Price & Add to Cart Row
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                // Price Pill
-                Box(
-                    modifier = Modifier
-                        .background(Color.White, shape = RoundedCornerShape(6.dp))
-                        .border(width = 1.5.dp, color = Color.Black, shape = RoundedCornerShape(6.dp))
-                        .padding(horizontal = 8.dp, vertical = 4.dp)
-                ) {
-                    Text(
-                        text = "$${product.price.toInt()}",
-                        fontWeight = FontWeight.Black,
-                        fontSize = 12.sp,
-                        color = Color.Black
-                    )
-                }
+                // Price Label
+                Text(
+                    text = "$${product.price.toInt()}",
+                    fontWeight = FontWeight.Black,
+                    fontSize = 16.sp,
+                    color = AppColors.TextPrimary
+                )
 
-                // + ADD Button (Enhanced Pill Micro-Target)
+                // Elegant Pill ADD Button
                 Box(
                     modifier = Modifier
-                        .shadow(elevation = 3.dp, shape = RoundedCornerShape(14.dp), spotColor = Color.Black)
-                        .background(MemphisColors.LimeYellow, shape = RoundedCornerShape(14.dp))
-                        .border(width = 2.dp, color = Color.Black, shape = RoundedCornerShape(14.dp))
+                        .shadow(elevation = 6.dp, shape = RoundedCornerShape(999.dp), spotColor = Color(0x1F111111))
+                        .background(Color(0xFF111111), shape = RoundedCornerShape(999.dp))
                         .clickable { onAddToCart(product) }
-                        .padding(horizontal = 12.dp, vertical = 6.dp)
+                        .padding(horizontal = 16.dp, vertical = 8.dp)
                 ) {
                     Text(
                         text = "+ ADD",
-                        fontWeight = FontWeight.Black,
+                        fontWeight = FontWeight.Bold,
                         fontSize = 11.sp,
-                        color = Color.Black
+                        color = Color.White,
+                        letterSpacing = 0.5.sp
                     )
                 }
             }

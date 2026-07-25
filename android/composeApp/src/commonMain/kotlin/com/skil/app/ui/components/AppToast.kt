@@ -30,21 +30,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.skil.app.theme.MemphisColors
+import com.skil.app.theme.AppColors
 import kotlinx.coroutines.delay
 
 /**
- * MemphisToast - Implements RULE 05: Theme-Based Toast & Notification Protocol
- * Strictly replaces native browser alerts with custom Memphis styled toasts featuring
+ * AppToast - Implements Theme-Based Toast & Notification Protocol
+ * Strictly replaces native browser alerts with elegant App styled toasts featuring
  * auto-timeout and a manual close '×' button.
  */
 @Composable
-fun MemphisToast(
+fun AppToast(
     message: String,
     isVisible: Boolean,
     onDismiss: () -> Unit,
     modifier: Modifier = Modifier,
-    backgroundColor: Color = MemphisColors.LimeYellow,
     durationMs: Long = 4000L
 ) {
     LaunchedEffect(isVisible, message) {
@@ -63,11 +62,11 @@ fun MemphisToast(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 12.dp)
-                .shadow(elevation = 8.dp, shape = RoundedCornerShape(12.dp), spotColor = Color.Black)
-                .background(Color(0xFF0D0E12), shape = RoundedCornerShape(12.dp))
-                .border(width = 1.5.dp, color = MemphisColors.LuxuryGold, shape = RoundedCornerShape(12.dp))
-                .padding(14.dp)
+                .padding(horizontal = 24.dp, vertical = 24.dp)
+                .shadow(elevation = 16.dp, shape = RoundedCornerShape(999.dp), spotColor = Color(0x1F111111))
+                .background(Color(0xFF0D0E12).copy(alpha = 0.95f), shape = RoundedCornerShape(999.dp))
+                .border(width = 1.dp, color = AppColors.AccentGold.copy(alpha = 0.5f), shape = RoundedCornerShape(999.dp))
+                .padding(horizontal = 16.dp, vertical = 10.dp)
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -77,20 +76,28 @@ fun MemphisToast(
                 // Gold Accent Pill
                 Box(
                     modifier = Modifier
-                        .width(4.dp)
-                        .height(36.dp)
-                        .background(MemphisColors.LuxuryGold, shape = RoundedCornerShape(2.dp))
-                )
+                        .size(38.dp)
+                        .background(AppColors.AccentGold.copy(alpha = 0.15f), shape = CircleShape)
+                        .border(width = 1.dp, color = AppColors.AccentGold.copy(alpha = 0.4f), shape = CircleShape),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "!",
+                        color = AppColors.AccentGold,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 18.sp
+                    )
+                }
 
-                Spacer(modifier = Modifier.width(10.dp))
+                Spacer(modifier = Modifier.width(14.dp))
 
                 Column(
                     modifier = Modifier.weight(1f)
                 ) {
                     Text(
                         text = "NOTIFICATION",
-                        color = MemphisColors.LuxuryGold,
-                        fontWeight = FontWeight.Black,
+                        color = AppColors.AccentGold,
+                        fontWeight = FontWeight.Bold,
                         fontSize = 9.sp,
                         letterSpacing = 1.sp
                     )
@@ -102,22 +109,22 @@ fun MemphisToast(
                     )
                 }
 
-                Spacer(modifier = Modifier.width(10.dp))
+                Spacer(modifier = Modifier.width(14.dp))
 
                 // Manual close '×' cross button
                 Box(
                     modifier = Modifier
-                        .size(26.dp)
-                        .background(Color(0xFF22242B), shape = CircleShape)
-                        .border(width = 1.dp, color = Color(0xFF3A3D48), shape = CircleShape)
+                        .size(32.dp)
+                        .background(Color.White.copy(alpha = 0.1f), shape = CircleShape)
+                        .border(width = 1.dp, color = Color.White.copy(alpha = 0.15f), shape = CircleShape)
                         .clickable { onDismiss() },
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
                         text = "×",
-                        color = Color.White,
-                        fontWeight = FontWeight.Black,
-                        fontSize = 15.sp
+                        color = Color.White.copy(alpha = 0.8f),
+                        fontWeight = FontWeight.Normal,
+                        fontSize = 18.sp
                     )
                 }
             }

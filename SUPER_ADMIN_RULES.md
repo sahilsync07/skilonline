@@ -28,7 +28,7 @@ BEFORE performing any coding, file creation, or system modifications:
 
 ### **Rule 01: Journaling Directive**
 After EVERY edit, build, or chat turn, you MUST log your work in [ai/journal.html](file:///c:/Projects/skilonline/ai/journal.html).
-- Use **Light Mode Memphis Brutalist** styling.
+- Use **Modern Elegant Light** styling.
 - Include Log ID (`LOG-001`, `LOG-002`, etc.), timestamp, category tag, detailed changes, touched files, and status badge.
 
 ### **Rule 02: Raw File Dump Processing**
@@ -41,8 +41,8 @@ At the conclusion of every turn, update [ai/appended-context-window.html](file:/
 ### **Rule 04: Super Fluidity (120Hz UI Standard)**
 Ensure cross-platform 120Hz super fluid performance across `android/` Compose Multiplatform and `web/` vanilla JS/CSS.
 
-### **Rule 05: Memphis Toast Notifications**
-NEVER use native browser `window.alert()`. Always use custom theme-based Memphis brutalist toast notifications with auto-timeout and manual `×` dismiss buttons.
+### **Rule 05: App Toast Notifications**
+NEVER use native browser `window.alert()`. Always use custom theme-based elegant App Toast notifications with auto-timeout and manual `×` dismiss buttons.
 
 ### **Rule 06: Play Store Submission Compliance**
 Maintain Android Target SDK 36, Min SDK 21, `.aab` bundle format, active privacy policy ([ai/privacy-policy.html](file:///c:/Projects/skilonline/ai/privacy-policy.html)), and a **single unified GitHub Actions workflow** (`android-release.yml`) for Play Store deployment.
