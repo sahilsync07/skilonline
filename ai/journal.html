@@ -579,6 +579,23 @@
         </div>
     </div>
 
+        <!-- Grid Container for Log Entries -->
+        <div class="log-grid">
+            <!-- LOG-063 -->
+            <div class="log-card">
+                <div class="log-header">
+                    <span class="log-id">LOG-063</span>
+                    <span class="log-date">2026-07-25 18:25 IST</span>
+                    <span class="log-tag bg-cyan">WASM CORS FIX</span>
+                </div>
+                <h2 class="log-title">Restored Missing WASM Product Images via Cloudinary CDN</h2>
+                <div class="log-content">
+                    <p><strong>Observation</strong>: The modern WASM Compose Web App successfully deployed, but product images were rendering as blank white boxes due to strict Canvas WebGL CORS restrictions blocking Unsplash fetches.</p>
+                    <p><strong>Action</strong>: Generated new premium product imagery and uploaded to the existing Cloudinary project bucket (`aiz2tooi`). Updated <code>ECommerceViewModel.kt</code> to stream product images exclusively via the Cloudinary CDN, bypassing all WASM CORS blocks.</p>
+                    <p><strong>Result</strong>: KamelImage now correctly fetches and draws the product lifestyle imagery onto the Compose WebGL Canvas. The single-source UI architecture is now visually complete on both Web and Android.</p>
+                </div>
+            </div>
+
     <!-- Filter & Controls -->
     <div class="controls-bar">
         <div class="search-group">
