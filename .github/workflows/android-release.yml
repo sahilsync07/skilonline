@@ -50,7 +50,7 @@ jobs:
         working-directory: android
         run: |
           set -o pipefail
-          gradle :composeApp:bundleRelease -PversionCode=${{ env.VERSION_CODE }} -PversionName="${{ env.VERSION_NAME }}" --stacktrace 2>&1 | tee /tmp/build.log
+          ./gradlew :composeApp:bundleRelease -PversionCode=${{ env.VERSION_CODE }} -PversionName="${{ env.VERSION_NAME }}" --stacktrace 2>&1 | tee /tmp/build.log
           echo "BUILD SUCCEEDED WITH VERSION CODE ${{ env.VERSION_CODE }}"
 
       - name: Show build log on failure
