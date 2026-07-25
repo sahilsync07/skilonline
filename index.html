@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0; url=web-legacy/modern.html">
     <title>SKIL Lifestyle - Multi-Target Portal</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <style>
         :root {
             --bg-canvas: #f4f5f8;
@@ -32,7 +30,7 @@
             box-shadow: var(--shadow-brutal);
             border-radius: 16px;
             padding: 40px;
-            max-width: 500px;
+            max-width: 550px;
             width: 100%;
         }
         .portal-logo {
@@ -58,6 +56,7 @@
             text-transform: uppercase;
             margin-bottom: 12px;
             transition: transform 0.1s ease;
+            cursor: pointer;
         }
         .btn-launch:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0px #000; }
         .links-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
@@ -75,18 +74,42 @@
             align-items: center;
             gap: 6px;
         }
+        .dev-instructions {
+            margin-top: 24px;
+            padding: 16px;
+            background: #f8f9fa;
+            border: 2px dashed #000;
+            border-radius: 8px;
+            text-align: left;
+            font-size: 0.85rem;
+            color: #333;
+        }
+        .dev-instructions code {
+            background: #e9ecef;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <div class="portal-card">
         <img src="https://res.cloudinary.com/aiz2tooi/image/upload/f_auto,q_auto/v1784722804/SKIL_Lifestyle_Black_Transparent_BG_Logo.png" alt="SKIL Lifestyle Logo" class="portal-logo">
         <h1>SKIL LIFESTYLE PORTAL</h1>
-        <p>Redirecting to E-Commerce Web Application...</p>
+        <p>Welcome to the Single-Source Kotlin WASM & Android Architecture.</p>
 
-        <a href="web-legacy/modern.html" class="btn-launch">
+        <a href="https://sahilsync07.github.io/skilonline/" class="btn-launch" target="_blank">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-            <span>LAUNCH SKIL LIFESTYLE STORE</span>
+            <span>LAUNCH LIVE WEB APP (WASM)</span>
         </a>
+
+        <div class="dev-instructions">
+            <strong>👨‍💻 Local Development:</strong><br><br>
+            The old HTML legacy website has been archived to <code>web-legacy/</code> as requested.<br><br>
+            To run the new single-source Compose Multiplatform WASM UI locally, open your terminal in the <code>android/</code> directory and execute:<br><br>
+            <code>./gradlew :composeApp:wasmJsBrowserRun</code>
+        </div>
 
         <div class="links-row">
             <a href="ai/journal.html" class="chip-link">
