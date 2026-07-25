@@ -2,10 +2,10 @@ import urllib.request
 import json
 import time
 
-COMMIT = "16b634018a4a47a69a850568143845f68f16ff3b"
+COMMIT = "b0aa462403547e2560d9f0e67eaa9365e0c4a343"
 URL = f"https://api.github.com/repos/sahilsync07/skilonline/actions/runs?head_sha={COMMIT}"
 
-def poll_until_completion(max_attempts=30, delay=15):
+def poll_until_completion(max_attempts=40, delay=15):
     for attempt in range(1, max_attempts + 1):
         print(f"\n--- Poll Attempt {attempt}/{max_attempts} ---")
         try:

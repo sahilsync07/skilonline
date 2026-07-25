@@ -10,8 +10,11 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -74,13 +77,14 @@ fun MemphisToast(
                 // Gold Accent Pill
                 Box(
                     modifier = Modifier
-                        .size(width = 4.dp, height = 36.dp)
+                        .width(4.dp)
+                        .height(36.dp)
                         .background(MemphisColors.LuxuryGold, shape = RoundedCornerShape(2.dp))
                 )
 
-                androidx.compose.foundation.layout.Spacer(modifier = Modifier.width(10.dp))
+                Spacer(modifier = Modifier.width(10.dp))
 
-                androidx.compose.foundation.layout.Column(
+                Column(
                     modifier = Modifier.weight(1f)
                 ) {
                     Text(
@@ -98,7 +102,7 @@ fun MemphisToast(
                     )
                 }
 
-                androidx.compose.foundation.layout.Spacer(modifier = Modifier.width(10.dp))
+                Spacer(modifier = Modifier.width(10.dp))
 
                 // Manual close '×' cross button
                 Box(

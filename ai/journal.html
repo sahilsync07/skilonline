@@ -612,6 +612,32 @@
             </thead>
             <tbody id="journalTableBody">
 
+                <!-- Log Entry 61 -->
+                <tr data-category="FIX"
+                    data-keywords="MemphisToast Kotlin Compilation Fix Unresolved Reference Width Modifier Spacer Import">
+                    <td><span class="log-id">LOG-061</span></td>
+                    <td>
+                        <div class="log-time">2026-07-25 11:48 IST</div>
+                        <div style="font-size: 0.75rem; color: #9b51e0; font-weight: 800; margin-top: 4px;">Agent: Antigravity</div>
+                    </td>
+                    <td><span class="cat-tag fix-tag"
+                            style="background: #ef4444; color: #ffffff; padding: 4px 8px; border-radius: 6px; font-weight: 800; font-size: 0.75rem; border: 1px solid #000;">FIX</span>
+                    </td>
+                    <td>
+                        <strong style="color: #000000; font-size: 1rem;">Fix Kotlin Multiplatform WASM & Android Compilation Error in MemphisToast.kt</strong>
+                        <div class="details-box">
+                            <ul style="padding-left: 1rem; margin-top: 8px; color: #000000; font-size: 0.9rem;">
+                                <li><strong>Root Cause Identified:</strong> <code>MemphisToast.kt</code> used non-standard <code>.size(width = ..., height = ...)</code> named arguments and explicit package qualifiers for <code>Spacer</code> and <code>Column</code>, which triggered an 'Unresolved reference width' error on WASM and Android Kotlin compilers.</li>
+                                <li><strong>Code Resolution:</strong> Updated <code>MemphisToast.kt</code> to use standard <code>Modifier.width(4.dp).height(36.dp)</code> extension functions and clean imports for <code>Column</code> and <code>Spacer</code>.</li>
+                                <li><strong>Pipeline Unblocked:</strong> Resolves compilation failure across both <code>deploy-pages.yml</code> (WASM distribution) and <code>android-release.yml</code> (Google Play AAB release).</li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status-badge status-resolved">DONE</div>
+                    </td>
+                </tr>
+
                 <!-- Log Entry 60 -->
                 <tr data-category="ARCH"
                     data-keywords="Modern UI Main Default Secure Legacy Archive Button Enhancement WASM Parity">
