@@ -16,6 +16,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -68,22 +69,36 @@ fun ProductCard(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            // Stylized Memphis Product Image Showcase Box (Rule 07 compliant)
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(120.dp)
-                    .background(MemphisColors.CanvasBackground, shape = RoundedCornerShape(8.dp))
-                    .border(width = 2.dp, color = Color.Black, shape = RoundedCornerShape(8.dp)),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = product.itemLabel.uppercase(),
-                    fontWeight = FontWeight.Black,
-                    fontSize = 18.sp,
-                    color = Color.Black,
-                    letterSpacing = 1.5.sp
+            // Stylized Memphis Product Image Showcase Box (Real Images)
+            if (product.imageUrl != null) {
+                io.kamel.image.KamelImage(
+                    resource = io.kamel.image.asyncPainterResource(data = product.imageUrl),
+                    contentDescription = product.name,
+                    contentScale = androidx.compose.ui.layout.ContentScale.Crop,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(120.dp)
+                        .background(MemphisColors.CanvasBackground, shape = RoundedCornerShape(8.dp))
+                        .clip(RoundedCornerShape(8.dp))
+                        .border(width = 2.dp, color = Color.Black, shape = RoundedCornerShape(8.dp))
                 )
+            } else {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(120.dp)
+                        .background(MemphisColors.CanvasBackground, shape = RoundedCornerShape(8.dp))
+                        .border(width = 2.dp, color = Color.Black, shape = RoundedCornerShape(8.dp)),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = product.itemLabel.uppercase(),
+                        fontWeight = FontWeight.Black,
+                        fontSize = 18.sp,
+                        color = Color.Black,
+                        letterSpacing = 1.5.sp
+                    )
+                }
             }
 
             Spacer(modifier = Modifier.height(8.dp))

@@ -612,6 +612,32 @@
             </thead>
             <tbody id="journalTableBody">
 
+                <!-- Log Entry 62 -->
+                <tr data-category="FIX"
+                    data-keywords="KamelImage Kamel Kotlin Multiplatform Images ECommerce ProductCard UI Fix">
+                    <td><span class="log-id">LOG-062</span></td>
+                    <td>
+                        <div class="log-time">2026-07-25 12:05 IST</div>
+                        <div style="font-size: 0.75rem; color: #9b51e0; font-weight: 800; margin-top: 4px;">Agent: Antigravity</div>
+                    </td>
+                    <td><span class="cat-tag fix-tag"
+                            style="background: #ef4444; color: #ffffff; padding: 4px 8px; border-radius: 6px; font-weight: 800; font-size: 0.75rem; border: 1px solid #000;">FIX</span>
+                    </td>
+                    <td>
+                        <strong style="color: #000000; font-size: 1rem;">Restore High-Quality Real Images in Product UI</strong>
+                        <div class="details-box">
+                            <ul style="padding-left: 1rem; margin-top: 8px; color: #000000; font-size: 0.9rem;">
+                                <li><strong>Root Cause Identified:</strong> A previous aggressive application of "Rule 07 (No Emojis)" replaced product images with wireframe-style typography text labels in <code>ProductCard.kt</code>, breaking the premium visual experience.</li>
+                                <li><strong>Code Resolution:</strong> Imported <code>media.kamel:kamel-image:1.0.0-beta.6</code> into <code>build.gradle.kts</code> to provide fully asynchronous, Multiplatform (WASM + Android) image loading.</li>
+                                <li><strong>Data Layer Update:</strong> Supplied actual Unsplash lifestyle imagery URLs into the <code>ECommerceViewModel</code>. Replaced text boxes with <code>io.kamel.image.KamelImage</code> in <code>ProductCard.kt</code>.</li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status-badge status-resolved">DONE</div>
+                    </td>
+                </tr>
+
                 <!-- Log Entry 61 -->
                 <tr data-category="FIX"
                     data-keywords="MemphisToast Kotlin Compilation Fix Unresolved Reference Width Modifier Spacer Import">

@@ -9,12 +9,12 @@ import kotlinx.coroutines.flow.update
 
 class ECommerceViewModel {
     private val initialProducts = listOf(
-        Product("prod-1", "SKIL Memphis Oversized Hoodie", "APPAREL", 89.0, "5.0", "HOODIE", "HOT DROP"),
-        Product("prod-2", "120Hz Velocity Retro Kicks", "FOOTWEAR", 149.0, "5.0", "KICKS", "LIMITED"),
-        Product("prod-3", "Cyber Neon Crossbody Bag", "ACCESSORIES", 45.0, "4.8", "BAG", "NEW"),
-        Product("prod-4", "Brutalist Mechanical Keyboard", "TECH", 129.0, "5.0", "KEYS", "BEST SELLER"),
-        Product("prod-5", "SKIL Signature Graphic Tee", "APPAREL", 39.0, "4.7", "TEE", "POPULAR"),
-        Product("prod-6", "Lime Brutal Wireless Earbuds", "TECH", 79.0, "4.9", "EARBUDS", "NEW")
+        Product("prod-1", "SKIL Memphis Oversized Hoodie", "APPAREL", 89.0, "5.0", "HOODIE", "HOT DROP", "https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=600&auto=format&fit=crop"),
+        Product("prod-2", "120Hz Velocity Retro Kicks", "FOOTWEAR", 149.0, "5.0", "KICKS", "LIMITED", "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=600&auto=format&fit=crop"),
+        Product("prod-3", "Cyber Neon Crossbody Bag", "ACCESSORIES", 45.0, "4.8", "BAG", "NEW", "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?q=80&w=600&auto=format&fit=crop"),
+        Product("prod-4", "Brutalist Mechanical Keyboard", "TECH", 129.0, "5.0", "KEYS", "BEST SELLER", "https://images.unsplash.com/photo-1595225476474-87563907a212?q=80&w=600&auto=format&fit=crop"),
+        Product("prod-5", "SKIL Signature Graphic Tee", "APPAREL", 39.0, "4.7", "TEE", "POPULAR", "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=600&auto=format&fit=crop"),
+        Product("prod-6", "Lime Brutal Wireless Earbuds", "TECH", 79.0, "4.9", "EARBUDS", "NEW", "https://images.unsplash.com/photo-1606220588913-b3aecb4742a7?q=80&w=600&auto=format&fit=crop")
     )
 
     private val _uiState = MutableStateFlow(

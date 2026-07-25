@@ -12,7 +12,8 @@ data class Product(
     val price: Double,
     val rating: String,
     val itemLabel: String,
-    val badge: String
+    val badge: String,
+    val imageUrl: String? = null
 )
 
 @Stable
