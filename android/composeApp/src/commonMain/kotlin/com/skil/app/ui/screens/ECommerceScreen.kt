@@ -184,15 +184,15 @@ fun ECommerceScreen(
                         }
                     }
 
-                    // Memphis Cart Trigger Button (Web-Matched Retro Cyan #00F0FF)
+                    // Ergonomic Luxury Pill Cart Button (Web & Mobile Optimized)
                     Box(
                         modifier = Modifier
-                            .height(42.dp)
-                            .shadow(elevation = 3.dp, shape = RoundedCornerShape(8.dp), spotColor = Color.Black)
-                            .background(MemphisColors.RetroCyan, shape = RoundedCornerShape(8.dp))
-                            .border(width = 2.dp, color = Color.Black, shape = RoundedCornerShape(8.dp))
+                            .height(44.dp)
+                            .shadow(elevation = 4.dp, shape = RoundedCornerShape(999.dp), spotColor = Color.Black)
+                            .background(Color.White, shape = RoundedCornerShape(999.dp))
+                            .border(width = 1.5.dp, color = Color.Black, shape = RoundedCornerShape(999.dp))
                             .clickable { viewModel.toggleCartDrawer() }
-                            .padding(horizontal = 10.dp),
+                            .padding(horizontal = 14.dp),
                         contentAlignment = Alignment.Center
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -207,9 +207,8 @@ fun ECommerceScreen(
                             Spacer(modifier = Modifier.width(6.dp))
                             Box(
                                 modifier = Modifier
-                                    .background(MemphisColors.HotPink, shape = CircleShape)
-                                    .border(width = 1.dp, color = Color.Black, shape = CircleShape)
-                                    .padding(horizontal = 6.dp, vertical = 2.dp),
+                                    .background(MemphisColors.LuxuryGold, shape = CircleShape)
+                                    .padding(horizontal = 7.dp, vertical = 2.dp),
                                 contentAlignment = Alignment.Center
                             ) {
                                 Text(
@@ -304,14 +303,14 @@ fun ECommerceScreen(
 
                         Spacer(modifier = Modifier.height(10.dp))
 
-                        // Shop Collection Button
+                        // Shop Collection Button (Enhanced Pill Micro-Interaction Target)
                         Box(
                             modifier = Modifier
-                                .shadow(elevation = 3.dp, shape = RoundedCornerShape(8.dp), spotColor = Color.Black)
-                                .background(MemphisColors.LimeYellow, shape = RoundedCornerShape(8.dp))
-                                .border(width = 2.dp, color = Color.Black, shape = RoundedCornerShape(8.dp))
+                                .shadow(elevation = 4.dp, shape = RoundedCornerShape(20.dp), spotColor = Color.Black)
+                                .background(MemphisColors.LimeYellow, shape = RoundedCornerShape(20.dp))
+                                .border(width = 2.dp, color = Color.Black, shape = RoundedCornerShape(20.dp))
                                 .clickable { viewModel.showToast("Browsing Summer 2026 Collection!") }
-                                .padding(horizontal = 14.dp, vertical = 8.dp)
+                                .padding(horizontal = 18.dp, vertical = 10.dp)
                         ) {
                             Text(
                                 text = "SHOP COLLECTION",
@@ -354,6 +353,10 @@ fun ECommerceScreen(
                             product = product,
                             onAddToCart = { viewModel.addToCart(it) }
                         )
+                    }
+
+                    item(span = { androidx.compose.foundation.lazy.grid.GridItemSpan(maxLineSpan) }) {
+                        com.skil.app.ui.components.PremiumFooter()
                     }
                 }
             }

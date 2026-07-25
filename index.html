@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0; url=web/index.html">
+    <meta http-equiv="refresh" content="0; url=web-legacy/modern.html">
     <title>SKIL Lifestyle - Multi-Target Portal</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
@@ -42,7 +42,10 @@
         h1 { font-size: 1.6rem; font-weight: 900; margin-bottom: 10px; text-transform: uppercase; }
         p { color: #5a6072; font-weight: 600; margin-bottom: 24px; font-size: 0.95rem; }
         .btn-launch {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             background: var(--accent-lime);
             color: #000;
             text-decoration: none;
@@ -68,6 +71,9 @@
             font-size: 0.8rem;
             font-weight: 800;
             box-shadow: 2px 2px 0px #000;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
     </style>
 </head>
@@ -77,12 +83,24 @@
         <h1>SKIL LIFESTYLE PORTAL</h1>
         <p>Redirecting to E-Commerce Web Application...</p>
 
-        <a href="web-legacy/index.html" class="btn-launch">🛍️ Open Legacy Web View</a>
+        <a href="web-legacy/modern.html" class="btn-launch">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span>LAUNCH SKIL LIFESTYLE STORE</span>
+        </a>
 
         <div class="links-row">
-            <a href="ai/journal.html" class="chip-link">📊 Activity Journal</a>
-            <a href="ai/preview.html" class="chip-link">💻 Live Preview Engine</a>
-            <a href="ai/privacy-policy.html" class="chip-link">🔒 Privacy Policy</a>
+            <a href="ai/journal.html" class="chip-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                <span>Activity Journal</span>
+            </a>
+            <a href="ai/preview.html" class="chip-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                <span>Live Preview Engine</span>
+            </a>
+            <a href="ai/privacy-policy.html" class="chip-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>Privacy Policy</span>
+            </a>
         </div>
     </div>
 </body>

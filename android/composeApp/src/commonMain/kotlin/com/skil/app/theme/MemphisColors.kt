@@ -24,4 +24,7 @@ object MemphisColors {
     val TextMain = Color(0xFF0D0E12)
     val TextMuted = Color(0xFF5A6072)
     val GridLine = Color(0x0D000000)
+    
+    // Luxury Premium Additions
+    val LuxuryGold = Color(0xFFC19652)
 }

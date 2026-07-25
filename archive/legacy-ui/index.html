@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SKIL Lifestyle — Modern Light Experience</title>
+    <title>SKIL Lifestyle - Dual Navbar E-Commerce</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="modern.css">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="https://res.cloudinary.com/aiz2tooi/image/upload/f_auto,q_auto,w_180,h_180/v1784722804/SKIL_Lifestyle_Black_Transparent_BG_Logo.png">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <!-- Toast Notification Overlay (Rule 05 Compliant) -->
     <div id="toastContainer"></div>
 
     <!-- Announcement Bar -->
@@ -20,6 +24,8 @@
         <a href="#" class="nav-brand">
             <img src="https://res.cloudinary.com/aiz2tooi/image/upload/f_auto,q_auto/v1784722804/SKIL_Lifestyle_Black_Transparent_BG_Logo.png" alt="SKIL Lifestyle Logo" class="brand-logo-main">
         </a>
+
+        <!-- Top Right Partner Logos Container -->
         <div class="partner-logos-container">
             <img src="https://res.cloudinary.com/aiz2tooi/image/upload/f_auto,q_auto/v1784722809/Ajanta_Transparent_Logo.png" alt="Ajanta Logo" class="partner-logo-item" title="Ajanta Official Partner">
             <div class="partner-divider"></div>
@@ -27,13 +33,15 @@
         </div>
     </header>
 
-    <!-- Dual Navbar 2: Navigation Controls & Cart -->
+    <!-- Dual Navbar 2: Navigation Controls & Cart (Cart Placed Beside Search Bar) -->
     <nav class="controls-navbar">
         <div class="controls-top-row">
             <div class="search-input-wrapper">
                 <svg class="search-icon-inside" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                <input id="searchInput" type="text" class="search-input" placeholder="Search products, kicks, tech..." onkeyup="handleSearch(this.value)">
+                <input type="text" class="search-input" placeholder="Search products, kicks, tech..." onkeyup="handleSearch(this.value)">
             </div>
+
+            <!-- Memphis Cart Button (Positioned Beside Search Input) -->
             <button class="btn-cart" onclick="toggleCartDrawer()">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
                 <span class="btn-cart-text">CART</span>
@@ -50,29 +58,27 @@
         </div>
     </nav>
 
-    <main>
-        <!-- Hero Showcase Section -->
-        <div class="hero-container">
-            <div class="hero-banner">
-                <div class="hero-text">
-                    <span class="hero-tag">PREMIUM DESIGN, MODERN DROP</span>
-                    <h1>Light, elevated retail for discerning style.</h1>
-                    <p>Experience a refined daily shopping destination inspired by SKIL’s signature branding, clean lines, and premium gold accents.</p>
-                    <div class="hero-actions">
-                        <button class="btn-primary" onclick="showToast('Browsing the new SKIL collection', 'lime')">Explore Collection</button>
-                    </div>
-                </div>
+    <!-- Hero Showcase Section -->
+    <div class="hero-container">
+        <div class="hero-banner">
+            <div class="hero-text">
+                <span class="hero-tag">EXCLUSIVE DROP</span>
+                <h1>SUPER FLUID STREETWEAR & TECH GEAR</h1>
+                <p>Engineered for maximum 120Hz performance, bold aesthetics, and high-impact everyday style.</p>
+                <button class="btn-hero" onclick="showToast('Browsing Summer 2026 Collection!', 'lime')">Shop Collection</button>
             </div>
         </div>
+    </div>
 
-        <!-- Products Grid -->
-        <section class="products-section">
-            <div class="section-title">
-                <span>Curated essentials for modern living.</span>
-            </div>
-            <div class="products-grid" id="productsContainer"></div>
-        </section>
-    </main>
+    <!-- Main Products Grid -->
+    <div class="products-section">
+        <div class="section-title">
+            <span>Featured Products</span>
+        </div>
+        <div class="products-grid" id="productsContainer">
+            <!-- Dynamically Rendered by app.js -->
+        </div>
+    </div>
 
     <footer class="site-footer">
         <div class="footer-top-accent"></div>
@@ -120,6 +126,7 @@
         </div>
     </footer>
 
+    <!-- Cart Slide-Over Drawer -->
     <div class="cart-overlay" id="cartOverlay" onclick="toggleCartDrawer()"></div>
     <div class="cart-drawer" id="cartDrawer">
         <div class="drawer-header">
@@ -128,9 +135,11 @@
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
         </div>
+
         <div class="drawer-body" id="drawerBody">
             <!-- Dynamically Rendered Cart Items -->
         </div>
+
         <div class="drawer-footer">
             <div class="cart-total-row">
                 <span>SUBTOTAL:</span>

@@ -612,6 +612,34 @@
             </thead>
             <tbody id="journalTableBody">
 
+                <!-- Log Entry 60 -->
+                <tr data-category="ARCH"
+                    data-keywords="Modern UI Main Default Secure Legacy Archive Button Enhancement WASM Parity">
+                    <td><span class="log-id">LOG-060</span></td>
+                    <td>
+                        <div class="log-time">2026-07-25 11:40 IST</div>
+                        <div style="font-size: 0.75rem; color: #9b51e0; font-weight: 800; margin-top: 4px;">Agent: Antigravity</div>
+                    </td>
+                    <td><span class="cat-tag arch-tag"
+                            style="background: var(--accent-lime); color: #000000; padding: 4px 8px; border-radius: 6px; font-weight: 800; font-size: 0.75rem; border: 1px solid #000;">ARCH</span>
+                    </td>
+                    <td>
+                        <strong style="color: #000000; font-size: 1rem;">Set Modern UI as Default Main UI, Archived Legacy UI & Enhanced Button Interactions</strong>
+                        <div class="details-box">
+                            <ul style="padding-left: 1rem; margin-top: 8px; color: #000000; font-size: 0.9rem;">
+                                <li><strong>Secure Archiving:</strong> Preserved all legacy UI files securely in <code>archive/legacy-ui/</code> directory.</li>
+                                <li><strong>Modern UI Promotion:</strong> Updated root <code>index.html</code> and <code>web-legacy/index.html</code> to serve <code>modern.html</code> directly as the default UI.</li>
+                                <li><strong>Legacy Option Removal:</strong> Completely removed "View Legacy UI" and "Open Legacy Web View" toggle buttons and links.</li>
+                                <li><strong>Button Enhancements:</strong> Upgraded button classes with 44px minimum touch targets, scale micro-animations (<code>translateY(-2px) scale(1.02)</code>), and brutalist pill shapes in CSS and Compose Multiplatform.</li>
+                                <li><strong>Single-Source WASM Parity:</strong> Confirmed 100% UI parity between Web (PC/Phone) and Android compiled from shared Kotlin Compose module in <code>android/composeApp</code>.</li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status-badge status-resolved">DONE</div>
+                    </td>
+                </tr>
+
                 <!-- Log Entry 55 -->
                 <tr data-category="UI"
                     data-keywords="modern html css dual navbar hero container layout fix">
@@ -1703,11 +1731,85 @@
                             <span class="file-chip">.github/workflows/android-internal.yml</span>
                         </div>
                     </td>
+                <!-- LOG-056 -->
+                <tr>
+                    <td><span class="log-id">LOG-056</span></td>
+                    <td>
+                        <div class="log-time">2026-07-24 11:18 IST</div>
+                        <div style="font-size: 0.75rem; color: #8b5cf6; font-weight: 800; margin-top: 4px;">Agent: Antigravity</div>
+                    </td>
+                    <td><span class="cat-tag ui">UI/UX</span></td>
+                    <td>
+                        <strong style="color: #000000; font-size: 1rem;">Toast Stack Engine Fix, Logo Enlargement, Card SVG Scale & Premium Footer Integration</strong>
+                    </td>
+                    <td>
+                        <div class="file-list">
+                            <span class="file-chip">web-legacy/modern.css</span>
+                            <span class="file-chip">web-legacy/styles.css</span>
+                            <span class="file-chip">web-legacy/app.js</span>
+                            <span class="file-chip">android/composeApp/.../PremiumFooter.kt</span>
+                            <span class="file-chip">android/composeApp/.../ProductCard.kt</span>
+                        </div>
+                    </td>
+                <!-- LOG-057 -->
+                <tr>
+                    <td><span class="log-id">LOG-057</span></td>
+                    <td>
+                        <div class="log-time">2026-07-24 11:24 IST</div>
+                        <div style="font-size: 0.75rem; color: #8b5cf6; font-weight: 800; margin-top: 4px;">Agent: Antigravity</div>
+                    </td>
+                    <td><span class="cat-tag ui">UI/UX</span></td>
+                    <td>
+                        <strong style="color: #000000; font-size: 1rem;">Eliminated Desktop Side White Margins & Upgraded Responsive Grid to 1540px Width</strong>
+                    </td>
+                    <td>
+                        <div class="file-list">
+                            <span class="file-chip">web-legacy/modern.css</span>
+                            <span class="file-chip">web-legacy/styles.css</span>
+                        </div>
+                    </td>
+                <!-- LOG-058 -->
+                <tr>
+                    <td><span class="log-id">LOG-058</span></td>
+                    <td>
+                        <div class="log-time">2026-07-24 11:40 IST</div>
+                        <div style="font-size: 0.75rem; color: #8b5cf6; font-weight: 800; margin-top: 4px;">Agent: Antigravity</div>
+                    </td>
+                    <td><span class="cat-tag ui">UI/UX</span></td>
+                    <td>
+                        <strong style="color: #000000; font-size: 1rem;">Complete Overhaul of Toast Engine: Luxury Obsidian Gold Cards, Animated Progress Bar & Vector Icon Badges</strong>
+                    </td>
+                    <td>
+                        <div class="file-list">
+                            <span class="file-chip">web-legacy/app.js</span>
+                            <span class="file-chip">web-legacy/modern.css</span>
+                            <span class="file-chip">web-legacy/styles.css</span>
+                            <span class="file-chip">android/composeApp/.../MemphisToast.kt</span>
+                        </div>
+                    </td>
+                <!-- LOG-059 -->
+                <tr>
+                    <td><span class="log-id">LOG-059</span></td>
+                    <td>
+                        <div class="log-time">2026-07-24 11:45 IST</div>
+                        <div style="font-size: 0.75rem; color: #8b5cf6; font-weight: 800; margin-top: 4px;">Agent: Antigravity</div>
+                    </td>
+                    <td><span class="cat-tag ui">UI/UX</span></td>
+                    <td>
+                        <strong style="color: #000000; font-size: 1rem;">100% Harmonious Pill Toast Geometry & Ergonomic 44px Cart Button (PC & Mobile Touch Target)</strong>
+                    </td>
+                    <td>
+                        <div class="file-list">
+                            <span class="file-chip">web-legacy/app.js</span>
+                            <span class="file-chip">web-legacy/modern.css</span>
+                            <span class="file-chip">web-legacy/styles.css</span>
+                            <span class="file-chip">android/composeApp/.../ECommerceScreen.kt</span>
+                        </div>
+                    </td>
                     <td>
                         <span class="status-badge completed">✓ COMPLETED</span>
                     </td>
                 </tr>
-
             </tbody>
         </table>
     </div>

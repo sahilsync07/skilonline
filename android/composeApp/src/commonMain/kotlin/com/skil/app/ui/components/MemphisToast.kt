@@ -59,39 +59,60 @@ fun MemphisToast(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 8.dp)
-                .shadow(elevation = 5.dp, shape = RoundedCornerShape(8.dp), spotColor = Color.Black)
-                .background(backgroundColor, shape = RoundedCornerShape(8.dp))
-                .border(width = 3.dp, color = MemphisColors.BorderBlack, shape = RoundedCornerShape(8.dp))
                 .padding(horizontal = 16.dp, vertical = 12.dp)
+                .shadow(elevation = 8.dp, shape = RoundedCornerShape(12.dp), spotColor = Color.Black)
+                .background(Color(0xFF0D0E12), shape = RoundedCornerShape(12.dp))
+                .border(width = 1.5.dp, color = MemphisColors.LuxuryGold, shape = RoundedCornerShape(12.dp))
+                .padding(14.dp)
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(
-                    text = message,
-                    color = Color.Black,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 14.sp,
-                    modifier = Modifier.weight(1f)
+                // Gold Accent Pill
+                Box(
+                    modifier = Modifier
+                        .size(width = 4.dp, height = 36.dp)
+                        .background(MemphisColors.LuxuryGold, shape = RoundedCornerShape(2.dp))
                 )
+
+                androidx.compose.foundation.layout.Spacer(modifier = Modifier.width(10.dp))
+
+                androidx.compose.foundation.layout.Column(
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Text(
+                        text = "NOTIFICATION",
+                        color = MemphisColors.LuxuryGold,
+                        fontWeight = FontWeight.Black,
+                        fontSize = 9.sp,
+                        letterSpacing = 1.sp
+                    )
+                    Text(
+                        text = message,
+                        color = Color.White,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 13.sp
+                    )
+                }
+
+                androidx.compose.foundation.layout.Spacer(modifier = Modifier.width(10.dp))
 
                 // Manual close '×' cross button
                 Box(
                     modifier = Modifier
                         .size(26.dp)
-                        .background(Color.White, shape = CircleShape)
-                        .border(width = 2.dp, color = Color.Black, shape = CircleShape)
+                        .background(Color(0xFF22242B), shape = CircleShape)
+                        .border(width = 1.dp, color = Color(0xFF3A3D48), shape = CircleShape)
                         .clickable { onDismiss() },
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
                         text = "×",
-                        color = Color.Black,
+                        color = Color.White,
                         fontWeight = FontWeight.Black,
-                        fontSize = 16.sp
+                        fontSize = 15.sp
                     )
                 }
             }

@@ -72,7 +72,7 @@ fun ProductCard(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(100.dp)
+                    .height(120.dp)
                     .background(MemphisColors.CanvasBackground, shape = RoundedCornerShape(8.dp))
                     .border(width = 2.dp, color = Color.Black, shape = RoundedCornerShape(8.dp)),
                 contentAlignment = Alignment.Center
@@ -80,9 +80,9 @@ fun ProductCard(
                 Text(
                     text = product.itemLabel.uppercase(),
                     fontWeight = FontWeight.Black,
-                    fontSize = 16.sp,
+                    fontSize = 18.sp,
                     color = Color.Black,
-                    letterSpacing = 1.sp
+                    letterSpacing = 1.5.sp
                 )
             }
 
@@ -131,14 +131,14 @@ fun ProductCard(
                     )
                 }
 
-                // + ADD Button
+                // + ADD Button (Enhanced Pill Micro-Target)
                 Box(
                     modifier = Modifier
-                        .shadow(elevation = 2.dp, shape = RoundedCornerShape(6.dp), spotColor = Color.Black)
-                        .background(MemphisColors.LimeYellow, shape = RoundedCornerShape(6.dp))
-                        .border(width = 2.dp, color = Color.Black, shape = RoundedCornerShape(6.dp))
+                        .shadow(elevation = 3.dp, shape = RoundedCornerShape(14.dp), spotColor = Color.Black)
+                        .background(MemphisColors.LimeYellow, shape = RoundedCornerShape(14.dp))
+                        .border(width = 2.dp, color = Color.Black, shape = RoundedCornerShape(14.dp))
                         .clickable { onAddToCart(product) }
-                        .padding(horizontal = 10.dp, vertical = 5.dp)
+                        .padding(horizontal = 12.dp, vertical = 6.dp)
                 ) {
                     Text(
                         text = "+ ADD",
