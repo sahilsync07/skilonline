@@ -9,12 +9,12 @@ import kotlinx.coroutines.flow.update
 
 class ECommerceViewModel {
     private val initialProducts = listOf(
-        Product("prod-1", "SKIL Memphis Oversized Hoodie", "APPAREL", 89.0, "5.0", "HOODIE", "HOT DROP", "https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=600&auto=format&fit=crop"),
-        Product("prod-2", "120Hz Velocity Retro Kicks", "FOOTWEAR", 149.0, "5.0", "KICKS", "LIMITED", "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=600&auto=format&fit=crop"),
-        Product("prod-3", "Cyber Neon Crossbody Bag", "ACCESSORIES", 45.0, "4.8", "BAG", "NEW", "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?q=80&w=600&auto=format&fit=crop"),
-        Product("prod-4", "Brutalist Mechanical Keyboard", "TECH", 129.0, "5.0", "KEYS", "BEST SELLER", "https://images.unsplash.com/photo-1595225476474-87563907a212?q=80&w=600&auto=format&fit=crop"),
-        Product("prod-5", "SKIL Signature Graphic Tee", "APPAREL", 39.0, "4.7", "TEE", "POPULAR", "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=600&auto=format&fit=crop"),
-        Product("prod-6", "Lime Brutal Wireless Earbuds", "TECH", 79.0, "4.9", "EARBUDS", "NEW", "https://images.unsplash.com/photo-1606220588913-b3aecb4742a7?q=80&w=600&auto=format&fit=crop")
+        Product("prod-1", "SKIL Memphis Oversized Hoodie", "APPAREL", 89.0, "5.0", "HOODIE", "HOT DROP", "https://res.cloudinary.com/aiz2tooi/image/upload/v1784984076/oversized_hoodie_1784984022397.jpg"),
+        Product("prod-2", "120Hz Velocity Retro Kicks", "FOOTWEAR", 149.0, "5.0", "KICKS", "LIMITED", "https://res.cloudinary.com/aiz2tooi/image/upload/v1784984079/retro_kicks_1784984033342.jpg"),
+        Product("prod-3", "Cyber Neon Crossbody Bag", "ACCESSORIES", 45.0, "4.8", "BAG", "NEW", "https://res.cloudinary.com/aiz2tooi/image/upload/v1784984082/crossbody_bag_1784984043160.jpg"),
+        Product("prod-4", "Brutalist Mechanical Keyboard", "TECH", 129.0, "5.0", "KEYS", "BEST SELLER", "https://res.cloudinary.com/aiz2tooi/image/upload/v1784984084/mechanical_keyboard_1784984053869.jpg"),
+        Product("prod-5", "SKIL Signature Graphic Tee", "APPAREL", 39.0, "4.7", "TEE", "POPULAR", "https://res.cloudinary.com/aiz2tooi/image/upload/v1784984076/oversized_hoodie_1784984022397.jpg"),
+        Product("prod-6", "Lime Brutal Wireless Earbuds", "TECH", 79.0, "4.9", "EARBUDS", "NEW", "https://res.cloudinary.com/aiz2tooi/image/upload/v1784984084/mechanical_keyboard_1784984053869.jpg")
     )
 
     private val _uiState = MutableStateFlow(
