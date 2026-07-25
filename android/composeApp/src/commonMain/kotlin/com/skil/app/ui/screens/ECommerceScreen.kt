@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -42,6 +43,12 @@ import com.skil.app.ui.components.AppToast
 import com.skil.app.ui.components.ProductCard
 import com.skil.app.ui.components.SearchIcon
 
+import org.jetbrains.compose.resources.painterResource
+import skilonline.composeapp.generated.resources.Res
+import skilonline.composeapp.generated.resources.ajanta_logo
+import skilonline.composeapp.generated.resources.skil_logo
+import skilonline.composeapp.generated.resources.xpania_logo
+
 @Composable
 fun ECommerceScreen(
     viewModel: ECommerceViewModel,
@@ -53,9 +60,14 @@ fun ECommerceScreen(
     Box(
         modifier = modifier
             .fillMaxSize()
-            .background(AppColors.SurfaceBackground)
+            .background(AppColors.SurfaceBackground),
+        contentAlignment = Alignment.TopCenter
     ) {
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(
+            modifier = Modifier
+                .fillMaxHeight()
+                .widthIn(max = 1200.dp)
+        ) {
             // 1. Top Announcement Bar
             Box(
                 modifier = Modifier
@@ -93,22 +105,12 @@ fun ECommerceScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         // Left Brand Logo Typography (Elegant)
-                        Column {
-                            Text(
-                                text = "SKIL",
-                                fontWeight = FontWeight.Normal,
-                                fontSize = 28.sp,
-                                color = AppColors.TextPrimary,
-                                letterSpacing = 2.sp
-                            )
-                            Text(
-                                text = "L I F E S T Y L E",
-                                fontSize = 8.sp,
-                                fontWeight = FontWeight.Normal,
-                                color = AppColors.TextMuted,
-                                letterSpacing = 4.sp
-                            )
-                        }
+                        androidx.compose.foundation.Image(
+                            painter = painterResource(Res.drawable.skil_logo),
+                            contentDescription = "SKIL Logo",
+                            modifier = Modifier.height(36.dp),
+                            contentScale = androidx.compose.ui.layout.ContentScale.Fit
+                        )
 
                         // Right Partner Logos Badge Container
                         Box(
@@ -118,11 +120,11 @@ fun ECommerceScreen(
                                 .padding(horizontal = 14.dp, vertical = 8.dp)
                         ) {
                             Row(verticalAlignment = Alignment.CenterVertically) {
-                                Text(
-                                    text = "Ajanta",
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 13.sp,
-                                    color = Color(0xFFC62828)
+                                androidx.compose.foundation.Image(
+                                    painter = painterResource(Res.drawable.ajanta_logo),
+                                    contentDescription = "Ajanta Logo",
+                                    modifier = Modifier.height(20.dp),
+                                    contentScale = androidx.compose.ui.layout.ContentScale.Fit
                                 )
                                 Spacer(modifier = Modifier.width(10.dp))
                                 Box(
@@ -132,11 +134,11 @@ fun ECommerceScreen(
                                         .background(AppColors.BorderLight)
                                 )
                                 Spacer(modifier = Modifier.width(10.dp))
-                                Text(
-                                    text = "xpania",
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 13.sp,
-                                    color = Color(0xFFC2185B)
+                                androidx.compose.foundation.Image(
+                                    painter = painterResource(Res.drawable.xpania_logo),
+                                    contentDescription = "xpania Logo",
+                                    modifier = Modifier.height(20.dp),
+                                    contentScale = androidx.compose.ui.layout.ContentScale.Fit
                                 )
                             }
                         }

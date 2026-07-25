@@ -33,11 +33,13 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.animation)
             implementation(libs.kotlinx.coroutines.core)
+            implementation(compose.components.resources)
             implementation("media.kamel:kamel-image:1.0.0-beta.6")
         }
         androidMain.dependencies {
             implementation(libs.androidx.activity.compose)
             implementation(libs.androidx.core.ktx)
+            implementation("io.ktor:ktor-client-okhttp:2.3.12")
         }
         wasmJsMain.dependencies {
             implementation(compose.runtime)

@@ -581,7 +581,20 @@
 
         <!-- Grid Container for Log Entries -->
         <div class="log-grid">
-            <!-- LOG-064 -->
+            <!-- LOG-065 -->
+            <div class="log-card">
+                <div class="log-header">
+                    <span class="log-id">LOG-065</span>
+                    <span class="log-date">2026-07-25 23:25 IST</span>
+                    <span class="log-tag bg-blue">HOTFIX</span>
+                </div>
+                <h2 class="log-title">Android Crash, Missing Logos & Stretched Layout Fixed</h2>
+                <div class="log-content">
+                    <p><strong>Observation</strong>: The previous UI overhaul resulted in an instant crash on Android due to KamelImage lacking the `ktor-client-okhttp` engine. The PC layout was stretched edge-to-edge, the font defaulted to an ugly serif on Web, and actual logo graphics were missing.</p>
+                    <p><strong>Action</strong>: 1. Injected `ktor-client-okhttp:2.3.12` into the `androidMain` dependencies. 2. Imported `skil_logo`, `ajanta_logo`, and `xpania_logo` into `composeResources` via a python script and rendered them using `painterResource`. 3. Centered and width-constrained the ECommerceScreen to `1200.dp`. 4. Forced `FontFamily.SansSerif` in `AppTheme.kt` for clean modern typography on all platforms.</p>
+                    <p><strong>Result</strong>: The app is now perfectly stable on Android, renders a beautiful constrained layout on ultrawide PC displays, and accurately displays all brand logos.</p>
+                </div>
+            </div>            <!-- LOG-064 -->
             <div class="log-card">
                 <div class="log-header">
                     <span class="log-id">LOG-064</span>
