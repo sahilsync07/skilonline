@@ -19,7 +19,7 @@ class HomeScreenViewModel {
                     id = "LOG-003",
                     timestamp = "2026-07-22 13:52 IST",
                     category = "RULES",
-                    title = "Rule 05: Strict Ban on Browser Alerts & Memphis Toast Engine",
+                    title = "Rule 05: Strict Ban on Browser Alerts & App Toast Engine",
                     status = "COMPLETED",
                     files = listOf("TOAST_NOTIFICATION_RULES.md", "journal.html", "SUPER_ADMIN_RULES.md")
                 ),

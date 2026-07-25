@@ -29,18 +29,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.skil.app.presentation.HomeScreenViewModel
 import com.skil.app.presentation.LogActivityItem
-import com.skil.app.theme.MemphisColors
-import com.skil.app.ui.components.MemphisButton
-import com.skil.app.ui.components.MemphisCard
-import com.skil.app.ui.components.MemphisToast
+import com.skil.app.theme.AppColors
+import com.skil.app.ui.components.AppButton
+import com.skil.app.ui.components.AppCard
+import com.skil.app.ui.components.AppToast
 
 /**
  * HomeScreen - 120Hz Super Fluid Main Application Screen
  * Incorporates 2026 Jetpack Compose Multiplatform performance rules:
  * - LazyColumn item keys for zero recomposition jank.
  * - Deferred scroll state reads via graphicsLayer.
- * - Memphis Light Mode styling.
- * - Rule 05 Memphis Toast notifications.
+ * - Modern Elegant Light styling.
+ * - Rule 05 App Toast notifications.
  */
 @Composable
 fun HomeScreen(
@@ -53,21 +53,21 @@ fun HomeScreen(
     Box(
         modifier = modifier
             .fillMaxSize()
-            .background(MemphisColors.CanvasBackground)
+            .background(AppColors.SurfaceBackground)
     ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp)
+                .padding(24.dp)
         ) {
             // Header Section
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .shadow(elevation = 5.dp, shape = RoundedCornerShape(12.dp), spotColor = Color.Black)
-                    .background(Color.White, shape = RoundedCornerShape(12.dp))
-                    .border(width = 3.dp, color = MemphisColors.BorderBlack, shape = RoundedCornerShape(12.dp))
-                    .padding(18.dp)
+                    .shadow(elevation = 12.dp, shape = RoundedCornerShape(24.dp), spotColor = Color(0x0A131518))
+                    .background(Color.White, shape = RoundedCornerShape(24.dp))
+                    .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(24.dp))
+                    .padding(24.dp)
             ) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -77,73 +77,90 @@ fun HomeScreen(
                     Column {
                         Text(
                             text = "SKIL LIFESTYLE",
-                            fontWeight = FontWeight.Black,
-                            fontSize = 20.sp,
-                            color = Color.Black
+                            fontWeight = FontWeight.Normal,
+                            fontSize = 24.sp,
+                            color = AppColors.TextPrimary,
+                            letterSpacing = 2.sp
                         )
+                        Spacer(modifier = Modifier.height(4.dp))
                         Text(
                             text = "120Hz Super Fluid Cross-Platform App",
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Bold,
-                            color = MemphisColors.TextMuted
+                            color = AppColors.TextSecondary
                         )
                     }
 
-                    MemphisButton(
+                    AppButton(
                         text = "Sync",
                         onClick = { viewModel.triggerAction("Context Sync") },
-                        backgroundColor = MemphisColors.RetroCyan
+                        backgroundColor = AppColors.AccentGold
                     )
                 }
             }
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(24.dp))
 
             // Metrics Row
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(12.dp)
+                horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                MemphisCard(
-                    title = "Log Entries",
-                    accentColor = MemphisColors.LimeYellow,
-                    modifier = Modifier.weight(1f)
-                ) {
-                    Text(
-                        text = "${uiState.totalLogEntries}",
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Black
-                    )
+                AppCard(modifier = Modifier.weight(1f)) {
+                    Column {
+                        Text(
+                            text = "Log Entries",
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = AppColors.TextSecondary
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Text(
+                            text = "${uiState.totalLogEntries}",
+                            fontSize = 28.sp,
+                            fontWeight = FontWeight.ExtraBold,
+                            color = AppColors.TextPrimary
+                        )
+                    }
                 }
 
-                MemphisCard(
-                    title = "Files Touched",
-                    accentColor = MemphisColors.MemphisPink,
-                    modifier = Modifier.weight(1f)
-                ) {
-                    Text(
-                        text = "${uiState.filesTouched}",
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Black
-                    )
+                AppCard(modifier = Modifier.weight(1f)) {
+                    Column {
+                        Text(
+                            text = "Files Touched",
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = AppColors.TextSecondary
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Text(
+                            text = "${uiState.filesTouched}",
+                            fontSize = 28.sp,
+                            fontWeight = FontWeight.ExtraBold,
+                            color = AppColors.TextPrimary
+                        )
+                    }
                 }
             }
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(32.dp))
 
             // 120Hz Fluidity Scroll List
             Text(
                 text = "SYSTEM ACTIVITY LOGS",
-                fontWeight = FontWeight.Black,
-                fontSize = 14.sp,
-                color = Color.Black,
-                modifier = Modifier.padding(vertical = 8.dp)
+                fontWeight = FontWeight.Bold,
+                fontSize = 13.sp,
+                color = AppColors.TextSecondary,
+                modifier = Modifier.padding(vertical = 8.dp),
+                letterSpacing = 1.sp
             )
+
+            Spacer(modifier = Modifier.height(8.dp))
 
             // Deferred scroll transform via graphicsLayer for 120Hz zero-jank frame rates
             LazyColumn(
                 state = scrollState,
-                verticalArrangement = Arrangement.spacedBy(12.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
                 modifier = Modifier
                     .fillMaxSize()
                     .graphicsLayer {
@@ -161,8 +178,8 @@ fun HomeScreen(
             }
         }
 
-        // Rule 05: Memphis Toast Notification Overlay
-        MemphisToast(
+        // Rule 05: App Toast Notification Overlay
+        AppToast(
             message = uiState.toastMessage,
             isVisible = uiState.isToastVisible,
             onDismiss = { viewModel.dismissToast() },
@@ -176,44 +193,45 @@ fun ActivityLogCard(item: LogActivityItem) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .shadow(elevation = 3.dp, shape = RoundedCornerShape(8.dp), spotColor = Color.Black)
-            .background(Color.White, shape = RoundedCornerShape(8.dp))
-            .border(width = 2.dp, color = MemphisColors.BorderBlack, shape = RoundedCornerShape(8.dp))
-            .padding(14.dp)
+            .shadow(elevation = 6.dp, shape = RoundedCornerShape(16.dp), spotColor = Color(0x0A131518))
+            .background(Color.White, shape = RoundedCornerShape(16.dp))
+            .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(16.dp))
+            .padding(20.dp)
     ) {
         Column {
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 Box(
                     modifier = Modifier
-                        .background(MemphisColors.LimeYellow, shape = RoundedCornerShape(4.dp))
-                        .border(width = 1.dp, color = Color.Black, shape = RoundedCornerShape(4.dp))
-                        .padding(horizontal = 6.dp, vertical = 2.dp)
+                        .background(AppColors.SurfaceBackground, shape = RoundedCornerShape(8.dp))
+                        .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(8.dp))
+                        .padding(horizontal = 10.dp, vertical = 4.dp)
                 ) {
                     Text(
                         text = item.id,
-                        fontWeight = FontWeight.Black,
+                        fontWeight = FontWeight.Bold,
                         fontSize = 11.sp,
-                        color = Color.Black
+                        color = AppColors.TextPrimary
                     )
                 }
                 Text(
                     text = item.timestamp,
                     fontSize = 11.sp,
                     fontWeight = FontWeight.Bold,
-                    color = MemphisColors.TextMuted
+                    color = AppColors.TextSecondary
                 )
             }
 
-            Spacer(modifier = Modifier.height(6.dp))
+            Spacer(modifier = Modifier.height(12.dp))
 
             Text(
                 text = item.title,
                 fontWeight = FontWeight.Bold,
-                fontSize = 13.sp,
-                color = Color.Black
+                fontSize = 14.sp,
+                color = AppColors.TextPrimary
             )
         }
     }
