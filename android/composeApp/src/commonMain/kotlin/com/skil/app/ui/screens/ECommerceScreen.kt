@@ -407,6 +407,7 @@ fun ECommerceScreen(
                 }
             }
         }
+        } // Closing brace for the outer full-width Column
 
         // 7. Cart Drawer Slide-Over Sheet
         if (uiState.isCartDrawerOpen) {
