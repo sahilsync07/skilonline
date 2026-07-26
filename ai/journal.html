@@ -581,7 +581,19 @@
 
         <!-- Grid Container for Log Entries -->
         <div class="log-grid">
-            <!-- LOG-066 -->
+            <!-- LOG-067 -->
+            <div class="log-card">
+                <div class="log-header">
+                    <span class="log-id">LOG-067</span>
+                    <span class="log-date">2026-07-26 16:44 IST</span>
+                    <span class="log-tag bg-green">FEATURE</span>
+                </div>
+                <h2 class="log-title">Independent Cross-Platform Responsiveness</h2>
+                <div class="log-content">
+                    <p><strong>Observation</strong>: The UI elements were scaling awkwardly on PC at 100% zoom because the max width was globally constrained without adapting grid columns or hero layout for wider screens.</p>
+                    <p><strong>Action</strong>: Restructured `ECommerceScreen.kt` using `BoxWithConstraints`. Top Banner is now 100% full-width. Product grid adapts columns dynamically (4 for PC, 2 for mobile) independently of the platform. Hero section renders an elegant subtle watermark on wide screens to prevent empty whitespace.</p>
+                </div>
+            </div>            <!-- LOG-066 -->
             <div class="log-card">
                 <div class="log-header">
                     <span class="log-id">LOG-066</span>

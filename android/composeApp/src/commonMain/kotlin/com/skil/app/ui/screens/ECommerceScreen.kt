@@ -63,12 +63,8 @@ fun ECommerceScreen(
             .background(AppColors.SurfaceBackground),
         contentAlignment = Alignment.TopCenter
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxHeight()
-                .widthIn(max = 1200.dp)
-        ) {
-            // 1. Top Announcement Bar
+        Column(modifier = Modifier.fillMaxSize()) {
+            // 1. Top Announcement Bar (Full Width)
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -85,11 +81,18 @@ fun ECommerceScreen(
                 )
             }
 
-            Column(
+            Box(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = 24.dp, vertical = 14.dp)
+                    .fillMaxWidth()
+                    .weight(1f),
+                contentAlignment = Alignment.TopCenter
             ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .widthIn(max = 1200.dp)
+                        .padding(horizontal = 24.dp, vertical = 14.dp)
+                ) {
                 // 2. Navbar 1: Top Brand & Partner Logo Bar
                 Box(
                     modifier = Modifier
@@ -263,69 +266,92 @@ fun ECommerceScreen(
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                // 5. Hero Showcase Section (Elegant Light Gradient)
-                Box(
+                // 5. Hero Showcase Section (Responsive Elegant Light)
+                androidx.compose.foundation.layout.BoxWithConstraints(
                     modifier = Modifier
                         .fillMaxWidth()
                         .shadow(elevation = 12.dp, shape = RoundedCornerShape(28.dp), spotColor = Color(0x0C131518))
                         .background(Color.White, shape = RoundedCornerShape(28.dp))
                         .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(28.dp))
-                        .padding(48.dp)
                 ) {
-                    Column {
-                        // Tag Pill
-                        Box(
-                            modifier = Modifier
-                                .background(AppColors.SurfaceBackground, shape = RoundedCornerShape(999.dp))
-                                .border(width = 1.dp, color = AppColors.AccentGold.copy(alpha=0.3f), shape = RoundedCornerShape(999.dp))
-                                .padding(horizontal = 14.dp, vertical = 6.dp)
-                        ) {
+                    val isWide = maxWidth > 600.dp
+                    
+                    Row(
+                        modifier = Modifier.fillMaxWidth().padding(if (isWide) 48.dp else 24.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Column(modifier = if (isWide) Modifier.weight(0.6f) else Modifier.fillMaxWidth()) {
+                            // Tag Pill
+                            Box(
+                                modifier = Modifier
+                                    .background(AppColors.SurfaceBackground, shape = RoundedCornerShape(999.dp))
+                                    .border(width = 1.dp, color = AppColors.AccentGold.copy(alpha=0.3f), shape = RoundedCornerShape(999.dp))
+                                    .padding(horizontal = 14.dp, vertical = 6.dp)
+                            ) {
+                                Text(
+                                    text = "PREMIUM DESIGN, MODERN DROP",
+                                    color = AppColors.AccentGold,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 10.sp,
+                                    letterSpacing = 1.sp
+                                )
+                            }
+
+                            Spacer(modifier = Modifier.height(16.dp))
+
+                            // Title
                             Text(
-                                text = "PREMIUM DESIGN, MODERN DROP",
-                                color = AppColors.AccentGold,
-                                fontWeight = FontWeight.Bold,
-                                fontSize = 10.sp,
-                                letterSpacing = 1.sp
+                                text = "Light, elevated retail\nfor discerning style.",
+                                fontWeight = FontWeight.ExtraBold,
+                                fontSize = if (isWide) 32.sp else 26.sp,
+                                color = AppColors.TextPrimary,
+                                lineHeight = if (isWide) 36.sp else 30.sp
                             )
+
+                            Spacer(modifier = Modifier.height(16.dp))
+
+                            // Description Paragraph
+                            Text(
+                                text = "Experience a refined daily shopping destination inspired by SKIL’s signature branding, clean lines, and premium gold accents.",
+                                fontSize = 14.sp,
+                                color = AppColors.TextSecondary,
+                                lineHeight = 22.sp
+                            )
+
+                            Spacer(modifier = Modifier.height(24.dp))
+
+                            // Shop Collection Button (Elegant Pill)
+                            Box(
+                                modifier = Modifier
+                                    .shadow(elevation = 6.dp, shape = RoundedCornerShape(999.dp), spotColor = Color(0x1F111111))
+                                    .background(AppColors.TextPrimary, shape = RoundedCornerShape(999.dp))
+                                    .clickable { viewModel.showToast("Browsing the new SKIL collection") }
+                                    .padding(horizontal = 24.dp, vertical = 12.dp)
+                            ) {
+                                Text(
+                                    text = "Explore Collection",
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 13.sp,
+                                    color = Color.White
+                                )
+                            }
                         }
-
-                        Spacer(modifier = Modifier.height(16.dp))
-
-                        // Title
-                        Text(
-                            text = "Light, elevated retail\nfor discerning style.",
-                            fontWeight = FontWeight.ExtraBold,
-                            fontSize = 32.sp,
-                            color = AppColors.TextPrimary,
-                            lineHeight = 36.sp
-                        )
-
-                        Spacer(modifier = Modifier.height(16.dp))
-
-                        // Description Paragraph
-                        Text(
-                            text = "Experience a refined daily shopping destination inspired by SKIL’s\nsignature branding, clean lines, and premium gold accents.",
-                            fontSize = 14.sp,
-                            color = AppColors.TextSecondary,
-                            lineHeight = 22.sp
-                        )
-
-                        Spacer(modifier = Modifier.height(24.dp))
-
-                        // Shop Collection Button (Elegant Pill)
-                        Box(
-                            modifier = Modifier
-                                .shadow(elevation = 6.dp, shape = RoundedCornerShape(999.dp), spotColor = Color(0x1F111111))
-                                .background(AppColors.TextPrimary, shape = RoundedCornerShape(999.dp))
-                                .clickable { viewModel.showToast("Browsing the new SKIL collection") }
-                                .padding(horizontal = 24.dp, vertical = 12.dp)
-                        ) {
-                            Text(
-                                text = "Explore Collection",
-                                fontWeight = FontWeight.Bold,
-                                fontSize = 13.sp,
-                                color = Color.White
-                            )
+                        
+                        if (isWide) {
+                            // Elegant Watermark/Logo on the right side for desktop displays
+                            Box(
+                                modifier = Modifier.weight(0.4f), 
+                                contentAlignment = Alignment.CenterEnd
+                            ) {
+                                androidx.compose.foundation.Image(
+                                    painter = painterResource(Res.drawable.skil_logo),
+                                    contentDescription = "Hero Graphic",
+                                    modifier = Modifier.fillMaxWidth(0.8f).height(120.dp),
+                                    alpha = 0.04f,
+                                    contentScale = androidx.compose.ui.layout.ContentScale.Fit
+                                )
+                            }
                         }
                     }
                 }
@@ -348,24 +374,35 @@ fun ECommerceScreen(
                             (uiState.searchQuery.isEmpty() || product.name.contains(uiState.searchQuery, ignoreCase = true))
                 }
 
-                LazyVerticalGrid(
-                    columns = GridCells.Fixed(2),
-                    horizontalArrangement = Arrangement.spacedBy(24.dp),
-                    verticalArrangement = Arrangement.spacedBy(24.dp),
-                    modifier = Modifier.fillMaxSize()
+                // Independent Responsive Grid via BoxWithConstraints
+                androidx.compose.foundation.layout.BoxWithConstraints(
+                    modifier = Modifier.fillMaxWidth().weight(1f)
                 ) {
-                    items(
-                        items = filteredProducts,
-                        key = { item -> item.id }
-                    ) { product ->
-                        ProductCard(
-                            product = product,
-                            onAddToCart = { viewModel.addToCart(it) }
-                        )
+                    val columns = when {
+                        maxWidth > 1000.dp -> 4 // Ultrawide PC
+                        maxWidth > 700.dp -> 3 // Standard PC/Tablet
+                        else -> 2 // Mobile/Android
                     }
 
-                    item(span = { androidx.compose.foundation.lazy.grid.GridItemSpan(maxLineSpan) }) {
-                        com.skil.app.ui.components.PremiumFooter()
+                    LazyVerticalGrid(
+                        columns = GridCells.Fixed(columns),
+                        horizontalArrangement = Arrangement.spacedBy(24.dp),
+                        verticalArrangement = Arrangement.spacedBy(24.dp),
+                        modifier = Modifier.fillMaxSize()
+                    ) {
+                        items(
+                            items = filteredProducts,
+                            key = { item -> item.id }
+                        ) { product ->
+                            ProductCard(
+                                product = product,
+                                onAddToCart = { viewModel.addToCart(it) }
+                            )
+                        }
+
+                        item(span = { androidx.compose.foundation.lazy.grid.GridItemSpan(maxLineSpan) }) {
+                            com.skil.app.ui.components.PremiumFooter()
+                        }
                     }
                 }
             }
