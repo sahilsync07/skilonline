@@ -8,7 +8,7 @@ import com.skil.app.ui.App
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        enableEdgeToEdge()
+        runCatching { enableEdgeToEdge() }
         super.onCreate(savedInstanceState)
         setContent {
             App()
