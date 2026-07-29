@@ -67,7 +67,7 @@ fun ECommerceScreen(
         contentAlignment = Alignment.TopCenter
     ) {
         Column(modifier = Modifier.fillMaxSize()) {
-            // 1. Top Announcement Bar (Full Width)
+            // 1. Top Announcement Bar (Full Width & Centered Text)
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -78,76 +78,83 @@ fun ECommerceScreen(
                             end = androidx.compose.ui.geometry.Offset(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY)
                         )
                     )
-                    .padding(vertical = 6.dp, horizontal = 16.dp),
+                    .padding(vertical = 8.dp, horizontal = 12.dp),
                 contentAlignment = Alignment.Center
             ) {
-                @OptIn(androidx.compose.foundation.ExperimentalFoundationApi::class)
                 Text(
-                    text = "AJANTA COMING TO ANDHRA PRADESH SOON   •   AJANTA COMING TO ANDHRA PRADESH SOON   •   AJANTA COMING TO ANDHRA PRADESH SOON",
+                    text = "AJANTA COMING TO ANDHRA PRADESH SOON",
                     color = Color.White,
-                    fontSize = 10.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    letterSpacing = 3.sp,
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 2.sp,
+                    textAlign = androidx.compose.ui.text.style.TextAlign.Center,
                     maxLines = 1,
-                    modifier = Modifier
+                    modifier = Modifier.fillMaxWidth()
                 )
             }
 
-            // 2. Dual Navbar 1: Top Brand & Partner Logo Header (Full Width Flat, No Dock)
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(Color.White)
-                    .drawBehind {
-                        drawLine(
-                            color = AppColors.BorderLight,
-                            start = androidx.compose.ui.geometry.Offset(0f, size.height),
-                            end = androidx.compose.ui.geometry.Offset(size.width, size.height),
-                            strokeWidth = 1.dp.toPx()
-                        )
-                    }
-                    .padding(horizontal = 32.dp, vertical = 12.dp)
+            // 2. Dual Navbar 1: Top Brand & Partner Logo Header (Single Row on Mobile)
+            androidx.compose.foundation.layout.BoxWithConstraints(
+                modifier = Modifier.fillMaxWidth()
             ) {
-                @OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
-                androidx.compose.foundation.layout.FlowRow(
-                    modifier = Modifier.fillMaxWidth(),
+                val isMobile = maxWidth < 600.dp
+                val skilLogoHeight = if (isMobile) 36.dp else 56.dp
+                val partnerLogoHeight = if (isMobile) 24.dp else 38.dp
+                val partnerPaddingH = if (isMobile) 10.dp else 18.dp
+                val partnerPaddingV = if (isMobile) 4.dp else 8.dp
+                val navPadH = if (isMobile) 12.dp else 32.dp
+                val navPadV = if (isMobile) 8.dp else 12.dp
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(Color.White)
+                        .drawBehind {
+                            drawLine(
+                                color = AppColors.BorderLight,
+                                start = androidx.compose.ui.geometry.Offset(0f, size.height),
+                                end = androidx.compose.ui.geometry.Offset(size.width, size.height),
+                                strokeWidth = 1.dp.toPx()
+                            )
+                        }
+                        .padding(horizontal = navPadH, vertical = navPadV),
                     horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterVertically)
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     // Left Main Brand Logo
                     androidx.compose.foundation.Image(
                         painter = painterResource(Res.drawable.skil_logo),
                         contentDescription = "SKIL Logo",
-                        modifier = Modifier.height(72.dp),
+                        modifier = Modifier.height(skilLogoHeight),
                         contentScale = androidx.compose.ui.layout.ContentScale.Fit
                     )
 
                     // Right Partner Logos Container Badge
                     Box(
                         modifier = Modifier
-                            .background(AppColors.SurfaceBackground, shape = RoundedCornerShape(14.dp))
-                            .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(14.dp))
-                            .padding(horizontal = 22.dp, vertical = 10.dp)
+                            .background(AppColors.SurfaceBackground, shape = RoundedCornerShape(10.dp))
+                            .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(10.dp))
+                            .padding(horizontal = partnerPaddingH, vertical = partnerPaddingV)
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             androidx.compose.foundation.Image(
                                 painter = painterResource(Res.drawable.ajanta_logo),
                                 contentDescription = "Ajanta Logo",
-                                modifier = Modifier.height(52.dp),
+                                modifier = Modifier.height(partnerLogoHeight),
                                 contentScale = androidx.compose.ui.layout.ContentScale.Fit
                             )
-                            Spacer(modifier = Modifier.width(20.dp))
+                            Spacer(modifier = Modifier.width(if (isMobile) 10.dp else 16.dp))
                             Box(
                                 modifier = Modifier
-                                    .width(1.5.dp)
-                                    .height(34.dp)
+                                    .width(1.dp)
+                                    .height(if (isMobile) 20.dp else 28.dp)
                                     .background(AppColors.BorderLight)
                             )
-                            Spacer(modifier = Modifier.width(20.dp))
+                            Spacer(modifier = Modifier.width(if (isMobile) 10.dp else 16.dp))
                             androidx.compose.foundation.Image(
                                 painter = painterResource(Res.drawable.impakto_logo),
                                 contentDescription = "Impakto Logo",
-                                modifier = Modifier.height(52.dp),
+                                modifier = Modifier.height(partnerLogoHeight),
                                 contentScale = androidx.compose.ui.layout.ContentScale.Fit
                             )
                         }
