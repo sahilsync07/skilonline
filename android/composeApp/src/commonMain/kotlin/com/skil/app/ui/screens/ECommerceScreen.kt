@@ -93,6 +93,68 @@ fun ECommerceScreen(
                 )
             }
 
+            // 2. Dual Navbar 1: Top Brand & Partner Logo Header (Full Width Flat, No Dock)
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color.White)
+                    .drawBehind {
+                        drawLine(
+                            color = AppColors.BorderLight,
+                            start = androidx.compose.ui.geometry.Offset(0f, size.height),
+                            end = androidx.compose.ui.geometry.Offset(size.width, size.height),
+                            strokeWidth = 1.dp.toPx()
+                        )
+                    }
+                    .padding(horizontal = 32.dp, vertical = 12.dp)
+            ) {
+                @OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
+                androidx.compose.foundation.layout.FlowRow(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterVertically)
+                ) {
+                    // Left Main Brand Logo
+                    androidx.compose.foundation.Image(
+                        painter = painterResource(Res.drawable.skil_logo),
+                        contentDescription = "SKIL Logo",
+                        modifier = Modifier.height(72.dp),
+                        contentScale = androidx.compose.ui.layout.ContentScale.Fit
+                    )
+
+                    // Right Partner Logos Container Badge
+                    Box(
+                        modifier = Modifier
+                            .background(AppColors.SurfaceBackground, shape = RoundedCornerShape(14.dp))
+                            .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(14.dp))
+                            .padding(horizontal = 22.dp, vertical = 10.dp)
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            androidx.compose.foundation.Image(
+                                painter = painterResource(Res.drawable.ajanta_logo),
+                                contentDescription = "Ajanta Logo",
+                                modifier = Modifier.height(52.dp),
+                                contentScale = androidx.compose.ui.layout.ContentScale.Fit
+                            )
+                            Spacer(modifier = Modifier.width(20.dp))
+                            Box(
+                                modifier = Modifier
+                                    .width(1.5.dp)
+                                    .height(34.dp)
+                                    .background(AppColors.BorderLight)
+                            )
+                            Spacer(modifier = Modifier.width(20.dp))
+                            androidx.compose.foundation.Image(
+                                painter = painterResource(Res.drawable.impakto_logo),
+                                contentDescription = "Impakto Logo",
+                                modifier = Modifier.height(52.dp),
+                                contentScale = androidx.compose.ui.layout.ContentScale.Fit
+                            )
+                        }
+                    }
+                }
+            }
+
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -126,63 +188,6 @@ fun ECommerceScreen(
                     ) {
                         item(span = { androidx.compose.foundation.lazy.grid.GridItemSpan(maxLineSpan) }) {
                             Column(modifier = Modifier.fillMaxWidth()) {
-                                // 2. Navbar 1: Top Brand & Partner Logo Bar
-                                Box(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .shadow(elevation = 8.dp, shape = RoundedCornerShape(18.dp), spotColor = Color(0x0A131518))
-                                        .background(Color.White, shape = RoundedCornerShape(18.dp))
-                                        .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(18.dp))
-                                        .padding(horizontal = 20.dp, vertical = 14.dp)
-                                ) {
-                                    @OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
-                                    androidx.compose.foundation.layout.FlowRow(
-                                        modifier = Modifier.fillMaxWidth(),
-                                        horizontalArrangement = Arrangement.SpaceBetween,
-                                        verticalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterVertically)
-                                    ) {
-                                        // Left Brand Logo Typography (Elegant)
-                                        androidx.compose.foundation.Image(
-                                            painter = painterResource(Res.drawable.skil_logo),
-                                            contentDescription = "SKIL Logo",
-                                            modifier = Modifier.height(72.dp),
-                                            contentScale = androidx.compose.ui.layout.ContentScale.Fit
-                                        )
-
-                                        // Right Partner Logos Badge Container
-                                        Box(
-                                            modifier = Modifier
-                                                .background(AppColors.SurfaceBackground, shape = RoundedCornerShape(14.dp))
-                                                .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(14.dp))
-                                                .padding(horizontal = 22.dp, vertical = 10.dp)
-                                        ) {
-                                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                                androidx.compose.foundation.Image(
-                                                    painter = painterResource(Res.drawable.ajanta_logo),
-                                                    contentDescription = "Ajanta Logo",
-                                                    modifier = Modifier.height(52.dp),
-                                                    contentScale = androidx.compose.ui.layout.ContentScale.Fit
-                                                )
-                                                Spacer(modifier = Modifier.width(20.dp))
-                                                Box(
-                                                    modifier = Modifier
-                                                        .width(1.dp)
-                                                        .height(34.dp)
-                                                        .background(AppColors.BorderLight)
-                                                )
-                                                Spacer(modifier = Modifier.width(20.dp))
-                                                androidx.compose.foundation.Image(
-                                                    painter = painterResource(Res.drawable.impakto_logo),
-                                                    contentDescription = "Impakto Logo",
-                                                    modifier = Modifier.height(52.dp),
-                                                    contentScale = androidx.compose.ui.layout.ContentScale.Fit
-                                                )
-                                            }
-                                        }
-                                    }
-                                }
-
-                                Spacer(modifier = Modifier.height(24.dp))
 
                 // 3. Navbar 2: Controls Row
                 Row(
