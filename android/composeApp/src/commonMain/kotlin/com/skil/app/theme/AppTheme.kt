@@ -36,7 +36,8 @@ fun getInterFontFamily(): FontFamily {
             Font(Res.font.inter_semibold, FontWeight.SemiBold),
             Font(Res.font.inter_bold, FontWeight.Bold),
             Font(Res.font.inter_extrabold, FontWeight.ExtraBold),
-            Font(Res.font.inter_black, FontWeight.Black)
+            Font(Res.font.inter_black, FontWeight.Black),
+            FontFamily.Default // Fallback to system default to prevent tofu boxes and Wasm crashes
         )
     }
     return cachedInterFontFamily!!
@@ -44,7 +45,7 @@ fun getInterFontFamily(): FontFamily {
 
 @Composable
 fun getAppTypography(): Typography {
-    val interFont = FontFamily.SansSerif
+    val interFont = getInterFontFamily()
     return Typography(
         displayLarge = TextStyle(
             fontFamily = interFont,
