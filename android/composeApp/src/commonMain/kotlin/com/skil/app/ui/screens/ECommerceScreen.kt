@@ -33,6 +33,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -70,7 +71,13 @@ fun ECommerceScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(AppColors.AccentGold)
+                    .background(
+                        brush = androidx.compose.ui.graphics.Brush.linearGradient(
+                            colors = listOf(AppColors.AccentGold, Color(0xFFD4A762)),
+                            start = androidx.compose.ui.geometry.Offset(0f, 0f),
+                            end = androidx.compose.ui.geometry.Offset(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY)
+                        )
+                    )
                     .padding(vertical = 6.dp, horizontal = 16.dp),
                 contentAlignment = Alignment.Center
             ) {
@@ -82,7 +89,7 @@ fun ECommerceScreen(
                     fontWeight = FontWeight.SemiBold,
                     letterSpacing = 3.sp,
                     maxLines = 1,
-                    modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE, spacing = MarqueeSpacing(32.dp))
+                    modifier = Modifier
                 )
             }
 
@@ -138,36 +145,36 @@ fun ECommerceScreen(
                                         androidx.compose.foundation.Image(
                                             painter = painterResource(Res.drawable.skil_logo),
                                             contentDescription = "SKIL Logo",
-                                            modifier = Modifier.height(44.dp),
+                                            modifier = Modifier.height(72.dp),
                                             contentScale = androidx.compose.ui.layout.ContentScale.Fit
                                         )
 
                                         // Right Partner Logos Badge Container
                                         Box(
                                             modifier = Modifier
-                                                .background(AppColors.SurfaceBackground, shape = RoundedCornerShape(12.dp))
-                                                .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(12.dp))
-                                                .padding(horizontal = 14.dp, vertical = 8.dp)
+                                                .background(AppColors.SurfaceBackground, shape = RoundedCornerShape(14.dp))
+                                                .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(14.dp))
+                                                .padding(horizontal = 22.dp, vertical = 10.dp)
                                         ) {
                                             Row(verticalAlignment = Alignment.CenterVertically) {
                                                 androidx.compose.foundation.Image(
                                                     painter = painterResource(Res.drawable.ajanta_logo),
                                                     contentDescription = "Ajanta Logo",
-                                                    modifier = Modifier.height(32.dp),
+                                                    modifier = Modifier.height(52.dp),
                                                     contentScale = androidx.compose.ui.layout.ContentScale.Fit
                                                 )
-                                                Spacer(modifier = Modifier.width(12.dp))
+                                                Spacer(modifier = Modifier.width(20.dp))
                                                 Box(
                                                     modifier = Modifier
                                                         .width(1.dp)
-                                                        .height(20.dp)
+                                                        .height(34.dp)
                                                         .background(AppColors.BorderLight)
                                                 )
-                                                Spacer(modifier = Modifier.width(12.dp))
+                                                Spacer(modifier = Modifier.width(20.dp))
                                                 androidx.compose.foundation.Image(
                                                     painter = painterResource(Res.drawable.impakto_logo),
                                                     contentDescription = "Impakto Logo",
-                                                    modifier = Modifier.height(32.dp),
+                                                    modifier = Modifier.height(52.dp),
                                                     contentScale = androidx.compose.ui.layout.ContentScale.Fit
                                                 )
                                             }
@@ -297,9 +304,25 @@ fun ECommerceScreen(
                 androidx.compose.foundation.layout.BoxWithConstraints(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .shadow(elevation = 12.dp, shape = RoundedCornerShape(28.dp), spotColor = Color(0x0C131518))
-                        .background(Color.White, shape = RoundedCornerShape(28.dp))
-                        .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(28.dp))
+                        .shadow(elevation = 8.dp, shape = RoundedCornerShape(24.dp), spotColor = Color(0x08131518))
+                        .background(AppColors.SurfaceBackground, shape = RoundedCornerShape(24.dp))
+                        .drawBehind {
+                            drawRect(
+                                brush = androidx.compose.ui.graphics.Brush.radialGradient(
+                                    colors = listOf(Color(0x14C19652), Color.Transparent),
+                                    center = androidx.compose.ui.geometry.Offset(0f, 0f),
+                                    radius = size.width * 0.4f
+                                )
+                            )
+                            drawRect(
+                                brush = androidx.compose.ui.graphics.Brush.radialGradient(
+                                    colors = listOf(Color(0x0A1F1F1F), Color.Transparent),
+                                    center = androidx.compose.ui.geometry.Offset(size.width, size.height),
+                                    radius = size.width * 0.35f
+                                )
+                            )
+                        }
+                        .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(24.dp))
                 ) {
                     val isWide = maxWidth > 600.dp
                     
@@ -351,10 +374,10 @@ fun ECommerceScreen(
                             // Shop Collection Button (Elegant Pill)
                             Box(
                                 modifier = Modifier
-                                    .shadow(elevation = 6.dp, shape = RoundedCornerShape(999.dp), spotColor = Color(0x1F111111))
+                                    .shadow(elevation = 4.dp, shape = RoundedCornerShape(999.dp), spotColor = Color(0x08131518))
                                     .background(AppColors.TextPrimary, shape = RoundedCornerShape(999.dp))
                                     .clickable { viewModel.showToast("Browsing the new SKIL collection") }
-                                    .padding(horizontal = 24.dp, vertical = 12.dp)
+                                    .padding(horizontal = 28.dp, vertical = 14.dp)
                             ) {
                                 Text(
                                     text = "Explore Collection",

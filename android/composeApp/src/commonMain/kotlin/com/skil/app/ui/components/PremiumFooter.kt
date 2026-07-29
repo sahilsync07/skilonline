@@ -24,7 +24,6 @@ fun PremiumFooter(modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxWidth()
             .background(Color.White)
-            .border(width = 1.dp, color = AppColors.BorderLight)
     ) {
         // Gold Accent Line
         Box(
@@ -37,56 +36,20 @@ fun PremiumFooter(modifier: Modifier = Modifier) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 24.dp, vertical = 32.dp),
-            verticalArrangement = Arrangement.spacedBy(40.dp)
+                .padding(horizontal = 24.dp, vertical = 48.dp),
+            verticalArrangement = Arrangement.spacedBy(48.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            // Grid of 2 Address Columns
             @OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
             FlowRow(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxWidth().widthIn(max = 1000.dp),
+                horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalArrangement = Arrangement.spacedBy(40.dp)
             ) {
-                // Column 1: Brand & Contact
+                // Column 1: Registered Office
                 Column(
-                    modifier = Modifier.widthIn(min = 250.dp, max = 300.dp),
-                    verticalArrangement = Arrangement.spacedBy(16.dp)
-                ) {
-                    androidx.compose.foundation.Image(
-                        painter = painterResource(Res.drawable.skil_logo),
-                        contentDescription = "SKIL Logo",
-                        modifier = Modifier.height(40.dp),
-                        contentScale = androidx.compose.ui.layout.ContentScale.Fit
-                    )
-                    
-                    Text(
-                        text = "STEP INTO EXCELLENCE",
-                        fontWeight = FontWeight.Medium,
-                        fontSize = 11.sp,
-                        color = AppColors.AccentGold,
-                        letterSpacing = 2.sp
-                    )
-
-                    Spacer(modifier = Modifier.height(8.dp))
-
-                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Text(
-                            text = "skillifestyle.vizag@gmail.com",
-                            fontSize = 12.sp,
-                            fontWeight = FontWeight.SemiBold,
-                            color = AppColors.TextPrimary
-                        )
-                        Text(
-                            text = "www.skillifestyle.in",
-                            fontSize = 12.sp,
-                            fontWeight = FontWeight.SemiBold,
-                            color = AppColors.TextPrimary
-                        )
-                    }
-                }
-
-                // Column 2: Registered Office
-                Column(
-                    modifier = Modifier.widthIn(min = 220.dp, max = 280.dp),
+                    modifier = Modifier.widthIn(min = 280.dp, max = 350.dp),
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -105,16 +68,17 @@ fun PremiumFooter(modifier: Modifier = Modifier) {
                         )
                     }
                     Text(
-                        text = "7-14(1)-9, AST 1085003765,\n2nd Floor, New Colony, Srikakulam II Town,\nSrikakulam, Srikakulam - 532001,\nAndhra Pradesh",
-                        fontSize = 12.sp,
+                        text = "7-14(1)-9, AST 1085003765,\n2nd Floor, New Colony, Srikakulam II Town,\nSrikakulam, Srikakulam - 532001, Andhra Pradesh",
+                        fontSize = 13.sp,
                         color = AppColors.TextSecondary,
-                        lineHeight = 20.sp
+                        lineHeight = 22.sp,
+                        fontWeight = FontWeight.Medium
                     )
                 }
 
-                // Column 3: Principal Place of Business
+                // Column 2: Principal Place of Business
                 Column(
-                    modifier = Modifier.widthIn(min = 220.dp, max = 280.dp),
+                    modifier = Modifier.widthIn(min = 280.dp, max = 350.dp),
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -133,29 +97,62 @@ fun PremiumFooter(modifier: Modifier = Modifier) {
                         )
                     }
                     Text(
-                        text = "Shop No.7A, D.No. 28-10-4, Third Floor,\nVasavi Plaza, Theatre Road, Revenue Ward No.27,\nJagadamba Jn, Visakhapatnam - 530020, AP",
-                        fontSize = 12.sp,
+                        text = "Shop No.7A, D.No. 28-10-4, Third Floor,\nVasavi Plaza, Theatre Road, Revenue Ward No.27,\nJagadamba Jn, Visakhapatnam - 530020, Andhra Pradesh",
+                        fontSize = 13.sp,
                         color = AppColors.TextSecondary,
-                        lineHeight = 20.sp
+                        lineHeight = 22.sp,
+                        fontWeight = FontWeight.Medium
                     )
                 }
             }
+
+            // Contact Bar (Pills)
+            @OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
+            FlowRow(
+                modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
+                horizontalArrangement = Arrangement.Center,
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                ContactPill(text = "+91 93483 43310 | +91 79895 36155")
+                ContactPill(text = "skillifestyle.vizag@gmail.com")
+                ContactPill(text = "www.skillifestyle.in")
+            }
+
+            // Tagline wrapper
+            Row(
+                modifier = Modifier.fillMaxWidth().widthIn(max = 600.dp).padding(top = 24.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Box(modifier = Modifier.weight(1f).height(1.dp).background(AppColors.BorderLight))
+                Text(
+                    text = "STEP INTO EXCELLENCE",
+                    fontWeight = FontWeight.Normal,
+                    fontSize = 12.sp,
+                    color = AppColors.TextPrimary,
+                    letterSpacing = 2.sp,
+                    modifier = Modifier.padding(horizontal = 24.dp)
+                )
+                Box(modifier = Modifier.weight(1f).height(1.dp).background(AppColors.BorderLight))
+            }
         }
-        
-        // Bottom Copyright Bar
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(AppColors.SurfaceBackground)
-                .border(width = 1.dp, color = AppColors.BorderLight)
-                .padding(vertical = 16.dp, horizontal = 24.dp)
-        ) {
-            Text(
-                text = "© 2024 SKIL Lifestyle. All rights reserved.",
-                fontSize = 11.sp,
-                color = AppColors.TextSecondary,
-                modifier = Modifier.align(Alignment.Center)
-            )
-        }
+    }
+}
+
+@Composable
+fun ContactPill(text: String) {
+    Box(
+        modifier = Modifier
+            .padding(horizontal = 8.dp)
+            .background(Color.White, shape = RoundedCornerShape(999.dp))
+            .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(999.dp))
+            .padding(horizontal = 20.dp, vertical = 12.dp)
+    ) {
+        Text(
+            text = text,
+            color = AppColors.TextSecondary,
+            fontSize = 13.sp,
+            fontWeight = FontWeight.SemiBold
+        )
     }
 }

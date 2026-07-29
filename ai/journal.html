@@ -581,6 +581,19 @@
 
         <!-- Grid Container for Log Entries -->
         <div class="log-grid">
+            <!-- LOG-074 -->
+            <div class="log-card">
+                <div class="log-header">
+                    <span class="log-id">LOG-074</span>
+                    <span class="log-date">2026-07-30 00:58 IST</span>
+                    <span class="log-tag bg-red">HOTFIX</span>
+                </div>
+                <h2 class="log-title">Resolved Critical WASM Memory Crash & Restored Inter Fonts</h2>
+                <div class="log-content">
+                    <p><strong>Observation</strong>: The Compose Wasm web client was repeatedly throwing <code>[object WebAssembly.Exception]</code> causing total rendering failures. Initially suspected to be related to <code>Compose 1.6.11</code> font loading limits or <code>basicMarquee</code>.</p>
+                    <p><strong>Action</strong>: Upgraded Compose to <code>1.7.0</code> and Kotlin to <code>2.0.21</code>. Pinpointed the true root cause: the synthetic scroll amplification script in <code>index.html</code> was recursively capturing and modifying wheel events, causing Skiko/Wasm to break bounds on native event handling, crashing the GC and throwing a <code>WebAssembly.Exception</code> on scroll. Removed the malicious script from <code>index.html</code> and restored the full 6-weight custom Inter font architecture. Removed <code>basicMarquee</code> which also risks Wasm memory boundary limits during rapid text redraw loops.</p>
+                </div>
+            </div>
             <!-- LOG-073 -->
             <div class="log-card">
                 <div class="log-header">

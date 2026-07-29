@@ -25,19 +25,37 @@ import androidx.compose.ui.unit.sp
 import com.skil.app.domain.Product
 import com.skil.app.theme.AppColors
 
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsHoveredAsState
+import androidx.compose.foundation.hoverable
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
+import androidx.compose.foundation.layout.offset
+
 @Composable
 fun ProductCard(
     product: Product,
     onAddToCart: (Product) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val interactionSource = remember { MutableInteractionSource() }
+    val isHovered by interactionSource.collectIsHoveredAsState()
+    
+    val yOffset by animateDpAsState(targetValue = if (isHovered) (-6).dp else 0.dp)
+    val shadowElevation by animateDpAsState(targetValue = if (isHovered) 20.dp else 12.dp)
+    val borderColor by animateColorAsState(targetValue = if (isHovered) Color(0x40C19652) else AppColors.BorderLight)
+
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .shadow(elevation = 14.dp, shape = RoundedCornerShape(28.dp), spotColor = Color(0x14131518))
-            .background(Color.White, shape = RoundedCornerShape(28.dp))
-            .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(28.dp))
-            .padding(14.dp)
+            .offset(y = yOffset)
+            .hoverable(interactionSource = interactionSource)
+            .shadow(elevation = shadowElevation, shape = RoundedCornerShape(16.dp), spotColor = Color(0x08131518))
+            .background(Color.White, shape = RoundedCornerShape(16.dp))
+            .border(width = 1.dp, color = borderColor, shape = RoundedCornerShape(16.dp))
+            .padding(24.dp)
     ) {
         Column {
             // Category & Badge Header
