@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import Image from "next/image";
-import { Search, ShoppingBag, X, MapPin, Phone, Mail, Globe } from "lucide-react";
+import { Search, ShoppingBag, X, MapPin, Mail, Globe } from "lucide-react";
 
 interface Product {
   id: string;
@@ -129,7 +128,7 @@ export default function Home() {
 
   return (
     <>
-      {/* Toast Notification Container */}
+      {/* Toast Notification Overlay Container */}
       <div id="toastContainer">
         {toasts.map((toast) => (
           <div key={toast.id} className="toast lime">
@@ -141,16 +140,16 @@ export default function Home() {
         ))}
       </div>
 
-      {/* 1. Top Announcement Bar */}
+      {/* 1. Announcement Bar */}
       <div className="top-bar">
-        AJANTA COMING TO ANDHRA PRADESH SOON &bull; FREE SHIPPING ON ORDERS OVER ₹1000 &bull; USE CODE &quot;SKIL26&quot;
+        SUMMER DROP &apos;26 IS LIVE &bull; FREE SHIPPING ON ORDERS OVER ₹1000 &bull; USE CODE &quot;SKIL26&quot;
       </div>
 
       {/* 2. Dual Navbar 1: Top Brand & Partner Logo Header */}
       <header className="logo-navbar">
         <a href="#" className="nav-brand">
           <img
-            src="https://res.cloudinary.com/aiz2tooi/image/upload/f_auto,q_auto/v1784722804/SKIL_Lifestyle_Black_Transparent_BG_Logo.png"
+            src="/skil_logo.png"
             alt="SKIL Lifestyle Logo"
             className="brand-logo-main"
           />
@@ -158,14 +157,14 @@ export default function Home() {
 
         <div className="partner-logos-container">
           <img
-            src="https://res.cloudinary.com/aiz2tooi/image/upload/f_auto,q_auto/v1784722809/Ajanta_Transparent_Logo.png"
+            src="/ajanta_logo.png"
             alt="Ajanta Logo"
             className="partner-logo-item"
             title="Ajanta Official Partner"
           />
           <div className="partner-divider"></div>
           <img
-            src="https://res.cloudinary.com/aiz2tooi/image/upload/f_auto,q_auto/v1784722811/Xpania_Transparent_Logo.png"
+            src="/impakto_logo.png"
             alt="Impakto Logo"
             className="partner-logo-item"
             title="Impakto Official Partner"
@@ -173,7 +172,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* 3. Dual Navbar 2: Controls & Search */}
+      {/* 3. Dual Navbar 2: Navigation Controls & Cart */}
       <nav className="controls-navbar">
         <div className="controls-top-row">
           <div className="search-input-wrapper">
@@ -181,7 +180,7 @@ export default function Home() {
             <input
               type="text"
               className="search-input"
-              placeholder="Search products, kicks, footwear..."
+              placeholder="Search products, kicks, tech..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -189,7 +188,7 @@ export default function Home() {
 
           <button className="btn-cart" onClick={() => setIsCartOpen(true)}>
             <ShoppingBag size={20} />
-            <span>CART</span>
+            <span className="btn-cart-text">CART</span>
             <span className="cart-badge">{cartTotalCount}</span>
           </button>
         </div>
@@ -207,9 +206,9 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* 4. Main Showcase Layout */}
+      {/* 4. Main Showcase Section */}
       <main>
-        {/* Hero Showcase Banner */}
+        {/* Hero Showcase Section */}
         <div className="hero-container">
           <div className="hero-banner">
             <div className="hero-text">
@@ -221,7 +220,7 @@ export default function Home() {
               </p>
               <button
                 className="btn-primary"
-                onClick={() => showToast("Browsing the new SKIL footwear collection")}
+                onClick={() => showToast("Browsing the new SKIL collection")}
               >
                 Explore Collection
               </button>
@@ -229,10 +228,10 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Product Grid */}
+        {/* Products Section */}
         <section className="products-section">
           <div className="section-title">
-            <span>Curated essentials for modern living ({filteredProducts.length})</span>
+            <span>Curated essentials for modern living. ({filteredProducts.length})</span>
           </div>
 
           <div className="products-grid">
@@ -308,7 +307,7 @@ export default function Home() {
         </div>
       </footer>
 
-      {/* 6. Shopping Cart Slide-Over Drawer */}
+      {/* 6. Cart Slide-Over Drawer */}
       <div
         className={`cart-overlay ${isCartOpen ? "open" : ""}`}
         onClick={() => setIsCartOpen(false)}
