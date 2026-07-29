@@ -25,16 +25,21 @@ private val AppLightColorScheme = lightColorScheme(
     outline = AppColors.BorderLight
 )
 
+private var cachedInterFontFamily: FontFamily? = null
+
 @Composable
 fun getInterFontFamily(): FontFamily {
-    return FontFamily(
-        Font(Res.font.inter_regular, FontWeight.Normal),
-        Font(Res.font.inter_medium, FontWeight.Medium),
-        Font(Res.font.inter_semibold, FontWeight.SemiBold),
-        Font(Res.font.inter_bold, FontWeight.Bold),
-        Font(Res.font.inter_extrabold, FontWeight.ExtraBold),
-        Font(Res.font.inter_black, FontWeight.Black)
-    )
+    if (cachedInterFontFamily == null) {
+        cachedInterFontFamily = FontFamily(
+            Font(Res.font.inter_regular, FontWeight.Normal),
+            Font(Res.font.inter_medium, FontWeight.Medium),
+            Font(Res.font.inter_semibold, FontWeight.SemiBold),
+            Font(Res.font.inter_bold, FontWeight.Bold),
+            Font(Res.font.inter_extrabold, FontWeight.ExtraBold),
+            Font(Res.font.inter_black, FontWeight.Black)
+        )
+    }
+    return cachedInterFontFamily!!
 }
 
 @Composable
