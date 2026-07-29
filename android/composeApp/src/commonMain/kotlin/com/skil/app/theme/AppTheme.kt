@@ -44,7 +44,7 @@ fun getInterFontFamily(): FontFamily {
 
 @Composable
 fun getAppTypography(): Typography {
-    val interFont = getInterFontFamily()
+    val interFont = FontFamily.SansSerif
     return Typography(
         displayLarge = TextStyle(
             fontFamily = interFont,
