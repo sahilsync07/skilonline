@@ -36,9 +36,9 @@
         <p><strong>Rule 04 Compliance</strong>: I am maintaining the 120Hz Memphis design language across Android and Web. Real product images have been restored using <code>KamelImage</code> in Kotlin Multiplatform, fixing the wireframe-only bug caused by overly aggressive Rule 07 parsing. Single-Source Cross-Platform UI Architecture (Kotlin WASM + Native Android AAB) is fully functional and visually rich.</p>
 
         <div class="status-content">
-            <p><strong>Current Phase:</strong> Stabilizing Wasm Memory Bounds</p>
-            <p><strong>Recent Actions:</strong> Identified that the synthetic `wheel` event scroll amplification script in `wasmJsMain/resources/index.html` was causing Skiko event listener re-entrancy, completely crashing the Wasm engine with `WebAssembly.Exception`. Removed the malicious script. Also removed `Modifier.basicMarquee` from `ECommerceScreen` to protect Wasm text-buffer memory bounds. Upgraded Compose Multiplatform to 1.7.0 and Kotlin to 2.0.21. Restored the full 6-weight custom `Inter` font architecture.</p>
-            <p><strong>Next Steps:</strong> Verify the dev server runs seamlessly at `localhost:8080` without throwing WebAssembly exceptions, and push the stable build to GitHub.</p>
+            <p><strong>Current Phase:</strong> Tech Stack Shift — Next.js (Web) + Kotlin Compose (Android)</p>
+            <p><strong>Recent Actions:</strong> Created branch `tech-stack-shift`. Initialized Next.js 14 App Router project in `web/`. Replicated `modern.html` & `modern.css` pixel-for-pixel using native HTML DOM (Google Inter fonts, radial gold background gradients, soft box shadows, 6px scrollbars). Built full interactive storefront (`page.tsx`) with search, category filtering, cart drawer, toast notifications, and Cloudinary CDN WebP imagery. Verified 100% clean production build (`npm run build`) and launched dev server on `http://localhost:3000`.</p>
+            <p><strong>Next Steps:</strong> Maintain native Android Kotlin Compose target in `android/` and monitor deployment.</p>
         </div>
     </div>
 
