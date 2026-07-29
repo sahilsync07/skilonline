@@ -80,7 +80,7 @@ class ECommerceViewModel {
                 cartItems = emptyList(),
                 isCartDrawerOpen = false,
                 isToastVisible = true,
-                toastMessage = "Order Placed Successfully ($$total)! Thanks for shopping SKIL!"
+                toastMessage = "Order Placed Successfully (₹$total)! Thanks for shopping SKIL!"
             )
         }
     }

@@ -563,7 +563,7 @@
     <div class="stats-grid">
         <div class="stat-card lime">
             <div class="stat-label">Total Log Entries</div>
-            <div class="stat-value" id="statEntries">29</div>
+            <div class="stat-value" id="statEntries">30</div>
         </div>
         <div class="stat-card cyan">
             <div class="stat-label">GitHub Cache</div>
@@ -581,6 +581,84 @@
 
         <!-- Grid Container for Log Entries -->
         <div class="log-grid">
+            <!-- LOG-073 -->
+            <div class="log-card">
+                <div class="log-header">
+                    <span class="log-id">LOG-073</span>
+                    <span class="log-date">2026-07-29 22:55 IST</span>
+                    <span class="log-tag bg-blue">UX & FOOTER</span>
+                </div>
+                <h2 class="log-title">Increased WASM Scroll Speed & Removed Phone Numbers from Footer</h2>
+                <div class="log-content">
+                    <p><strong>Observation</strong>: User reported that mouse wheel scroll sensitivity was too low on the WASM web app, making each scroll notch move only a tiny distance. Also requested removal of phone numbers from the footer.</p>
+                    <p><strong>Action</strong>: Added a JavaScript <code>wheel</code> event interceptor in <code>wasmJsMain/resources/index.html</code> that captures wheel events on the <code>#ComposeTarget</code> canvas in the capture phase and re-dispatches them with a 3x amplified <code>deltaY</code>/<code>deltaX</code>, making scrolling feel natural and responsive. Removed the <code>+91 93483 43310 | +91 79895 36155</code> phone number Text composable from <code>PremiumFooter.kt</code> while preserving email and website contact info.</p>
+                </div>
+            </div>
+            <!-- LOG-072 -->
+            <div class="log-card">
+                <div class="log-header">
+                    <span class="log-id">LOG-072</span>
+                    <span class="log-date">2026-07-29 22:48 IST</span>
+                    <span class="log-tag bg-blue">CLOUD & CDN</span>
+                </div>
+                <h2 class="log-title">Migrated Assets to Cloudinary CDN</h2>
+                <div class="log-content">
+                    <p><strong>Observation</strong>: The user wanted local assets uploaded to Cloudinary to ensure they load incredibly fast (in a jiffy) and reduce the size of the initial WASM compile bundle.</p>
+                    <p><strong>Action</strong>: Executed raw PowerShell `curl` network requests to physically upload `Impakto Logo.png`, `Ajanta_Transparent_Logo.png`, and `SKIL_Lifestyle_Black_Transparent_BG_Logo.png` directly to the `aiz2tooi` Cloudinary bucket using the `skilonline` preset. Refactored `ECommerceScreen.kt` to abandon local `painterResource` loading in favor of asynchronous `io.kamel.image.KamelImage` fetching from the new secure Cloudinary URLs. Wrapped the URLs in `CloudinaryConfig.getOptimizedUrl` to enforce aggressive `f_auto,q_auto,w_X` WebP optimizations.</p>
+                </div>
+            </div>
+            <!-- LOG-071 -->
+            <div class="log-card">
+                <div class="log-header">
+                    <span class="log-id">LOG-071</span>
+                    <span class="log-date">2026-07-29 22:42 IST</span>
+                    <span class="log-tag bg-blue">UI UPDATE</span>
+                </div>
+                <h2 class="log-title">Localization to ₹ INR Currency</h2>
+                <div class="log-content">
+                    <p><strong>Observation</strong>: The UI was previously hardcoded to display prices and cart totals using the USD `$` symbol. The user requested localization to the Indian Rupee `₹` symbol.</p>
+                    <p><strong>Action</strong>: Traversed `ProductCard.kt`, `ECommerceScreen.kt`, and `ECommerceViewModel.kt` to replace all `$${price}` string interpolations with `₹${price}`. The UI now natively displays prices in ₹ across the product grid, the shopping cart drawer, and the checkout toast notifications.</p>
+                </div>
+            </div>
+            <!-- LOG-070 -->
+            <div class="log-card">
+                <div class="log-header">
+                    <span class="log-id">LOG-070</span>
+                    <span class="log-date">2026-07-29 22:36 IST</span>
+                    <span class="log-tag bg-blue">UI UPDATE</span>
+                </div>
+                <h2 class="log-title">Loosened Layout Density & Scaled Logos</h2>
+                <div class="log-content">
+                    <p><strong>Observation</strong>: The scroll feel was too tight due to insufficient spacing in the LazyVerticalGrid. Additionally, the Ajanta and Impakto partner logos felt disproportionately small compared to the main SKIL logo.</p>
+                    <p><strong>Action</strong>: Increased grid `verticalArrangement` from `24.dp` to `36.dp` and vertical `contentPadding` from `14.dp` to `32.dp`. Expanded the spacers between the Navbars and Category rows from `14.dp` to `24.dp` to let the design breathe. Scaled the Ajanta and Impakto image logos from `28.dp` to `36.dp` height for better visual balance alongside the SKIL brand logo.</p>
+                </div>
+            </div>
+            <!-- LOG-069 -->
+            <div class="log-card">
+                <div class="log-header">
+                    <span class="log-id">LOG-069</span>
+                    <span class="log-date">2026-07-29 22:28 IST</span>
+                    <span class="log-tag bg-blue">UI UPDATE</span>
+                </div>
+                <h2 class="log-title">Fluid Responsiveness & Premium Footer Fixes</h2>
+                <div class="log-content">
+                    <p><strong>Observation</strong>: The UI layout broke on narrow mobile screens (squished logos in the top navbar and vertically wrapped text in the footer). The top banner typography lacked elegance, and the text-based Impackto logo wasn't sufficient.</p>
+                    <p><strong>Action</strong>: Replaced static `Row` elements in both `ECommerceScreen` (Navbar 1) and `PremiumFooter` with fully fluid responsive `FlowRow` containers. This allows logos and contact information to gracefully wrap to new lines when screen width is constrained without pixelating or crushing text. Restored the original <code>Impakto Logo.png</code> from the `archive/legacy-ui/assets/logo/` directory into `composeResources`. Refined the Ajanta banner with `SemiBold` weight, smaller font size, and wide `3.sp` letter spacing for a premium, sleek look.</p>
+                </div>
+            </div>
+            <!-- LOG-068 -->
+            <div class="log-card">
+                <div class="log-header">
+                    <span class="log-id">LOG-068</span>
+                    <span class="log-date">2026-07-29 22:20 IST</span>
+                    <span class="log-tag bg-blue">UI UPDATE</span>
+                </div>
+                <h2 class="log-title">Updated ECommerce UI for Impackto & Scrolling Fix</h2>
+                <div class="log-content">
+                    <p><strong>Observation</strong>: The user requested changes to the top announcement text, switching Xpania to Impackto, enlarging logos, removing apparel from categories, and fixing the scroll so the entire page scrolls from the top navbar instead of just the product grid.</p>
+                    <p><strong>Action</strong>: Replaced Xpania with a stylized 'IMPACKTO' text logo. Updated the banner text and reduced its padding. Scaled SKIL logo to 48dp and Ajanta to 28dp. Removed 'APPAREL', 'TECH', and 'ACCESSORIES' from categories since it's a footwear-only site. Wrapped the entire top layout inside the `LazyVerticalGrid`'s first `item` spanning full width to solve the scrolling issue natively without nesting scroll containers.</p>
+                </div>
+            </div>
             <!-- LOG-067 -->
             <div class="log-card">
                 <div class="log-header">

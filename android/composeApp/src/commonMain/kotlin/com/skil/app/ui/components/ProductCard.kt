@@ -71,34 +71,36 @@ fun ProductCard(
             Spacer(modifier = Modifier.height(10.dp))
 
             // Elegant Product Image Showcase Box
-            if (product.imageUrl != null) {
-                io.kamel.image.KamelImage(
-                    resource = io.kamel.image.asyncPainterResource(data = product.imageUrl),
-                    contentDescription = product.name,
-                    contentScale = androidx.compose.ui.layout.ContentScale.Crop,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(140.dp)
-                        .background(AppColors.SoftBackground, shape = RoundedCornerShape(16.dp))
-                        .clip(RoundedCornerShape(16.dp))
-                        .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(16.dp))
-                )
-            } else {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(140.dp)
-                        .background(AppColors.SoftBackground, shape = RoundedCornerShape(16.dp))
-                        .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(16.dp)),
-                    contentAlignment = Alignment.Center
-                ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(140.dp)
+                    .background(AppColors.SoftBackground, shape = RoundedCornerShape(16.dp))
+                    .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(16.dp)),
+                contentAlignment = Alignment.Center
+            ) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Text(
                         text = product.itemLabel.uppercase(),
                         fontWeight = FontWeight.ExtraBold,
-                        fontSize = 18.sp,
+                        fontSize = 20.sp,
                         color = AppColors.TextPrimary,
-                        letterSpacing = 1.5.sp
+                        letterSpacing = 2.sp
                     )
+                    Spacer(modifier = Modifier.height(6.dp))
+                    Box(
+                        modifier = Modifier
+                            .background(AppColors.AccentGold.copy(alpha = 0.2f), shape = RoundedCornerShape(999.dp))
+                            .padding(horizontal = 12.dp, vertical = 3.dp)
+                    ) {
+                        Text(
+                            text = product.badge.uppercase(),
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 9.sp,
+                            color = AppColors.AccentGold,
+                            letterSpacing = 1.sp
+                        )
+                    }
                 }
             }
 
@@ -134,7 +136,7 @@ fun ProductCard(
             ) {
                 // Price Label
                 Text(
-                    text = "$${product.price.toInt()}",
+                    text = "₹${product.price.toInt()}",
                     fontWeight = FontWeight.Black,
                     fontSize = 16.sp,
                     color = AppColors.TextPrimary

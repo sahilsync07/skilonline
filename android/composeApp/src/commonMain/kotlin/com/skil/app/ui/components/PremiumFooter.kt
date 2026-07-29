@@ -14,13 +14,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.skil.app.theme.AppColors
+import org.jetbrains.compose.resources.painterResource
+import skilonline.composeapp.generated.resources.Res
+import skilonline.composeapp.generated.resources.skil_logo
 
 @Composable
 fun PremiumFooter(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(top = 40.dp, bottom = 20.dp)
             .background(Color.White)
             .border(width = 1.dp, color = AppColors.BorderLight)
     ) {
@@ -33,16 +35,60 @@ fun PremiumFooter(modifier: Modifier = Modifier) {
         )
 
         Column(
-            modifier = Modifier.padding(32.dp),
-            verticalArrangement = Arrangement.spacedBy(32.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 24.dp, vertical = 32.dp),
+            verticalArrangement = Arrangement.spacedBy(40.dp)
         ) {
-            // Address Section
-            Row(
+            @OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
+            FlowRow(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(24.dp)
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalArrangement = Arrangement.spacedBy(40.dp)
             ) {
-                // Registered Office
-                Column(modifier = Modifier.weight(1f)) {
+                // Column 1: Brand & Contact
+                Column(
+                    modifier = Modifier.widthIn(min = 250.dp, max = 300.dp),
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    androidx.compose.foundation.Image(
+                        painter = painterResource(Res.drawable.skil_logo),
+                        contentDescription = "SKIL Logo",
+                        modifier = Modifier.height(40.dp),
+                        contentScale = androidx.compose.ui.layout.ContentScale.Fit
+                    )
+                    
+                    Text(
+                        text = "STEP INTO EXCELLENCE",
+                        fontWeight = FontWeight.Medium,
+                        fontSize = 11.sp,
+                        color = AppColors.AccentGold,
+                        letterSpacing = 2.sp
+                    )
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Text(
+                            text = "skillifestyle.vizag@gmail.com",
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            color = AppColors.TextPrimary
+                        )
+                        Text(
+                            text = "www.skillifestyle.in",
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            color = AppColors.TextPrimary
+                        )
+                    }
+                }
+
+                // Column 2: Registered Office
+                Column(
+                    modifier = Modifier.widthIn(min = 220.dp, max = 280.dp),
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Box(
                             modifier = Modifier
@@ -53,22 +99,24 @@ fun PremiumFooter(modifier: Modifier = Modifier) {
                         Text(
                             text = "REGISTERED OFFICE",
                             fontWeight = FontWeight.Bold,
-                            fontSize = 10.sp,
+                            fontSize = 11.sp,
                             color = AppColors.TextPrimary,
                             letterSpacing = 1.sp
                         )
                     }
-                    Spacer(modifier = Modifier.height(12.dp))
                     Text(
-                        text = "7-14(1)-9, AST 1085003765,\n2nd Floor, New Colony, Srikakulam II Town,\nSrikakulam, Srikakulam - 532001, Andhra Pradesh",
-                        fontSize = 10.sp,
+                        text = "7-14(1)-9, AST 1085003765,\n2nd Floor, New Colony, Srikakulam II Town,\nSrikakulam, Srikakulam - 532001,\nAndhra Pradesh",
+                        fontSize = 12.sp,
                         color = AppColors.TextSecondary,
-                        lineHeight = 16.sp
+                        lineHeight = 20.sp
                     )
                 }
 
-                // Principal Place of Business
-                Column(modifier = Modifier.weight(1f)) {
+                // Column 3: Principal Place of Business
+                Column(
+                    modifier = Modifier.widthIn(min = 220.dp, max = 280.dp),
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Box(
                             modifier = Modifier
@@ -79,83 +127,35 @@ fun PremiumFooter(modifier: Modifier = Modifier) {
                         Text(
                             text = "PRINCIPAL PLACE OF BUSINESS",
                             fontWeight = FontWeight.Bold,
-                            fontSize = 10.sp,
+                            fontSize = 11.sp,
                             color = AppColors.TextPrimary,
                             letterSpacing = 1.sp
                         )
                     }
-                    Spacer(modifier = Modifier.height(12.dp))
                     Text(
                         text = "Shop No.7A, D.No. 28-10-4, Third Floor,\nVasavi Plaza, Theatre Road, Revenue Ward No.27,\nJagadamba Jn, Visakhapatnam - 530020, AP",
-                        fontSize = 10.sp,
+                        fontSize = 12.sp,
                         color = AppColors.TextSecondary,
-                        lineHeight = 16.sp
+                        lineHeight = 20.sp
                     )
                 }
             }
-
-            // Divider
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(1.dp)
-                    .background(AppColors.BorderLight)
+        }
+        
+        // Bottom Copyright Bar
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(AppColors.SurfaceBackground)
+                .border(width = 1.dp, color = AppColors.BorderLight)
+                .padding(vertical = 16.dp, horizontal = 24.dp)
+        ) {
+            Text(
+                text = "© 2024 SKIL Lifestyle. All rights reserved.",
+                fontSize = 11.sp,
+                color = AppColors.TextSecondary,
+                modifier = Modifier.align(Alignment.Center)
             )
-
-            // Contact Info
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceAround,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = "+91 93483 43310 | +91 79895 36155",
-                    fontSize = 11.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = AppColors.TextPrimary
-                )
-                Text(
-                    text = "skillifestyle.vizag@gmail.com",
-                    fontSize = 11.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = AppColors.TextPrimary
-                )
-                Text(
-                    text = "www.skillifestyle.in",
-                    fontSize = 11.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = AppColors.TextPrimary
-                )
-            }
-
-            // Tagline
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center
-            ) {
-                Box(
-                    modifier = Modifier
-                        .width(40.dp)
-                        .height(1.dp)
-                        .background(AppColors.AccentGold)
-                )
-                Spacer(modifier = Modifier.width(16.dp))
-                Text(
-                    text = "STEP INTO EXCELLENCE",
-                    fontWeight = FontWeight.Normal,
-                    fontSize = 12.sp,
-                    color = AppColors.TextPrimary,
-                    letterSpacing = 2.sp
-                )
-                Spacer(modifier = Modifier.width(16.dp))
-                Box(
-                    modifier = Modifier
-                        .width(40.dp)
-                        .height(1.dp)
-                        .background(AppColors.AccentGold)
-                )
-            }
         }
     }
 }

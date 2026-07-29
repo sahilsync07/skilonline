@@ -34,7 +34,6 @@ kotlin {
             implementation(compose.animation)
             implementation(libs.kotlinx.coroutines.core)
             implementation(compose.components.resources)
-            implementation("media.kamel:kamel-image:1.0.0")
         }
         androidMain.dependencies {
             implementation(libs.androidx.activity.compose)

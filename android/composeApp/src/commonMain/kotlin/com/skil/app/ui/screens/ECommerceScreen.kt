@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.basicMarquee
+import androidx.compose.foundation.MarqueeSpacing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
@@ -47,7 +49,7 @@ import org.jetbrains.compose.resources.painterResource
 import skilonline.composeapp.generated.resources.Res
 import skilonline.composeapp.generated.resources.ajanta_logo
 import skilonline.composeapp.generated.resources.skil_logo
-import skilonline.composeapp.generated.resources.xpania_logo
+import skilonline.composeapp.generated.resources.impakto_logo
 
 @Composable
 fun ECommerceScreen(
@@ -55,7 +57,7 @@ fun ECommerceScreen(
     modifier: Modifier = Modifier
 ) {
     val uiState by viewModel.uiState.collectAsState()
-    val categories = listOf("ALL DROPS", "APPAREL", "FOOTWEAR", "TECH", "ACCESSORIES")
+    val categories = listOf("ALL DROPS", "FOOTWEAR")
 
     Box(
         modifier = modifier
@@ -69,15 +71,18 @@ fun ECommerceScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(AppColors.AccentGold)
-                    .padding(vertical = 10.dp, horizontal = 16.dp),
+                    .padding(vertical = 6.dp, horizontal = 16.dp),
                 contentAlignment = Alignment.Center
             ) {
+                @OptIn(androidx.compose.foundation.ExperimentalFoundationApi::class)
                 Text(
-                    text = "SUMMER DROP '26 IS LIVE • FREE SHIPPING ON ORDERS OVER $100 • USE CODE \"SKIL26\"",
+                    text = "AJANTA COMING TO ANDHRA PRADESH SOON   •   AJANTA COMING TO ANDHRA PRADESH SOON   •   AJANTA COMING TO ANDHRA PRADESH SOON",
                     color = Color.White,
-                    fontSize = 11.sp,
-                    fontWeight = FontWeight.Bold,
-                    letterSpacing = 1.sp
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    letterSpacing = 3.sp,
+                    maxLines = 1,
+                    modifier = Modifier.basicMarquee(iterations = Int.MAX_VALUE, spacing = MarqueeSpacing(32.dp))
                 )
             }
 
@@ -87,68 +92,90 @@ fun ECommerceScreen(
                     .weight(1f),
                 contentAlignment = Alignment.TopCenter
             ) {
-                Column(
+                androidx.compose.foundation.layout.BoxWithConstraints(
                     modifier = Modifier
                         .fillMaxHeight()
-                        .widthIn(max = 1200.dp)
-                        .padding(horizontal = 24.dp, vertical = 14.dp)
-                ) {
-                // 2. Navbar 1: Top Brand & Partner Logo Bar
-                Box(
-                    modifier = Modifier
                         .fillMaxWidth()
-                        .shadow(elevation = 8.dp, shape = RoundedCornerShape(18.dp), spotColor = Color(0x0A131518))
-                        .background(Color.White, shape = RoundedCornerShape(18.dp))
-                        .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(18.dp))
-                        .padding(horizontal = 20.dp, vertical = 14.dp)
                 ) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        // Left Brand Logo Typography (Elegant)
-                        androidx.compose.foundation.Image(
-                            painter = painterResource(Res.drawable.skil_logo),
-                            contentDescription = "SKIL Logo",
-                            modifier = Modifier.height(36.dp),
-                            contentScale = androidx.compose.ui.layout.ContentScale.Fit
-                        )
+                    val isWide = maxWidth > 600.dp
+                    val columns = when {
+                        maxWidth > 1600.dp -> 5
+                        maxWidth > 1200.dp -> 4
+                        maxWidth > 800.dp -> 3
+                        else -> 2
+                    }
+                    val horizontalPad = when {
+                        maxWidth > 1200.dp -> 48.dp
+                        maxWidth > 800.dp -> 32.dp
+                        else -> 16.dp
+                    }
 
-                        // Right Partner Logos Badge Container
-                        Box(
-                            modifier = Modifier
-                                .background(AppColors.SurfaceBackground, shape = RoundedCornerShape(12.dp))
-                                .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(12.dp))
-                                .padding(horizontal = 14.dp, vertical = 8.dp)
-                        ) {
-                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                androidx.compose.foundation.Image(
-                                    painter = painterResource(Res.drawable.ajanta_logo),
-                                    contentDescription = "Ajanta Logo",
-                                    modifier = Modifier.height(20.dp),
-                                    contentScale = androidx.compose.ui.layout.ContentScale.Fit
-                                )
-                                Spacer(modifier = Modifier.width(10.dp))
+                    LazyVerticalGrid(
+                        columns = GridCells.Fixed(columns),
+                        horizontalArrangement = Arrangement.spacedBy(24.dp),
+                        verticalArrangement = Arrangement.spacedBy(36.dp),
+                        contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = horizontalPad, vertical = 32.dp),
+                        modifier = Modifier.fillMaxSize()
+                    ) {
+                        item(span = { androidx.compose.foundation.lazy.grid.GridItemSpan(maxLineSpan) }) {
+                            Column(modifier = Modifier.fillMaxWidth()) {
+                                // 2. Navbar 1: Top Brand & Partner Logo Bar
                                 Box(
                                     modifier = Modifier
-                                        .width(1.dp)
-                                        .height(16.dp)
-                                        .background(AppColors.BorderLight)
-                                )
-                                Spacer(modifier = Modifier.width(10.dp))
-                                androidx.compose.foundation.Image(
-                                    painter = painterResource(Res.drawable.xpania_logo),
-                                    contentDescription = "xpania Logo",
-                                    modifier = Modifier.height(20.dp),
-                                    contentScale = androidx.compose.ui.layout.ContentScale.Fit
-                                )
-                            }
-                        }
-                    }
-                }
+                                        .fillMaxWidth()
+                                        .shadow(elevation = 8.dp, shape = RoundedCornerShape(18.dp), spotColor = Color(0x0A131518))
+                                        .background(Color.White, shape = RoundedCornerShape(18.dp))
+                                        .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(18.dp))
+                                        .padding(horizontal = 20.dp, vertical = 14.dp)
+                                ) {
+                                    @OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
+                                    androidx.compose.foundation.layout.FlowRow(
+                                        modifier = Modifier.fillMaxWidth(),
+                                        horizontalArrangement = Arrangement.SpaceBetween,
+                                        verticalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterVertically)
+                                    ) {
+                                        // Left Brand Logo Typography (Elegant)
+                                        androidx.compose.foundation.Image(
+                                            painter = painterResource(Res.drawable.skil_logo),
+                                            contentDescription = "SKIL Logo",
+                                            modifier = Modifier.height(44.dp),
+                                            contentScale = androidx.compose.ui.layout.ContentScale.Fit
+                                        )
 
-                Spacer(modifier = Modifier.height(14.dp))
+                                        // Right Partner Logos Badge Container
+                                        Box(
+                                            modifier = Modifier
+                                                .background(AppColors.SurfaceBackground, shape = RoundedCornerShape(12.dp))
+                                                .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(12.dp))
+                                                .padding(horizontal = 14.dp, vertical = 8.dp)
+                                        ) {
+                                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                                androidx.compose.foundation.Image(
+                                                    painter = painterResource(Res.drawable.ajanta_logo),
+                                                    contentDescription = "Ajanta Logo",
+                                                    modifier = Modifier.height(32.dp),
+                                                    contentScale = androidx.compose.ui.layout.ContentScale.Fit
+                                                )
+                                                Spacer(modifier = Modifier.width(12.dp))
+                                                Box(
+                                                    modifier = Modifier
+                                                        .width(1.dp)
+                                                        .height(20.dp)
+                                                        .background(AppColors.BorderLight)
+                                                )
+                                                Spacer(modifier = Modifier.width(12.dp))
+                                                androidx.compose.foundation.Image(
+                                                    painter = painterResource(Res.drawable.impakto_logo),
+                                                    contentDescription = "Impakto Logo",
+                                                    modifier = Modifier.height(32.dp),
+                                                    contentScale = androidx.compose.ui.layout.ContentScale.Fit
+                                                )
+                                            }
+                                        }
+                                    }
+                                }
+
+                                Spacer(modifier = Modifier.height(24.dp))
 
                 // 3. Navbar 2: Controls Row
                 Row(
@@ -177,7 +204,7 @@ fun ECommerceScreen(
                                 decorationBox = { innerTextField ->
                                     if (uiState.searchQuery.isEmpty()) {
                                         Text(
-                                            text = "Search products, kicks, tech...",
+                                            text = "Search...",
                                             color = AppColors.TextMuted,
                                             fontSize = 13.sp,
                                             fontWeight = FontWeight.Normal
@@ -228,7 +255,7 @@ fun ECommerceScreen(
                     }
                 }
 
-                Spacer(modifier = Modifier.height(14.dp))
+                Spacer(modifier = Modifier.height(24.dp))
 
                 // 4. Category Filter Pills Row
                 LazyRow(
@@ -356,42 +383,26 @@ fun ECommerceScreen(
                     }
                 }
 
-                Spacer(modifier = Modifier.height(32.dp))
+                                Spacer(modifier = Modifier.height(32.dp))
 
-                // 6. Featured Products Section Title & Grid
-                Text(
-                    text = "CURATED ESSENTIALS FOR MODERN LIVING.",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 13.sp,
-                    color = AppColors.TextSecondary,
-                    letterSpacing = 1.sp
-                )
+                                // 6. Featured Products Section Title & Grid
+                                Text(
+                                    text = "CURATED ESSENTIALS FOR MODERN LIVING.",
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 13.sp,
+                                    color = AppColors.TextSecondary,
+                                    letterSpacing = 1.sp
+                                )
 
-                Spacer(modifier = Modifier.height(16.dp))
+                                Spacer(modifier = Modifier.height(16.dp))
+                            }
+                        }
 
-                val filteredProducts = uiState.products.filter { product ->
-                    (uiState.selectedCategory == "ALL" || product.category == uiState.selectedCategory) &&
-                            (uiState.searchQuery.isEmpty() || product.name.contains(uiState.searchQuery, ignoreCase = true))
-                }
-
-                // Independent Responsive Grid via BoxWithConstraints
-                androidx.compose.foundation.layout.BoxWithConstraints(
-                    modifier = Modifier.fillMaxWidth().weight(1f)
-                ) {
-                    val columns = when {
-                        maxWidth > 1000.dp -> 4 // Ultrawide PC
-                        maxWidth > 700.dp -> 3 // Standard PC/Tablet
-                        else -> 2 // Mobile/Android
-                    }
-
-                    LazyVerticalGrid(
-                        columns = GridCells.Fixed(columns),
-                        horizontalArrangement = Arrangement.spacedBy(24.dp),
-                        verticalArrangement = Arrangement.spacedBy(24.dp),
-                        modifier = Modifier.fillMaxSize()
-                    ) {
                         items(
-                            items = filteredProducts,
+                            items = uiState.products.filter { product ->
+                                (uiState.selectedCategory == "ALL" || product.category == uiState.selectedCategory) &&
+                                        (uiState.searchQuery.isEmpty() || product.name.contains(uiState.searchQuery, ignoreCase = true))
+                            },
                             key = { item -> item.id }
                         ) { product ->
                             ProductCard(
@@ -406,7 +417,6 @@ fun ECommerceScreen(
                     }
                 }
             }
-        }
         } // Closing brace for the outer full-width Column
 
         // 7. Cart Drawer Slide-Over Sheet
@@ -497,7 +507,7 @@ fun ECommerceScreen(
                                                 )
                                                 Spacer(modifier = Modifier.height(4.dp))
                                                 Text(
-                                                    text = "$${item.product.price.toInt()} each",
+                                                    text = "₹${item.product.price.toInt()} each",
                                                     fontSize = 13.sp,
                                                     fontWeight = FontWeight.Bold,
                                                     color = AppColors.TextSecondary
@@ -552,7 +562,7 @@ fun ECommerceScreen(
                                     color = AppColors.TextSecondary
                                 )
                                 Text(
-                                    text = "$${uiState.totalCartAmount.toInt()}",
+                                    text = "₹${uiState.totalCartAmount.toInt()}",
                                     fontWeight = FontWeight.ExtraBold,
                                     fontSize = 24.sp,
                                     color = AppColors.TextPrimary
