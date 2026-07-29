@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Search, ShoppingBag, X, MapPin, Mail, Globe } from "lucide-react";
+import { Search, ShoppingBag, X, MapPin, Mail, Globe, Phone, CheckCircle } from "lucide-react";
 
 interface Product {
   id: string;
@@ -58,6 +58,7 @@ interface CartItem extends Product {
 
 interface ToastMessage {
   id: number;
+  title: string;
   text: string;
 }
 
@@ -68,9 +69,9 @@ export default function Home() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
 
-  const showToast = (message: string) => {
+  const showToast = (message: string, title: string = "SKIL STORE") => {
     const id = Date.now();
-    setToasts((prev) => [...prev, { id, text: message }]);
+    setToasts((prev) => [...prev, { id, title, text: message }]);
     setTimeout(() => {
       setToasts((prev) => prev.filter((t) => t.id !== id));
     }, 3500);
@@ -90,7 +91,7 @@ export default function Home() {
       }
       return [...prev, { ...product, quantity: 1 }];
     });
-    showToast(`Added ${product.name} to cart!`);
+    showToast(`Added ${product.name} to cart!`, "CART UPDATED");
   };
 
   const updateQuantity = (id: string, delta: number) => {
@@ -128,12 +129,18 @@ export default function Home() {
 
   return (
     <>
-      {/* Toast Notification Overlay Container */}
+      {/* Memphis Toast Notification System (Rule 05 Compliant) */}
       <div id="toastContainer">
         {toasts.map((toast) => (
-          <div key={toast.id} className="toast lime">
-            <span>{toast.text}</span>
-            <button className="toast-close" onClick={() => removeToast(toast.id)}>
+          <div key={toast.id} className="memphis-toast">
+            <div className="toast-icon-wrapper">
+              <CheckCircle size={20} />
+            </div>
+            <div className="toast-body">
+              <span className="toast-badge">{toast.title}</span>
+              <span className="toast-message">{toast.text}</span>
+            </div>
+            <button className="toast-close-btn" onClick={() => removeToast(toast.id)}>
               ✕
             </button>
           </div>
@@ -149,7 +156,7 @@ export default function Home() {
       <header className="logo-navbar">
         <a href="#" className="nav-brand">
           <img
-            src="/skil_logo.png"
+            src="https://res.cloudinary.com/aiz2tooi/image/upload/f_auto,q_auto/v1784722804/SKIL_Lifestyle_Black_Transparent_BG_Logo.png"
             alt="SKIL Lifestyle Logo"
             className="brand-logo-main"
           />
@@ -157,7 +164,7 @@ export default function Home() {
 
         <div className="partner-logos-container">
           <img
-            src="/ajanta_logo.png"
+            src="https://res.cloudinary.com/aiz2tooi/image/upload/f_auto,q_auto/v1784722809/Ajanta_Transparent_Logo.png"
             alt="Ajanta Logo"
             className="partner-logo-item"
             title="Ajanta Official Partner"
@@ -176,8 +183,22 @@ export default function Home() {
       <nav className="controls-navbar">
         <div className="controls-top-row">
           <div className="search-input-wrapper">
-            <Search className="search-icon-inside" size={18} />
+            <svg
+              className="search-icon-inside"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
             <input
+              id="searchInput"
               type="text"
               className="search-input"
               placeholder="Search products, kicks, tech..."
@@ -187,14 +208,27 @@ export default function Home() {
           </div>
 
           <button className="btn-cart" onClick={() => setIsCartOpen(true)}>
-            <ShoppingBag size={20} />
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="9" cy="21" r="1" />
+              <circle cx="20" cy="21" r="1" />
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+            </svg>
             <span className="btn-cart-text">CART</span>
-            <span className="cart-badge">{cartTotalCount}</span>
+            <span className="cart-badge" id="cartBadge">{cartTotalCount}</span>
           </button>
         </div>
 
         <div className="nav-cat-row">
-          {["ALL DROPS", "FOOTWEAR"].map((cat) => (
+          {["ALL DROPS", "APPAREL", "FOOTWEAR", "TECH", "ACCESSORIES"].map((cat) => (
             <button
               key={cat}
               className={`nav-cat-pill ${selectedCategory === cat ? "active" : ""}`}
@@ -206,7 +240,7 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* 4. Main Showcase Section */}
+      {/* 4. Main Showcase Layout */}
       <main>
         {/* Hero Showcase Section */}
         <div className="hero-container">
@@ -218,38 +252,45 @@ export default function Home() {
                 Experience a refined daily shopping destination inspired by SKIL’s signature
                 branding, clean lines, and premium gold accents.
               </p>
-              <button
-                className="btn-primary"
-                onClick={() => showToast("Browsing the new SKIL collection")}
-              >
-                Explore Collection
-              </button>
+              <div className="hero-actions">
+                <button
+                  className="btn-primary"
+                  onClick={() => showToast("Browsing the new SKIL collection", "COLLECTION")}
+                >
+                  Explore Collection
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Products Section */}
+        {/* Products Grid Section */}
         <section className="products-section">
           <div className="section-title">
-            <span>Curated essentials for modern living. ({filteredProducts.length})</span>
+            <span>Curated essentials for modern living.</span>
           </div>
 
           <div className="products-grid">
             {filteredProducts.map((product) => (
               <div key={product.id} className="product-card">
-                <div className="card-img-wrapper">
-                  <span className="card-badge-top">{product.tag}</span>
+                <div className="product-img-box">
+                  <span className="product-badge" style={{ position: "absolute", top: "12px", left: "12px", zIndex: 5 }}>
+                    {product.tag}
+                  </span>
                   <img src={product.image} alt={product.name} />
                 </div>
-                <span className="card-category">{product.category}</span>
-                <h3 className="card-title">{product.name}</h3>
-                <p className="card-desc">{product.description}</p>
+                
+                <div className="product-info">
+                  <span className="product-cat">{product.category}</span>
+                  <h3 className="product-name">{product.name}</h3>
+                  <p className="product-desc">{product.description}</p>
 
-                <div className="card-bottom-row">
-                  <span className="card-price">₹{product.price.toLocaleString("en-IN")}</span>
-                  <button className="btn-add-cart" onClick={() => addToCart(product)}>
-                    + Add to Cart
-                  </button>
+                  <div className="product-footer">
+                    <span className="product-price">₹{product.price.toLocaleString("en-IN")}</span>
+                    <button className="btn-add-cart" onClick={() => addToCart(product)}>
+                      + Add to Cart
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
@@ -257,12 +298,14 @@ export default function Home() {
         </section>
       </main>
 
-      {/* 5. Site Footer */}
+      {/* 5. Premium Site Footer */}
       <footer className="site-footer">
+        <div className="footer-top-accent"></div>
+
         <div className="footer-grid">
           <div className="footer-col">
             <div className="footer-col-header">
-              <MapPin size={20} />
+              <MapPin className="footer-icon" size={20} />
               <h4>REGISTERED OFFICE</h4>
             </div>
             <p>
@@ -276,7 +319,7 @@ export default function Home() {
 
           <div className="footer-col">
             <div className="footer-col-header">
-              <MapPin size={20} />
+              <MapPin className="footer-icon" size={20} />
               <h4>PRINCIPAL PLACE OF BUSINESS</h4>
             </div>
             <p>
@@ -290,6 +333,10 @@ export default function Home() {
         </div>
 
         <div className="footer-contact-bar">
+          <div className="contact-item">
+            <Phone size={16} />
+            <span>+91 93483 43310 | +91 79895 36155</span>
+          </div>
           <div className="contact-item">
             <Mail size={16} />
             <span>skillifestyle.vizag@gmail.com</span>
@@ -309,15 +356,15 @@ export default function Home() {
 
       {/* 6. Cart Slide-Over Drawer */}
       <div
-        className={`cart-overlay ${isCartOpen ? "open" : ""}`}
+        className={`cart-overlay ${isCartOpen ? "active" : ""}`}
         onClick={() => setIsCartOpen(false)}
       ></div>
 
-      <div className={`cart-drawer ${isCartOpen ? "open" : ""}`}>
+      <div className={`cart-drawer ${isCartOpen ? "active" : ""}`}>
         <div className="drawer-header">
-          <div className="drawer-title">YOUR SHOPPING CART ({cartTotalCount})</div>
-          <button className="btn-close-drawer" onClick={() => setIsCartOpen(false)}>
-            <X size={20} />
+          <h3>YOUR SHOPPING CART ({cartTotalCount})</h3>
+          <button className="close-button" onClick={() => setIsCartOpen(false)}>
+            <X size={22} />
           </button>
         </div>
 
@@ -328,68 +375,24 @@ export default function Home() {
             </p>
           ) : (
             cart.map((item) => (
-              <div
-                key={item.id}
-                style={{
-                  display: "flex",
-                  gap: "14px",
-                  marginBottom: "20px",
-                  paddingBottom: "16px",
-                  borderBottom: "1px solid rgba(18,18,18,0.06)",
-                }}
-              >
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  style={{
-                    width: "70px",
-                    height: "70px",
-                    objectFit: "contain",
-                    background: "var(--bg-soft)",
-                    borderRadius: "10px",
-                    padding: "4px",
-                  }}
-                />
-                <div style={{ flex: 1 }}>
-                  <h4 style={{ fontSize: "0.95rem", fontWeight: "700" }}>{item.name}</h4>
-                  <span style={{ fontSize: "0.85rem", color: "var(--accent-gold)", fontWeight: "700" }}>
-                    ₹{item.price.toLocaleString("en-IN")}
-                  </span>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "10px",
-                      marginTop: "8px",
-                    }}
-                  >
-                    <button
-                      onClick={() => updateQuantity(item.id, -1)}
-                      style={{
-                        width: "24px",
-                        height: "24px",
-                        borderRadius: "50%",
-                        border: "1px solid rgba(18,18,18,0.2)",
-                        background: "#fff",
-                        cursor: "pointer",
-                        fontWeight: "800",
-                      }}
-                    >
+              <div key={item.id} className="cart-item">
+                <div className="cart-item-icon">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                  />
+                </div>
+                <div>
+                  <h4 className="cart-item-title">{item.name}</h4>
+                  <p className="cart-item-price">₹{item.price.toLocaleString("en-IN")}</p>
+
+                  <div className="qty-controls">
+                    <button className="btn-qty" onClick={() => updateQuantity(item.id, -1)}>
                       -
                     </button>
-                    <span style={{ fontWeight: "700", fontSize: "0.9rem" }}>{item.quantity}</span>
-                    <button
-                      onClick={() => updateQuantity(item.id, 1)}
-                      style={{
-                        width: "24px",
-                        height: "24px",
-                        borderRadius: "50%",
-                        border: "1px solid rgba(18,18,18,0.2)",
-                        background: "#fff",
-                        cursor: "pointer",
-                        fontWeight: "800",
-                      }}
-                    >
+                    <span className="qty-val">{item.quantity}</span>
+                    <button className="btn-qty" onClick={() => updateQuantity(item.id, 1)}>
                       +
                     </button>
                   </div>
@@ -408,7 +411,7 @@ export default function Home() {
             className="btn-checkout"
             onClick={() => {
               if (cart.length === 0) return;
-              showToast("Proceeding to checkout...");
+              showToast("Proceeding to checkout...", "CHECKOUT");
               setIsCartOpen(false);
             }}
           >
