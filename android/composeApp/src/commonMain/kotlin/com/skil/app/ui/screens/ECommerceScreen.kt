@@ -93,17 +93,17 @@ fun ECommerceScreen(
                 )
             }
 
-            // 2. Dual Navbar 1: Top Brand & Partner Logo Header (Single Row on Mobile)
+            // 2. Dual Navbar 1: Top Brand & Partner Logo Header (Increased Height on Mobile)
             androidx.compose.foundation.layout.BoxWithConstraints(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 val isMobile = maxWidth < 600.dp
-                val skilLogoHeight = if (isMobile) 46.dp else 64.dp
-                val partnerLogoHeight = if (isMobile) 32.dp else 44.dp
-                val partnerPaddingH = if (isMobile) 8.dp else 16.dp
-                val partnerPaddingV = if (isMobile) 3.dp else 6.dp
-                val navPadH = if (isMobile) 8.dp else 24.dp
-                val navPadV = if (isMobile) 6.dp else 12.dp
+                val skilLogoHeight = if (isMobile) 50.dp else 64.dp
+                val partnerLogoHeight = if (isMobile) 34.dp else 44.dp
+                val partnerPaddingH = if (isMobile) 10.dp else 16.dp
+                val partnerPaddingV = if (isMobile) 7.dp else 8.dp
+                val navPadH = if (isMobile) 12.dp else 24.dp
+                val navPadV = if (isMobile) 16.dp else 18.dp
 
                 Row(
                     modifier = Modifier
