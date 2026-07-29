@@ -98,12 +98,12 @@ fun ECommerceScreen(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 val isMobile = maxWidth < 600.dp
-                val skilLogoHeight = if (isMobile) 36.dp else 56.dp
-                val partnerLogoHeight = if (isMobile) 24.dp else 38.dp
-                val partnerPaddingH = if (isMobile) 10.dp else 18.dp
-                val partnerPaddingV = if (isMobile) 4.dp else 8.dp
-                val navPadH = if (isMobile) 12.dp else 32.dp
-                val navPadV = if (isMobile) 8.dp else 12.dp
+                val skilLogoHeight = if (isMobile) 46.dp else 64.dp
+                val partnerLogoHeight = if (isMobile) 32.dp else 44.dp
+                val partnerPaddingH = if (isMobile) 8.dp else 16.dp
+                val partnerPaddingV = if (isMobile) 3.dp else 6.dp
+                val navPadH = if (isMobile) 8.dp else 24.dp
+                val navPadV = if (isMobile) 6.dp else 12.dp
 
                 Row(
                     modifier = Modifier
@@ -143,14 +143,14 @@ fun ECommerceScreen(
                                 modifier = Modifier.height(partnerLogoHeight),
                                 contentScale = androidx.compose.ui.layout.ContentScale.Fit
                             )
-                            Spacer(modifier = Modifier.width(if (isMobile) 10.dp else 16.dp))
+                            Spacer(modifier = Modifier.width(if (isMobile) 8.dp else 14.dp))
                             Box(
                                 modifier = Modifier
                                     .width(1.dp)
-                                    .height(if (isMobile) 20.dp else 28.dp)
+                                    .height(if (isMobile) 24.dp else 32.dp)
                                     .background(AppColors.BorderLight)
                             )
-                            Spacer(modifier = Modifier.width(if (isMobile) 10.dp else 16.dp))
+                            Spacer(modifier = Modifier.width(if (isMobile) 8.dp else 14.dp))
                             androidx.compose.foundation.Image(
                                 painter = painterResource(Res.drawable.impakto_logo),
                                 contentDescription = "Impakto Logo",
