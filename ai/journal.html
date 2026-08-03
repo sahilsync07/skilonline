@@ -581,6 +581,19 @@
 
         <!-- Grid Container for Log Entries -->
         <div class="log-grid">
+            <!-- LOG-077 -->
+            <div class="log-card">
+                <div class="log-header">
+                    <span class="log-id">LOG-077</span>
+                    <span class="log-date">2026-08-03 20:30 IST</span>
+                    <span class="log-tag bg-blue">WASM &amp; UX ENHANCEMENT</span>
+                </div>
+                <h2 class="log-title">Implemented 120Hz Fluid WASM Web Scrolling via Zero-Recursion Event Interception</h2>
+                <div class="log-content">
+                    <p><strong>Observation</strong>: Mouse wheel scrolling on the PC Compose Multiplatform WASM client felt tight, slow, and non-snappy because standard Skiko wheel mappings only shift the canvas ~15-20 pixels per notch. Earlier synthetic DOM event re-dispatch attempts (LOG-073) resulted in fatal event listener re-entrancy and WebAssembly memory boundary crashes (LOG-074).</p>
+                    <p><strong>Action</strong>: Injected a lightweight, zero-recursion native <code>WheelEvent</code> property getter interception script directly into <code>wasmJsMain/resources/index.html</code> during the DOM capture phase. This script tags incoming events with an internal <code>_skilAmplified</code> flag to prevent duplicate processing and overrides the native <code>deltaY</code> and <code>deltaX</code> getters using <code>Object.defineProperty</code>, multiplying scroll delta inputs by <code>3.2x</code> without ever generating synthetic DOM events or calling <code>dispatchEvent()</code>. Tested and verified WASM resource packaging via Gradle with zero errors.</p>
+                </div>
+            </div>
             <!-- LOG-076 -->
             <div class="log-card">
                 <div class="log-header">

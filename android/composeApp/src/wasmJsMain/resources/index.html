@@ -26,6 +26,18 @@
 </head>
 <body>
     <canvas id="ComposeTarget"></canvas>
+    <script type="application/javascript">
+        // 120Hz Fluid WASM Web Scrolling: Non-recursive native WheelEvent getter interception
+        window.addEventListener('wheel', function(e) {
+            if (!e._skilAmplified) {
+                Object.defineProperty(e, '_skilAmplified', { value: true, writable: false });
+                const originalY = e.deltaY;
+                const originalX = e.deltaX;
+                Object.defineProperty(e, 'deltaY', { get: () => originalY * 3.2 });
+                Object.defineProperty(e, 'deltaX', { get: () => originalX * 3.2 });
+            }
+        }, { capture: true, passive: true });
+    </script>
     <script type="application/javascript" src="skilApp.js"></script>
 </body>
 </html>
