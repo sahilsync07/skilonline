@@ -581,6 +581,19 @@
 
         <!-- Grid Container for Log Entries -->
         <div class="log-grid">
+            <!-- LOG-079 -->
+            <div class="log-card">
+                <div class="log-header">
+                    <span class="log-id">LOG-079</span>
+                    <span class="log-date">2026-08-03 21:30 IST</span>
+                    <span class="log-tag bg-green">DEPLOYMENT &amp; CLEANUP</span>
+                </div>
+                <h2 class="log-title">Deployment Audit, Icon Replacement (User JPG), APK Build &amp; Root Directory Cleanup</h2>
+                <div class="log-content">
+                    <p><strong>Observation</strong>: User reported: (1) the app icon on device was still the old AI-generated Concept B (golden accent) instead of the actual <code>SKIL App Icon white.jpg</code> (clean black serif SKIL LIFESTYLE typography on white background), (2) needed clarity on which Play Store tracks are being deployed, (3) wanted an APK file available, (4) root directory was heavily cluttered with files violating SUPER_ADMIN_RULES.md Section 1 Repository Layout Directive.</p>
+                    <p><strong>Action</strong>: (A) <strong>Deployment Audit</strong>: Verified <code>android-release.yml</code> deploys only to <code>internal</code> track on push to main (v1.0.45 confirmed). <code>android-production.yml</code> targets <code>production</code> track but is manual-only (<code>workflow_dispatch</code>). Closed alpha at v1.0.28 is stale from Jul 23. All 3 latest workflow runs succeeded. (B) <strong>Icon Replacement</strong>: Resized the user's <code>SKIL App Icon white.jpg</code> (512x512) into all 5 Android mipmap density buckets (mdpi 48px through xxxhdpi 192px) for both <code>ic_launcher.png</code>, <code>ic_launcher_round.png</code>, and foreground layers (108dp scale: 108px through 432px). Replaced the old vector XML overrides in <code>mipmap/</code> with simple adaptive-icon references. (C) <strong>APK Build</strong>: Added <code>assembleRelease</code> to CI workflow alongside <code>bundleRelease</code>, with separate GitHub Actions artifact uploads for both AAB and APK. Updated <code>.gitignore</code> with APK exception. (D) <strong>Root Cleanup</strong>: Deleted 9 root-level violations (duplicate <code>appended-context-window.html</code>, <code>journal.html</code>, <code>privacy-policy.html</code>, <code>preview.html</code>, <code>favicon.ico</code>, stale <code>skil-lifestyle-release.aab</code>, exposed <code>skil-release-key.jks</code>, <code>update_journal.py</code>, <code>SKIL App Icon white.jpg</code>). Deleted <code>rules/</code> (6 redundant rule files) and <code>tmp/</code> directories. Moved <code>web-legacy/</code> to <code>archive/web-legacy/</code>. Moved <code>update_journal.py</code> and <code>SKIL App Icon white.jpg</code> to <code>ai/</code> and <code>ai/assets/</code> respectively.</p>
+                </div>
+            </div>
             <!-- LOG-078 -->
             <div class="log-card">
                 <div class="log-header">

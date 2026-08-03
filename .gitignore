@@ -24,6 +24,7 @@ build/
 **/.kotlin/
 **/kotlin-js-store/
 *.apk
+!skil-lifestyle-release.apk
 *.aab
 *.dex
 *.class

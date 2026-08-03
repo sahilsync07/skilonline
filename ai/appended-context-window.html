@@ -30,35 +30,37 @@
 <body>
     <div class="card">
         <h1>SKIL Master Appended Context Window <span class="badge">Rule 04 Continuity</span></h1>
-        <p style="color: #5a6072; font-weight: 700;">Last Updated: 2026-08-03 20:30 IST (Agent: Antigravity)</p>
+        <p style="color: #5a6072; font-weight: 700;">Last Updated: 2026-08-03 21:35 IST (Agent: Antigravity)</p>
         
         <h2>Live Systems State (Critical Read)</h2>
         <p><strong>Rule 04 Compliance</strong>: Maintaining 120Hz Modern Elegant Light design language across Android and Web. Single-Source Cross-Platform UI Architecture (Kotlin WASM + Native Android AAB) is fully functional, responsive, and visually rich.</p>
 
         <div class="status-content">
-            <p><strong>Current Phase:</strong> WASM Web 120Hz Fluid Scrolling Optimization &amp; Deployment</p>
-            <p><strong>Recent Actions:</strong> Resolved the slow, awkward, and tight scrolling feel in the Compose WASM client without risking WebAssembly memory exceptions or Skiko event loop re-entrancy. Implemented a zero-recursion native DOM event interception script in <code>wasmJsMain/resources/index.html</code> that tags incoming wheel events with <code>_skilAmplified</code> and overrides <code>deltaY</code> / <code>deltaX</code> property getters via <code>Object.defineProperty</code> to multiply scroll speeds by 3.2x natively. Verified WASM resource packaging via Gradle (<code>wasmJsProcessResources</code>) with 100% build success.</p>
-            <p><strong>Next Steps:</strong> Deploy WASM application distribution and ensure continuous cross-platform performance standards.</p>
+            <p><strong>Current Phase:</strong> Deployment Audit, Icon Replacement &amp; Root Directory Cleanup</p>
+            <p><strong>Recent Actions:</strong> Replaced app icon with user's actual <code>SKIL App Icon white.jpg</code> (clean black serif SKIL LIFESTYLE typography on white background, 512x512) across all 5 Android mipmap density buckets plus foreground layers. Removed old vector XML overrides from <code>mipmap/</code> base dir (was causing AAPT2 errors on pre-API-26 devices). Added <code>assembleRelease</code> to CI workflow for APK artifact generation alongside AAB. Performed comprehensive root directory cleanup per SUPER_ADMIN_RULES.md Section 1: deleted 9 root-level file violations, 2 directories (rules/, tmp/), moved web-legacy/ to archive/. Root now contains only: SUPER_ADMIN_RULES.md, index.html, .gitignore, README.md, ai/, android/, archive/, .github/, .agents/, .cursor/, .vscode/, .well-known/.</p>
+            <p><strong>Deployment Track Status:</strong> <code>android-release.yml</code> deploys to Internal track only on push to main (latest: v1.0.45). <code>android-production.yml</code> targets Production but is manual-only. Closed alpha (v1.0.28) is stale from Jul 23.</p>
+            <p><strong>Next Steps:</strong> APK building locally for root placement. Push all changes to main to trigger CI with new icon. Verify new icon appears on device after Internal track update.</p>
         </div>
     </div>
 
     <div class="card">
         <h2>Active Project State &amp; Architecture</h2>
         <div class="status-pill status-completed">CI/CD &amp; UI Status</div>
-        <p><strong>Android &amp; Web UI 100% Aligned:</strong> Migrated to a Single-Source UI Architecture using Compose Multiplatform WASM. The legacy web codebase is archived in <code>web-legacy/</code>, and all UI code (Android and Web) is now shared from <code>android/composeApp/src/commonMain</code>.</p>
+        <p><strong>Android &amp; Web UI 100% Aligned:</strong> Migrated to a Single-Source UI Architecture using Compose Multiplatform WASM. The legacy web codebase is archived in <code>archive/web-legacy/</code>, and all UI code (Android and Web) is now shared from <code>android/composeApp/src/commonMain</code>.</p>
         <p><strong>Google Play &amp; GitHub Pages Pipeline:</strong> Both pipelines unified to build from the shared Kotlin module. GitHub Actions correctly deploys the generated WASM bundle (<code>wasmJsBrowserDistribution</code>) directly to GitHub Pages and Google Play.</p>
         <ul>
-            <li><strong>Root Directory Structure:</strong> <code>SUPER_ADMIN_RULES.md</code>, <code>index.html</code>, <code>ai/</code>, <code>android/</code>, <code>web-legacy/</code>.</li>
+            <li><strong>Root Directory Structure:</strong> <code>SUPER_ADMIN_RULES.md</code>, <code>index.html</code>, <code>ai/</code>, <code>android/</code>, <code>archive/</code>. Clean per Section 1 directive.</li>
+            <li><strong>App Icon:</strong> User's actual <code>SKIL App Icon white.jpg</code> -- clean black serif SKIL LIFESTYLE wordmark on pure white background. Raster PNGs across all mipmap densities.</li>
             <li><strong>Web App Target:</strong> Compiled via Kotlin WASM/JS and deployed through <code>deploy-pages.yml</code>.</li>
             <li><strong>GitHub Pages Router:</strong> Root <code>index.html</code> redirecting live at <code>https://sahilsync07.github.io/skilonline/</code>.</li>
             <li><strong>Media Assets CDN:</strong> Cloudinary Cloud Name <code>aiz2tooi</code>, Unsigned Preset <code>skilonline</code> with automatic WebP/AVIF 120Hz URL optimization (<code>f_auto,q_auto</code>).</li>
-            <li><strong>Scrollbar System:</strong> Sleek 6px/8px Neon Lime Green (<code>#e2fc52</code>) brutalist scrollbars applied globally across <code>html, body, *</code>.</li>
             <li><strong>GitHub Repository:</strong> <code>sahilsync07/skilonline</code> on branch <code>main</code>.</li>
-            <li><strong>Rule 08 Verification Audit:</strong> Verified WASM compilation via Gradle and monitored deployment pipelines.</li>
         </ul>
     </div>
 </body>
 </html>
 
+<div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;"><strong>2026-08-03 Update (Part 4):</strong> Deployment audit (Internal track only auto-deploys, Production manual-only, Closed alpha stale). Replaced icon with user's SKIL App Icon white.jpg across all mipmap densities. Added APK build to CI. Root directory cleanup: deleted 9 files + 2 dirs violating Section 1, moved web-legacy to archive/.</div>
+<div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;"><strong>2026-08-03 Update (Part 3):</strong> AI-generated Concept B Light Luxury icon finalized and integrated across all Android mipmap density buckets. 512x512 and 1024x1024 exports ready for manual Play Store Console upload.</div>
 <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;"><strong>2026-08-03 Update (Part 2):</strong> Solved sluggish WASM desktop scrolling sensitivity via zero-recursion native WheelEvent property getter override in index.html, multiplying scroll speeds by 3.2x without synthetic event crashes.</div>
-<div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;"><strong>2026-08-03 Update (Part 1):</strong> Eliminated 10k+ untracked git installation files via comprehensive .gitignore rules and workspace cleanup. Fixed status bar system icon contrast on Android phone devices, integrated warm golden accent gradients/shadows on cards, and added branded adaptive vector launcher icons.</div>
+<div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;"><strong>2026-08-03 Update (Part 1):</strong> Eliminated 10k+ untracked git installation files. Fixed status bar system icon contrast on Android. Integrated warm golden accent gradients/shadows on cards. Added branded adaptive vector launcher icons.</div>
