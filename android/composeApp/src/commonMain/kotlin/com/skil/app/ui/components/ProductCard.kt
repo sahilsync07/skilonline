@@ -45,16 +45,32 @@ fun ProductCard(
     
     val yOffset by animateDpAsState(targetValue = if (isHovered) (-6).dp else 0.dp)
     val shadowElevation by animateDpAsState(targetValue = if (isHovered) 20.dp else 12.dp)
-    val borderColor by animateColorAsState(targetValue = if (isHovered) Color(0x40C19652) else AppColors.BorderLight)
+
+    val cardBorderBrush = androidx.compose.ui.graphics.Brush.linearGradient(
+        colors = if (isHovered) {
+            listOf(AppColors.AccentGold, Color(0xFFE6C37A), AppColors.AccentGold.copy(alpha = 0.7f))
+        } else {
+            listOf(
+                AppColors.AccentGold.copy(alpha = 0.55f),
+                AppColors.BorderLight,
+                Color(0xFFD4A762).copy(alpha = 0.4f)
+            )
+        }
+    )
 
     Box(
         modifier = modifier
             .fillMaxWidth()
             .offset(y = yOffset)
             .hoverable(interactionSource = interactionSource)
-            .shadow(elevation = shadowElevation, shape = RoundedCornerShape(16.dp), spotColor = Color(0x08131518))
+            .shadow(
+                elevation = shadowElevation,
+                shape = RoundedCornerShape(16.dp),
+                spotColor = AppColors.AccentGold.copy(alpha = if (isHovered) 0.5f else 0.3f),
+                ambientColor = AppColors.AccentGold.copy(alpha = 0.15f)
+            )
             .background(Color.White, shape = RoundedCornerShape(16.dp))
-            .border(width = 1.dp, color = borderColor, shape = RoundedCornerShape(16.dp))
+            .border(width = 1.2.dp, brush = cardBorderBrush, shape = RoundedCornerShape(16.dp))
             .padding(24.dp)
     ) {
         Column {

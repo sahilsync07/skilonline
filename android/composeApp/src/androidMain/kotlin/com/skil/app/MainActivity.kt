@@ -8,7 +8,18 @@ import com.skil.app.ui.App
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        runCatching { enableEdgeToEdge() }
+        runCatching {
+            enableEdgeToEdge(
+                statusBarStyle = androidx.activity.SystemBarStyle.light(
+                    android.graphics.Color.TRANSPARENT,
+                    android.graphics.Color.TRANSPARENT
+                ),
+                navigationBarStyle = androidx.activity.SystemBarStyle.light(
+                    android.graphics.Color.TRANSPARENT,
+                    android.graphics.Color.TRANSPARENT
+                )
+            )
+        }
         super.onCreate(savedInstanceState)
         setContent {
             App()

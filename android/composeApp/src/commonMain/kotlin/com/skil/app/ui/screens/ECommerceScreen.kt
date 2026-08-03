@@ -129,11 +129,27 @@ fun ECommerceScreen(
                         contentScale = androidx.compose.ui.layout.ContentScale.Fit
                     )
 
-                    // Right Partner Logos Container Badge
+                    // Right Partner Logos Container Badge (Mild Gold Accent Border & Shadow)
                     Box(
                         modifier = Modifier
+                            .shadow(
+                                elevation = 6.dp,
+                                shape = RoundedCornerShape(10.dp),
+                                spotColor = AppColors.AccentGold.copy(alpha = 0.35f),
+                                ambientColor = AppColors.AccentGold.copy(alpha = 0.2f)
+                            )
                             .background(AppColors.SurfaceBackground, shape = RoundedCornerShape(10.dp))
-                            .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(10.dp))
+                            .border(
+                                width = 1.5.dp,
+                                brush = androidx.compose.ui.graphics.Brush.linearGradient(
+                                    colors = listOf(
+                                        AppColors.AccentGold.copy(alpha = 0.8f),
+                                        Color(0xFFE5C158).copy(alpha = 0.4f),
+                                        Color(0xFFD4A762).copy(alpha = 0.7f)
+                                    )
+                                ),
+                                shape = RoundedCornerShape(10.dp)
+                            )
                             .padding(horizontal = partnerPaddingH, vertical = partnerPaddingV)
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -235,13 +251,28 @@ fun ECommerceScreen(
                         }
                     }
 
-                    // Ergonomic Luxury Pill Cart Button
+                    // Ergonomic Luxury Pill Cart Button (With Slight Golden Accent & Glow)
                     Box(
                         modifier = Modifier
                             .height(48.dp)
-                            .shadow(elevation = 6.dp, shape = RoundedCornerShape(999.dp), spotColor = Color(0x0C131518))
+                            .shadow(
+                                elevation = 6.dp,
+                                shape = RoundedCornerShape(999.dp),
+                                spotColor = AppColors.AccentGold.copy(alpha = 0.35f),
+                                ambientColor = AppColors.AccentGold.copy(alpha = 0.15f)
+                            )
                             .background(Color.White, shape = RoundedCornerShape(999.dp))
-                            .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(999.dp))
+                            .border(
+                                width = 1.2.dp,
+                                brush = androidx.compose.ui.graphics.Brush.linearGradient(
+                                    colors = listOf(
+                                        AppColors.AccentGold.copy(alpha = 0.6f),
+                                        AppColors.BorderLight,
+                                        Color(0xFFD4A762).copy(alpha = 0.5f)
+                                    )
+                                ),
+                                shape = RoundedCornerShape(999.dp)
+                            )
                             .clickable { viewModel.toggleCartDrawer() }
                             .padding(horizontal = 20.dp),
                         contentAlignment = Alignment.Center
@@ -312,29 +343,44 @@ fun ECommerceScreen(
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                // 5. Hero Showcase Section (Responsive Elegant Light)
+                // 5. Hero Showcase Section (Responsive Elegant Light with Mild Gold Accent & Shadow Glow)
                 androidx.compose.foundation.layout.BoxWithConstraints(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .shadow(elevation = 8.dp, shape = RoundedCornerShape(24.dp), spotColor = Color(0x08131518))
+                        .shadow(
+                            elevation = 12.dp,
+                            shape = RoundedCornerShape(24.dp),
+                            spotColor = AppColors.AccentGold.copy(alpha = 0.3f),
+                            ambientColor = AppColors.AccentGold.copy(alpha = 0.15f)
+                        )
                         .background(AppColors.SurfaceBackground, shape = RoundedCornerShape(24.dp))
                         .drawBehind {
                             drawRect(
                                 brush = androidx.compose.ui.graphics.Brush.radialGradient(
-                                    colors = listOf(Color(0x14C19652), Color.Transparent),
+                                    colors = listOf(Color(0x24C19652), Color.Transparent),
                                     center = androidx.compose.ui.geometry.Offset(0f, 0f),
-                                    radius = size.width * 0.4f
+                                    radius = size.width * 0.45f
                                 )
                             )
                             drawRect(
                                 brush = androidx.compose.ui.graphics.Brush.radialGradient(
-                                    colors = listOf(Color(0x0A1F1F1F), Color.Transparent),
+                                    colors = listOf(Color(0x0E1F1F1F), Color.Transparent),
                                     center = androidx.compose.ui.geometry.Offset(size.width, size.height),
                                     radius = size.width * 0.35f
                                 )
                             )
                         }
-                        .border(width = 1.dp, color = AppColors.BorderLight, shape = RoundedCornerShape(24.dp))
+                        .border(
+                            width = 1.5.dp,
+                            brush = androidx.compose.ui.graphics.Brush.linearGradient(
+                                colors = listOf(
+                                    AppColors.AccentGold.copy(alpha = 0.7f),
+                                    AppColors.BorderLight,
+                                    Color(0xFFD4A762).copy(alpha = 0.6f)
+                                )
+                            ),
+                            shape = RoundedCornerShape(24.dp)
+                        )
                 ) {
                     val isWide = maxWidth > 600.dp
                     
