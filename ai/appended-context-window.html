@@ -36,10 +36,10 @@
         <p><strong>Rule 04 Compliance</strong>: Maintaining 120Hz Modern Elegant Light design language across Android and Web. Single-Source Cross-Platform UI Architecture (Kotlin WASM + Native Android AAB) is fully functional, responsive, and visually rich.</p>
 
         <div class="status-content">
-            <p><strong>Current Phase:</strong> Deployment Audit, Icon Replacement &amp; Root Directory Cleanup</p>
-            <p><strong>Recent Actions:</strong> Replaced app icon with user's actual <code>SKIL App Icon white.jpg</code> (clean black serif SKIL LIFESTYLE typography on white background, 512x512) across all 5 Android mipmap density buckets plus foreground layers. Removed old vector XML overrides from <code>mipmap/</code> base dir (was causing AAPT2 errors on pre-API-26 devices). Added <code>assembleRelease</code> to CI workflow for APK artifact generation alongside AAB. Performed comprehensive root directory cleanup per SUPER_ADMIN_RULES.md Section 1: deleted 9 root-level file violations, 2 directories (rules/, tmp/), moved web-legacy/ to archive/. Root now contains only: SUPER_ADMIN_RULES.md, index.html, .gitignore, README.md, ai/, android/, archive/, .github/, .agents/, .cursor/, .vscode/, .well-known/.</p>
+            <p><strong>Current Phase:</strong> Partner Logo Teleprompter Marquee & Branding Expansion</p>
+            <p><strong>Recent Actions:</strong> Converted the static partner logo Row in <code>ECommerceScreen.kt</code> to a <code>basicMarquee</code>-powered continuous teleprompter scrolling right-to-left with 5 brand logos: Ajanta, Impacto, Xpania, Alida, Zibago. Copied <code>Alida-logo.png</code> and <code>Zibago-logo.png</code> from root into <code>composeResources/drawable/</code>. <code>xpania_logo.png</code> was already present. Each logo separated by gold-accent vertical dividers. Responsive: 220dp max on mobile (30dp/s velocity), 380dp max on desktop (40dp/s velocity). Cleaned up fully-qualified <code>Image</code> calls. No redundant duplicate logos.</p>
             <p><strong>Deployment Track Status:</strong> <code>android-release.yml</code> deploys to Internal track only on push to main (latest: v1.0.45). <code>android-production.yml</code> targets Production but is manual-only. Closed alpha (v1.0.28) is stale from Jul 23.</p>
-            <p><strong>Next Steps:</strong> APK building locally for root placement. Push all changes to main to trigger CI with new icon. Verify new icon appears on device after Internal track update.</p>
+            <p><strong>Next Steps:</strong> Build and push to main to trigger CI. Verify the marquee animation renders correctly on both Android device and WASM web.</p>
         </div>
     </div>
 

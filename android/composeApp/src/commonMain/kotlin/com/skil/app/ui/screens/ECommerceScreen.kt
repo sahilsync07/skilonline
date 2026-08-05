@@ -51,6 +51,10 @@ import skilonline.composeapp.generated.resources.Res
 import skilonline.composeapp.generated.resources.ajanta_logo
 import skilonline.composeapp.generated.resources.skil_logo
 import skilonline.composeapp.generated.resources.impakto_logo
+import skilonline.composeapp.generated.resources.xpania_logo
+import skilonline.composeapp.generated.resources.alida_logo
+import skilonline.composeapp.generated.resources.zibago_logo
+import androidx.compose.foundation.Image
 
 @Composable
 fun ECommerceScreen(
@@ -122,16 +126,17 @@ fun ECommerceScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     // Left Main Brand Logo
-                    androidx.compose.foundation.Image(
+                    Image(
                         painter = painterResource(Res.drawable.skil_logo),
                         contentDescription = "SKIL Logo",
                         modifier = Modifier.height(skilLogoHeight),
                         contentScale = androidx.compose.ui.layout.ContentScale.Fit
                     )
 
-                    // Right Partner Logos Container Badge (Mild Gold Accent Border & Shadow)
+                    // Right Partner Logos Teleprompter Marquee (Gold Accent Badge)
                     Box(
                         modifier = Modifier
+                            .widthIn(max = if (isMobile) 220.dp else 380.dp)
                             .shadow(
                                 elevation = 6.dp,
                                 shape = RoundedCornerShape(10.dp),
@@ -152,24 +157,61 @@ fun ECommerceScreen(
                             )
                             .padding(horizontal = partnerPaddingH, vertical = partnerPaddingV)
                     ) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            androidx.compose.foundation.Image(
+                        val dividerHeight = if (isMobile) 24.dp else 32.dp
+                        val logoSpacing = if (isMobile) 12.dp else 18.dp
+
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.basicMarquee(
+                                iterations = Int.MAX_VALUE,
+                                velocity = if (isMobile) 30.dp else 40.dp,
+                                spacing = MarqueeSpacing(if (isMobile) 48.dp else 64.dp)
+                            )
+                        ) {
+                            // Ajanta
+                            Image(
                                 painter = painterResource(Res.drawable.ajanta_logo),
                                 contentDescription = "Ajanta Logo",
                                 modifier = Modifier.height(partnerLogoHeight),
                                 contentScale = androidx.compose.ui.layout.ContentScale.Fit
                             )
-                            Spacer(modifier = Modifier.width(if (isMobile) 8.dp else 14.dp))
-                            Box(
-                                modifier = Modifier
-                                    .width(1.dp)
-                                    .height(if (isMobile) 24.dp else 32.dp)
-                                    .background(AppColors.BorderLight)
-                            )
-                            Spacer(modifier = Modifier.width(if (isMobile) 8.dp else 14.dp))
-                            androidx.compose.foundation.Image(
+                            Spacer(modifier = Modifier.width(logoSpacing))
+                            Box(modifier = Modifier.width(1.dp).height(dividerHeight).background(AppColors.AccentGold.copy(alpha = 0.3f)))
+                            Spacer(modifier = Modifier.width(logoSpacing))
+                            // Impacto
+                            Image(
                                 painter = painterResource(Res.drawable.impakto_logo),
-                                contentDescription = "Impakto Logo",
+                                contentDescription = "Impacto Logo",
+                                modifier = Modifier.height(partnerLogoHeight),
+                                contentScale = androidx.compose.ui.layout.ContentScale.Fit
+                            )
+                            Spacer(modifier = Modifier.width(logoSpacing))
+                            Box(modifier = Modifier.width(1.dp).height(dividerHeight).background(AppColors.AccentGold.copy(alpha = 0.3f)))
+                            Spacer(modifier = Modifier.width(logoSpacing))
+                            // Xpania
+                            Image(
+                                painter = painterResource(Res.drawable.xpania_logo),
+                                contentDescription = "Xpania Logo",
+                                modifier = Modifier.height(partnerLogoHeight),
+                                contentScale = androidx.compose.ui.layout.ContentScale.Fit
+                            )
+                            Spacer(modifier = Modifier.width(logoSpacing))
+                            Box(modifier = Modifier.width(1.dp).height(dividerHeight).background(AppColors.AccentGold.copy(alpha = 0.3f)))
+                            Spacer(modifier = Modifier.width(logoSpacing))
+                            // Alida
+                            Image(
+                                painter = painterResource(Res.drawable.alida_logo),
+                                contentDescription = "Alida Logo",
+                                modifier = Modifier.height(partnerLogoHeight),
+                                contentScale = androidx.compose.ui.layout.ContentScale.Fit
+                            )
+                            Spacer(modifier = Modifier.width(logoSpacing))
+                            Box(modifier = Modifier.width(1.dp).height(dividerHeight).background(AppColors.AccentGold.copy(alpha = 0.3f)))
+                            Spacer(modifier = Modifier.width(logoSpacing))
+                            // Zibago
+                            Image(
+                                painter = painterResource(Res.drawable.zibago_logo),
+                                contentDescription = "Zibago Logo",
                                 modifier = Modifier.height(partnerLogoHeight),
                                 contentScale = androidx.compose.ui.layout.ContentScale.Fit
                             )
@@ -452,7 +494,7 @@ fun ECommerceScreen(
                                 modifier = Modifier.weight(0.4f), 
                                 contentAlignment = Alignment.CenterEnd
                             ) {
-                                androidx.compose.foundation.Image(
+                                Image(
                                     painter = painterResource(Res.drawable.skil_logo),
                                     contentDescription = "Hero Graphic",
                                     modifier = Modifier.fillMaxWidth(0.8f).height(120.dp),

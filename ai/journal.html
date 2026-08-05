@@ -581,6 +581,19 @@
 
         <!-- Grid Container for Log Entries -->
         <div class="log-grid">
+            <!-- LOG-080 -->
+            <div class="log-card">
+                <div class="log-header">
+                    <span class="log-id">LOG-080</span>
+                    <span class="log-date">2026-08-05 17:10 IST</span>
+                    <span class="log-tag bg-blue">UI &amp; BRANDING</span>
+                </div>
+                <h2 class="log-title">Partner Logo Teleprompter Marquee -- Added Xpania, Alida &amp; Zibago Logos</h2>
+                <div class="log-content">
+                    <p><strong>Observation</strong>: The partner logos section in the top navbar displayed only Ajanta and Impacto as static images in a fixed Row. User requested adding Xpania, Alida, and Zibago brand logos (all available in the project directory) and converting the display to a teleprompter-style right-to-left scrolling marquee. Also requested removal of redundant/duplicate logo appearances.</p>
+                    <p><strong>Action</strong>: (A) Copied <code>Alida-logo.png</code> and <code>Zibago-logo.png</code> from root directory into <code>composeResources/drawable/</code> as <code>alida_logo.png</code> and <code>zibago_logo.png</code>. <code>xpania_logo.png</code> was already present but unused. (B) Converted the static partner logo Row in <code>ECommerceScreen.kt</code> to a <code>basicMarquee</code>-powered continuous teleprompter scrolling from right to left with 5 brand logos: Ajanta, Impacto, Xpania, Alida, Zibago -- each separated by gold-accent vertical dividers. (C) Responsive marquee sizing: <code>widthIn(max=220dp)</code> on mobile, <code>380dp</code> on desktop; velocity 30dp/s mobile, 40dp/s desktop. (D) Cleaned up fully-qualified <code>androidx.compose.foundation.Image</code> calls to use direct import. (E) Ensured each logo appears exactly once -- no redundant duplicates.</p>
+                </div>
+            </div>
             <!-- LOG-079 -->
             <div class="log-card">
                 <div class="log-header">
