@@ -145,7 +145,7 @@ fun ECommerceScreen(
                             )
                             .background(AppColors.SurfaceBackground, shape = RoundedCornerShape(10.dp))
                             .border(
-                                width = 1.5.dp,
+                                width = 0.75.dp,
                                 brush = androidx.compose.ui.graphics.Brush.linearGradient(
                                     colors = listOf(
                                         AppColors.AccentGold.copy(alpha = 0.8f),
@@ -165,7 +165,7 @@ fun ECommerceScreen(
                             modifier = Modifier.basicMarquee(
                                 iterations = Int.MAX_VALUE,
                                 velocity = if (isMobile) 30.dp else 40.dp,
-                                spacing = MarqueeSpacing(if (isMobile) 48.dp else 64.dp)
+                                spacing = MarqueeSpacing(0.dp)
                             )
                         ) {
                             // Ajanta
@@ -178,20 +178,20 @@ fun ECommerceScreen(
                             Spacer(modifier = Modifier.width(logoSpacing))
                             Box(modifier = Modifier.width(1.dp).height(dividerHeight).background(AppColors.AccentGold.copy(alpha = 0.3f)))
                             Spacer(modifier = Modifier.width(logoSpacing))
-                            // Impacto
+                            // Xpania
                             Image(
-                                painter = painterResource(Res.drawable.impakto_logo),
-                                contentDescription = "Impacto Logo",
+                                painter = painterResource(Res.drawable.xpania_logo),
+                                contentDescription = "Xpania Logo",
                                 modifier = Modifier.height(partnerLogoHeight),
                                 contentScale = androidx.compose.ui.layout.ContentScale.Fit
                             )
                             Spacer(modifier = Modifier.width(logoSpacing))
                             Box(modifier = Modifier.width(1.dp).height(dividerHeight).background(AppColors.AccentGold.copy(alpha = 0.3f)))
                             Spacer(modifier = Modifier.width(logoSpacing))
-                            // Xpania
+                            // Impacto
                             Image(
-                                painter = painterResource(Res.drawable.xpania_logo),
-                                contentDescription = "Xpania Logo",
+                                painter = painterResource(Res.drawable.impakto_logo),
+                                contentDescription = "Impacto Logo",
                                 modifier = Modifier.height(partnerLogoHeight),
                                 contentScale = androidx.compose.ui.layout.ContentScale.Fit
                             )
@@ -215,6 +215,9 @@ fun ECommerceScreen(
                                 modifier = Modifier.height(partnerLogoHeight),
                                 contentScale = androidx.compose.ui.layout.ContentScale.Fit
                             )
+                            Spacer(modifier = Modifier.width(logoSpacing))
+                            Box(modifier = Modifier.width(1.dp).height(dividerHeight).background(AppColors.AccentGold.copy(alpha = 0.3f)))
+                            Spacer(modifier = Modifier.width(logoSpacing))
                         }
                     }
                 }
@@ -305,7 +308,7 @@ fun ECommerceScreen(
                             )
                             .background(Color.White, shape = RoundedCornerShape(999.dp))
                             .border(
-                                width = 1.2.dp,
+                                width = 0.75.dp,
                                 brush = androidx.compose.ui.graphics.Brush.linearGradient(
                                     colors = listOf(
                                         AppColors.AccentGold.copy(alpha = 0.6f),
@@ -413,7 +416,7 @@ fun ECommerceScreen(
                             )
                         }
                         .border(
-                            width = 1.5.dp,
+                            width = 0.75.dp,
                             brush = androidx.compose.ui.graphics.Brush.linearGradient(
                                 colors = listOf(
                                     AppColors.AccentGold.copy(alpha = 0.7f),

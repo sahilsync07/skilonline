@@ -70,7 +70,7 @@ fun ProductCard(
                 ambientColor = AppColors.AccentGold.copy(alpha = 0.15f)
             )
             .background(Color.White, shape = RoundedCornerShape(16.dp))
-            .border(width = 1.2.dp, brush = cardBorderBrush, shape = RoundedCornerShape(16.dp))
+            .border(width = 0.75.dp, brush = cardBorderBrush, shape = RoundedCornerShape(16.dp))
             .padding(24.dp)
     ) {
         Column {
