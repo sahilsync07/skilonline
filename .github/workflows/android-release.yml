@@ -89,13 +89,3 @@ jobs:
           releaseFiles: android/composeApp/build/outputs/bundle/release/*.aab
           track: alpha
           status: completed
-
-      - name: Auto-Upload to Play Store (Internal Track)
-        if: success()
-        uses: r0adkll/upload-google-play@v1
-        with:
-          serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_JSON }}
-          packageName: com.skil.app
-          releaseFiles: android/composeApp/build/outputs/bundle/release/*.aab
-          track: internal
-          status: completed
