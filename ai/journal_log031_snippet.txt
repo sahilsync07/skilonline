@@ -1,0 +1,25 @@
+                <!-- Log Entry 31 -->
+                <tr data-category="DEPLOY" data-keywords="Android AAB Release Bundle Signing Fix Google Play Console signingConfig debug signature">
+                    <td><span class="log-id">LOG-031</span></td>
+                    <td>
+                        <div class="log-time">2026-07-23 08:21 IST</div>
+                        <div style="font-size: 0.75rem; color: #8b5cf6; font-weight: 800; margin-top: 4px;">Agent: Antigravity</div>
+                    </td>
+                    <td><span class="cat-tag deploy" style="background: #10b981; color: #ffffff; padding: 4px 8px; border-radius: 6px; font-weight: 800; font-size: 0.75rem; border: 1px solid #000;">DEPLOY</span></td>
+                    <td>
+                        <strong style="color: #000000; font-size: 1rem;">Fix Unsigned AAB Error for Play Console Upload (`signingConfig = signingConfigs.getByName("debug")`)</strong>
+                        <div class="details-box">
+                            <strong>Detailed Action Report:</strong>
+                            <ul>
+                                <li>Configured <code>signingConfig = signingConfigs.getByName("debug")</code> in <code>buildTypes.release</code> within <code>android/composeApp/build.gradle.kts</code>.</li>
+                                <li>Ensures AGP generates a signed <code>.aab</code> package required by Google Play Console upload validation.</li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="files-box">
+                            <div class="file-chip">android/composeApp/build.gradle.kts</div>
+                        </div>
+                    </td>
+                    <td><span class="status-pill status-completed">COMPLETED</span></td>
+                </tr>
